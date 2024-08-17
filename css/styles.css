@@ -56,14 +56,14 @@ nav a {
   font-weight: 300;
 }
 
-body {
+.log {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0;
   height: 100vh;
-}
+} 
 
 .img01 {
   margin-top: 350px;
@@ -80,6 +80,7 @@ body {
   display: flex;
   flex-direction: column; /*centra los elementos en columna */
   align-items: center;
+  justify-content: center;
 
 }
 
@@ -126,7 +127,7 @@ body {
 
 
 
-/* 
+
 .jumbotron .container {
   max-width: 40rem;
   background-color: rgba(255, 255, 255, 0.5);
@@ -136,7 +137,7 @@ body {
 
 .jumbotron .lead {
   font-size: 38px;
-} */
+} 
 
 footer {
   padding-top: 3rem;
