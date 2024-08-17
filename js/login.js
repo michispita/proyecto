@@ -1,3 +1,4 @@
+
 const button = document.getElementById('but'); //creamos la constante del boton
 
 button.addEventListener('click', (event) => {
@@ -12,5 +13,6 @@ button.addEventListener('click', (event) => {
         window.location.href = "index.html";
     }
 });
+
 
 
