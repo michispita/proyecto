@@ -14,13 +14,27 @@
       background-color: rgb(248, 249, 250);
     }
   </style>
+          <img src="/img/login.png" alt="logo-emercado" class="img01">
+
 </head>
 
-<body>
+<body class="log">
   <main class="mt-5">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="login-container">
+      <!-- <div class="alert alert-danger text-center" role="alert"> -->
+
+        <h4>Login</h4>
+          <form> <!-- action=" redireccionar al sitio de portada" y method post (ver más adelante)-->
+
+         <!--No use label en los inputs por el diseño del prototipo en figma -->
+         <input name="user" type="text" id="user" placeholder="Usuario" required/><br><br>
+
+        <input name="password"  type="password" id="pass" placeholder="Contraseña" required/><br><br>
+
+        <button id="but" type="submit">Login</button> <br> <br>
+
+        
+       </form>
       </div>
     </div>
   </main>
