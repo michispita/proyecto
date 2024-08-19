@@ -1,3 +1,4 @@
+
 const button = document.getElementById('but'); //creamos la constante del boton
 
 button.addEventListener('click', (event) => {
@@ -14,7 +15,7 @@ button.addEventListener('click', (event) => {
     }
 });
 
-let saveLogin = function (usuario, password) {  // funcion saveLogin.
+let saveLogin = function (usuario, password) {
     const userkey = "user_key";
     const passwordkey = "password_key";
 
