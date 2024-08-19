@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
 // Función para verificar la autenticación
 function checkAuthentication() {
     const authUser = sessionStorage.getItem('authenticatedUser');
-    console.log('Authenticated User:', authUser); // Para depurar
     return authUser !== null;
 }
 
