@@ -16,9 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location = "login.html"
     }
 
-     /*Aqui agregue un condicional if, que va a verificar si el usuario está logueado, mediante la funcion checklogin, si está
-    logueado, establece eventos en 3 elementos para redirigir a una página de productos, 
-    y si no está logueado va a redirigir al usuario al loguin*/
+     //Aqui agregue un condicional if, que va a verificar si el usuario está logueado, mediante la funcion checklogin,
+    // si está logueado, establece eventos en 3 elementos para redirigir a una página de productos, y si no está logueado va a redirigir al usuario al loguin
     
 
 });
@@ -33,6 +32,6 @@ let checkLogin = function(){
     const isLogged = user !== null && password !== null;
     return isLogged;
 }
-/* Esta funcion verifica si el usuario esta logueado, revisando si exsiten ciertas claves en el localstorage, en este caso busca las claves 
-(user-key  y password-key)*/
+// Esta funcion verifica si el usuario esta logueado, revisando si exsiten ciertas claves en el localstorage, en este caso busca las claves 
+//(user-key  y password-key)
 
