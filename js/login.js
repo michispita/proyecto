@@ -7,12 +7,19 @@ button.addEventListener('click', (event) => {
     const usuario = document.getElementById('user').value; //contante de los campos
     const password = document.getElementById('pass').value;
 
-    if (usuario && password) {
-        sessionStorage.setItem('authenticatedUser', usuario);
-
-        // Redirige al usuario a la página principal
-        window.location.href = "index.html";
-    } else {
+    if (!usuario || !password) {  //condicion para redirigir
         alert("Los campos deben estar llenos");
+    } else {
+        saveLogin(usuario, password);
+        window.location.href = "index.html";
     }
 });
+
+let saveLogin = function (usuario, password) {
+    const userkey = "user_key";
+    const passwordkey = "password_key";
+
+    localStorage.setItem(userkey, usuario);
+    localStorage.setItem(passwordkey, password);
+}
+
