@@ -105,14 +105,14 @@ nav a {
 
 /* Imagenes dentro de del input  */
 #user {
-  background-image: url(/img/User.png);
+  background-image: url(img/User.png);
   background-repeat: no-repeat;
   background-position: 160px ;
   background-size: 20px 20px;
 }
 
 #pass {
-  background-image: url(/img/Lock.png);
+  background-image: url(img/Lock.png);
   background-repeat: no-repeat;
   background-position: 160px ;
   background-size: 20px 20px;
