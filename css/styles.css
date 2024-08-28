@@ -56,6 +56,79 @@ nav a {
   font-weight: 300;
 }
 
+.log {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 100vh;
+} 
+
+.img01 {
+  width: 700px;
+  margin-bottom: 20px;
+}
+
+.login-container {
+  background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  border-radius: 1px;
+  display: flex;
+  flex-direction: column; /*centra los elementos en columna */
+  align-items: center;
+  justify-content: center;
+}
+
+#user , #pass {
+  border-radius: 15px;
+  padding-left: 10px;
+}
+
+#but {
+  border-radius: 15px;
+  width: 198px;
+  background-color: white;
+  cursor: pointer;
+  font-weight: bold;
+
+}
+
+#but:hover {
+  background-color: darkorange;
+}
+
+/* Imagenes dentro de del input  */
+#user {
+  background-image: url(img/User.png);
+  background-repeat: no-repeat;
+  background-position: 160px ;
+  background-size: 20px 20px;
+}
+
+#pass {
+  background-image: url(img/Lock.png);
+  background-repeat: no-repeat;
+  background-position: 160px ;
+  background-size: 20px 20px;
+}
+
+
+.login-container h4 {
+  color: darkorange;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+
+
+
 .jumbotron .container {
   max-width: 40rem;
   background-color: rgba(255, 255, 255, 0.5);
@@ -65,7 +138,7 @@ nav a {
 
 .jumbotron .lead {
   font-size: 38px;
-}
+} 
 
 footer {
   padding-top: 3rem;
