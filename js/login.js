@@ -1,4 +1,5 @@
 
+document.addEventListener('DOMContentLoaded', function () {
 const button = document.getElementById('but'); //creamos la constante del boton
 
 button.addEventListener('click', (event) => {
@@ -10,9 +11,15 @@ button.addEventListener('click', (event) => {
     if (!usuario || !password) {  //condicion para redirigir
         alert("Los campos deben estar llenos");
     } else {
-        window.location.href = "index.html";
+       // Guarda el nombre de usuario en el almacenamiento local
+       localStorage.setItem('username', usuario);
+            
+       // Redirige a la página principal
+       window.location.href = "index.html";
     }
 });
+});
+
 
 
 
