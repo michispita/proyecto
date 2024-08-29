@@ -62,40 +62,45 @@ nav a {
   justify-content: center;
   align-items: center;
   margin: 0;
-  height: 100vh;
+  margin: 10rem auto auto auto;
+  height: 70vh;
+  width: 100%;
 } 
 
 .img01 {
-  margin-top: 350px;
-  width: 700px;
+  width: 60%;
+  display: block;
+  margin: auto auto 1.25rem auto;
 }
 
 .login-container {
   background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  border-radius: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.63rem rgba(0, 0, 0, 0.1);
+  width: 18.75rem;
+  border-radius: 0.06rem;
   display: flex;
   flex-direction: column; /*centra los elementos en columna */
   align-items: center;
   justify-content: center;
-
 }
 
 #user , #pass {
-  border-radius: 15px;
-  padding-left: 10px;
+  border-radius: 0.94rem;
+  padding-left: 0.63rem;
+  width: 100%;
 }
 
 #but {
-  border-radius: 15px;
-  width: 198px;
+  border-radius: 0.94rem;
+  width: 12.38rem;
   background-color: white;
   cursor: pointer;
   font-weight: bold;
-
+  width: 100%;
 }
 
 #but:hover {
@@ -104,28 +109,44 @@ nav a {
 
 /* Imagenes dentro de del input  */
 #user {
-  background-image: url(/img/User.png);
+  background-image: url("img/User.png");
   background-repeat: no-repeat;
-  background-position: 160px ;
-  background-size: 20px 20px;
+  background-position: 10rem;
+  background-size: 1.25rem 1.25rem;
 }
 
 #pass {
-  background-image: url(/img/Lock.png);
+  background-image: url("img/Lock.png");
   background-repeat: no-repeat;
-  background-position: 160px ;
-  background-size: 20px 20px;
+  background-position: 10rem;
+  background-size: 1.25rem 1.25rem;
 }
-
 
 .login-container h4 {
   color: darkorange;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   font-weight: bold;
 }
 
+@media (max-width: 425px) {
+  .log {
+    margin: 5rem auto auto auto;
+    height: 75vh;
+    justify-content: space-evenly;
+  }
 
+  .text-muted {
+    font-size: 0.7rem;
+  }
+
+  .login-container {
+    width: 12rem; /* Ancho del cuadro */
+    padding: 1.25rem; /* Espacio interior del cuadro */
+    height: 13rem;
+    font-size: 0.8rem;
+  }
+}
 
 
 .jumbotron .container {
@@ -259,4 +280,95 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
+}
+
+.product {
+  padding: 1.25rem;
+  margin: 0.63rem 0.63rem 0.63rem 0.63rem;
+  border-style: solid;
+  border-width: 0.063rem;
+  border-radius: 0.63rem;
+  border-color: black;
+  width: 28%;
+  overflow: hidden;
+}
+
+.product img {
+  padding: 0.31rem;
+  border-style: solid;
+  border-width: 0.063rem;
+  border-radius: 0.63rem;
+  margin-top: 2.5rem;
+  margin-bottom: 3.75rem;
+  width: 100%;
+  transform: scale(1);
+}
+
+.product h2 { 
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 0.63rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  transform: scale(1);
+}
+
+.product p {
+  padding: 0.31rem;
+  font-size: 1.875rem;
+  font-weight: bold;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  transform: scale(1);
+}
+
+.product p:nth-of-type(2) {
+  font-size: 0.63rem;
+  float: right;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  transform: scale(1);
+}
+
+.product p:nth-of-type(3) {
+  font-size: 0.813rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  transform: scale(1);
+}
+
+#product-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  grid-template-columns: auto auto auto auto;
+  gap: 0.63rem;
+}
+
+#listado-titulo {
+  text-align: center;
+  font-weight: bolder;
+  margin: 1.875rem 0.63rem 1.875rem 0.63rem;
+}
+
+@media (max-width: 768px) {
+  .product {
+    width: 40%;
+  }
+
+ /* .product img {
+    margin-top: 1.7rem;
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+
+  .product h2 { 
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  } */
+
 }
