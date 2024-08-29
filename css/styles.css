@@ -56,79 +56,6 @@ nav a {
   font-weight: 300;
 }
 
-.log {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  height: 100vh;
-} 
-
-.img01 {
-  width: 700px;
-  margin-bottom: 20px;
-}
-
-.login-container {
-  background-color: #fff;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  border-radius: 1px;
-  display: flex;
-  flex-direction: column; /*centra los elementos en columna */
-  align-items: center;
-  justify-content: center;
-}
-
-#user , #pass {
-  border-radius: 15px;
-  padding-left: 10px;
-}
-
-#but {
-  border-radius: 15px;
-  width: 198px;
-  background-color: white;
-  cursor: pointer;
-  font-weight: bold;
-
-}
-
-#but:hover {
-  background-color: darkorange;
-}
-
-/* Imagenes dentro de del input  */
-#user {
-  background-image: url(img/User.png);
-  background-repeat: no-repeat;
-  background-position: 160px ;
-  background-size: 20px 20px;
-}
-
-#pass {
-  background-image: url(img/Lock.png);
-  background-repeat: no-repeat;
-  background-position: 160px ;
-  background-size: 20px 20px;
-}
-
-
-.login-container h4 {
-  color: darkorange;
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-
-
-
 .jumbotron .container {
   max-width: 40rem;
   background-color: rgba(255, 255, 255, 0.5);
@@ -261,7 +188,81 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+/*** NOSOTRAS ***/
+/*Modificaciones login */
+/*{  
+  padding: 0%;      
+  margin: 0%;
+  box-sizing: border-box;
+}*/
+header{
+  display: flex;
+  justify-content: center;
+}
 
+.img01 {
+  width: 50%;
+ }
+
+.login-container {
+  background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  border-radius: 0.1rem;
+  display: flex; /*importante para poder ajustar elementos dentro*/
+  flex-direction: column; /*centra los elementos en columna */
+  align-items: center;
+  justify-content: center; /*se aplica al mismo contenedor con display:flex OJO != justify self(para elemento hijo dentro de contedor)*/
+  flex-wrap: wrap;
+ 
+}
+form{
+  justify-self: center
+}
+.login-container h4 {
+  color: darkorange;
+  text-align: center;
+  margin: bottom 1.25rem;;
+  font-weight: bold;
+}
+
+#user , #pass {
+  border-radius: 15px;  /*no poner rem porque pierde forma redondeada*/
+  padding-left: 10px;
+}
+
+#but {
+  border-radius: 15px;
+  width: 100%;
+  background-color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#but:hover {
+  background-color: darkorange;
+}
+
+/* Imagenes dentro de del input  */
+#user {
+  background-image: url(img/User.png);
+  background-repeat: no-repeat;
+  background-position: 10rem ;
+  background-size: 1.3rem 1.3rem;
+}
+
+#pass {
+  background-image: url(img/Lock.png);
+  background-repeat: no-repeat;
+  background-position: 10rem ;
+  background-size: 1.3rem 1.3rem;
+}
+
+/*Modificaciones en productos para responsive (Pendiente) */
 .product {
   padding: 20px;
   margin: 10px 10px 10px 10px;
@@ -295,20 +296,20 @@ a.custom-card:hover {
 }
 
 .product p:nth-of-type(2) {
-  font-size: 10px;
+  font-size: 0.63rem;
   float: right;
 }
 
 .product p:nth-of-type(3) {
-  font-size: 13px;
+  font-size: 0.8rem;
 }
 
 #product-list {
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
+  justify-content: space-around;
   grid-template-columns: auto auto auto auto;
-  gap: 10px;
+  
 }
 
 #listado-titulo {
