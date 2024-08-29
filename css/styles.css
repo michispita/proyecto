@@ -283,6 +283,9 @@ a.custom-card:hover {
 }
 
 .product {
+  display: flex;
+  flex-direction: column;
+  transform-origin: top;
   padding: 1.25rem;
   margin: 0.63rem 0.63rem 0.63rem 0.63rem;
   border-style: solid;
@@ -301,43 +304,38 @@ a.custom-card:hover {
   margin-top: 2.5rem;
   margin-bottom: 3.75rem;
   width: 100%;
-  transform: scale(1);
 }
 
-.product h2 { 
-  font-size: 1.125rem;
+.product h2 { /* nombre */
+  font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 0.63rem;
   word-wrap: break-word;
-  word-break: break-all;
-  overflow-wrap: break-word;
+  word-break: normal;
   transform: scale(1);
 }
 
-.product p {
+.product p {  /* precio */
   padding: 0.31rem;
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   font-weight: bold;
   word-wrap: break-word;
-  word-break: break-all;
-  overflow-wrap: break-word;
+  word-break: normal;
   transform: scale(1);
 }
 
-.product p:nth-of-type(2) {
+.product p:nth-of-type(2) { /* vendidos */
   font-size: 0.63rem;
   float: right;
   word-wrap: break-word;
-  word-break: break-all;
-  overflow-wrap: break-word;
+  word-break: normal;
   transform: scale(1);
 }
 
-.product p:nth-of-type(3) {
+.product p:nth-of-type(3) { /* descripcion */
   font-size: 0.813rem;
   word-wrap: break-word;
-  word-break: break-all;
-  overflow-wrap: break-word;
+  word-break: normal;
   transform: scale(1);
 }
 
@@ -360,15 +358,35 @@ a.custom-card:hover {
     width: 40%;
   }
 
- /* .product img {
-    margin-top: 1.7rem;
+  .product img {
+    margin-top: 1rem;
     margin-bottom: 2rem;
-    width: 100%;
+  }
+}
+
+@media (max-width: 320px) {
+  .product {
+    min-width: 15rem;
+  }
+  
+  .product img {
+    min-width: 2rem;
   }
 
-  .product h2 { 
+  .product h2 { /* nombre */
     font-size: 1rem;
-    margin-bottom: 0.3rem;
-  } */
-
+    margin-bottom: 0.40rem;
+  }
+  
+  .product p {  /* precio */
+    font-size: 1rem;
+  }
+  
+  .product p:nth-of-type(2) { /* vendidos */
+    font-size: 0.6rem;
+  }
+  
+  .product p:nth-of-type(3) { /* descripcion */
+    font-size: 0.6rem;
+  }
 }
