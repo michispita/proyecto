@@ -40,6 +40,7 @@ function setCatID(id) {
     window.location = "products.html"
 }
 
+
 function showCategoriesList(){
 
     let htmlContentToAppend = "";
@@ -142,6 +143,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 });
 
+
 //Para ver el nombre de usuario
 document.addEventListener('DOMContentLoaded', function () {
     // Obtener el nombre de usuario almacenado
@@ -155,3 +157,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+
