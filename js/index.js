@@ -1,30 +1,28 @@
-document.addEventListener("DOMContentLoaded", function () {
-    if (checkLogin()) {
-        document.getElementById("autos").addEventListener("click", function () {
-            localStorage.setItem("catID", 101);
-            window.location = "products.html"
-        });
-        document.getElementById("juguetes").addEventListener("click", function () {
-            localStorage.setItem("catID", 102);
-            window.location = "products.html"
-        });
-        document.getElementById("muebles").addEventListener("click", function () {
-            localStorage.setItem("catID", 103);
-            window.location = "products.html"
-        });
-    } else {
-        window.location = "login.html"
-    }
-
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("autos").addEventListener("click", function() {
+        localStorage.setItem("catID", 101);
+        window.location = "products.html"
+    });
+    document.getElementById("juguetes").addEventListener("click", function() {
+        localStorage.setItem("catID", 102);
+        window.location = "products.html"
+    });
+    document.getElementById("muebles").addEventListener("click", function() {
+        localStorage.setItem("catID", 103);
+        window.location = "products.html"
+    });
 });
 
-let checkLogin = function(){
-    const userkey = "user_key";
-    const passwordkey = "password_key";
+//Para ver el nombre de usuario
+document.addEventListener('DOMContentLoaded', function () {
+    // Obtener el nombre de usuario almacenado
+    const storedUsername = localStorage.getItem('username');
 
-    const user = localStorage.getItem(userkey);
-    const password = localStorage.getItem(passwordkey);
-
-    const isLogged = user !== null && password !== null;
-    return isLogged;
-}
+    // Si hay un nombre de usuario almacenado, actualizar el menú
+    if (storedUsername) {
+        const usernameMenuItem = document.getElementById('username-menu-item');
+        if (usernameMenuItem) {
+            usernameMenuItem.innerHTML = `<a class="nav-link" href="#">${storedUsername}</a>`;
+        }
+    }
+});

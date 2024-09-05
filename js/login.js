@@ -1,4 +1,5 @@
 
+document.addEventListener('DOMContentLoaded', function () {
 const button = document.getElementById('but'); //creamos la constante del boton
 
 button.addEventListener('click', (event) => {
@@ -10,10 +11,16 @@ button.addEventListener('click', (event) => {
     if (!usuario || !password) {  //condicion para redirigir
         alert("Los campos deben estar llenos");
     } else {
-        saveLogin(usuario, password);
+        // Guarda el nombre de usuario en el almacenamiento local
+        localStorage.setItem('username', usuario);
+
+        // Redirige a la página principal
         window.location.href = "index.html";
-    }
-});
+     }
+ });
+ });
+
+
 
 let saveLogin = function (usuario, password) {
     const userkey = "user_key";
@@ -22,4 +29,6 @@ let saveLogin = function (usuario, password) {
     localStorage.setItem(userkey, usuario);
     localStorage.setItem(passwordkey, password);
 }
+
+
 
