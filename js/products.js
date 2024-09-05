@@ -55,8 +55,49 @@ function fetchProducts() {
         });
 }
 
+
+// Función para filtrar y ordenar productos
+function updateProducts() {
+    let filteredProducts = products;
+
+    // Filtrar por precio
+    const minPrice = parseFloat(document.getElementById('priceMin').value) || 0;
+    const maxPrice = parseFloat(document.getElementById('priceMax').value) || Infinity;
+    filteredProducts = filteredProducts.filter(product => product.cost >= minPrice && product.cost <= maxPrice);
+
+    // Ordenar productos
+    const sortByPriceAsc = document.getElementById('sortByPriceAsc').checked;
+    const sortByPriceDesc = document.getElementById('sortByPriceDesc').checked;
+    const sortByRelevance = document.getElementById('sortByRelevance').checked;
+
+    if (sortByPriceAsc) {
+        filteredProducts.sort((a, b) => a.cost - b.cost);                                   
+    } else if (sortByPriceDesc) {
+        filteredProducts.sort((a, b) => b.cost - a.cost);
+    } else if (sortByRelevance) {
+        filteredProducts.sort((a, b) => b.soldCount - a.soldCount);
+    }
+
+    displayProducts(filteredProducts);
+}
+
+// Función para limpiar filtros
+function clearFilters() {
+    document.getElementById('priceMin').value = '';
+    document.getElementById('priceMax').value = '';
+    document.getElementById('sortByRelevance').checked = true;
+    updateProducts();
+}
+
+// Event listeners para los filtros y ordenamiento
+document.getElementById('applyFilters').addEventListener('click', updateProducts);
+document.getElementById('clearFilters').addEventListener('click', clearFilters);
+document.querySelectorAll('input[name="sortOptions"]').forEach(input =>
+    input.addEventListener('change', updateProducts)
+);
 // Llamar a la función para cargar los productos cuando la página haya cargado
 document.addEventListener('DOMContentLoaded', fetchProducts);// creo una constante llamada url con el json que contiene la info
+
 
 //Para ver el nombre de usuario
 document.addEventListener('DOMContentLoaded', function () {
