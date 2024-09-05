@@ -68,7 +68,7 @@ nav a {
 } 
 
 .img01 {
-  width: 60%;
+  width: 50%;
   display: block;
   margin: auto auto 1.25rem auto;
 }
@@ -82,7 +82,7 @@ nav a {
   box-shadow: 0 0 0.63rem rgba(0, 0, 0, 0.1);
   width: 18.75rem;
   border-radius: 0.06rem;
-  display: flex;
+  display: grid;
   flex-direction: column; /*centra los elementos en columna */
   align-items: center;
   justify-content: center;
@@ -128,6 +128,12 @@ nav a {
   margin-bottom: 1.25rem;
   font-weight: bold;
 }
+
+/*.container {
+  margin-top: 2px;
+  display: inline-block;
+  position: fixed;
+} */
 
 @media (max-width: 425px) {
   .log {
@@ -291,7 +297,7 @@ a.custom-card:hover {
   border-style: solid;
   border-width: 0.063rem;
   border-radius: 0.63rem;
-  border-color: black;
+  border-color: rgb(182, 173, 173);
   width: 28%;
   overflow: hidden;
 }
@@ -299,6 +305,7 @@ a.custom-card:hover {
 .product img {
   padding: 0.31rem;
   border-style: solid;
+  border-color: rgb(182, 173, 173);
   border-width: 0.063rem;
   border-radius: 0.63rem;
   margin-top: 2.5rem;
@@ -347,7 +354,7 @@ a.custom-card:hover {
   gap: 0.63rem;
 }
 
-#listado-titulo {
+#listado-titulo, #producto-titulo {
   text-align: center;
   font-weight: bolder;
   margin: 1.875rem 0.63rem 1.875rem 0.63rem;
@@ -389,4 +396,51 @@ a.custom-card:hover {
   .product p:nth-of-type(3) { /* descripcion */
     font-size: 0.6rem;
   }
+}
+
+/* aca empeiza el css del prod individual*/
+#product {
+  display: flex;
+  justify-content: center;
+  padding: 1.25rem;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.selectedProduct img {
+  padding: 0.31rem;
+  border-style: solid;
+  border-color: rgb(182, 173, 173);
+  border-width: 0.063rem;
+  border-radius: 0.63rem;
+  margin-top: 2.5rem;
+  margin-bottom: 3.75rem;
+  width: 100%;
+  
+}
+
+.selectedProduct h2 { /*titulo*/
+  font-size: 2rem;
+}
+
+.selectedProduct p:nth-of-type(1) { /*precio*/
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.selectedProduct p:nth-of-type(2) { /*vendidos*/
+  font-size: 0.7rem;
+  float: right;
+}
+
+.selectedProduct p:nth-of-type(3) { /*descripcion*/
+  font-size: 1rem;
+  text-align: justify;
+  word-wrap: break-word;
+  word-break: normal;
+}
+
+.selectedProduct p:nth-of-type(4) { /*categoria*/
+  font-size: 0.7rem;
+  float: right;
 }
