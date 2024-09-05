@@ -68,7 +68,7 @@ nav a {
 } 
 
 .img01 {
-  width: 60%;
+  width: 50%;
   display: block;
   margin: auto auto 1.25rem auto;
 }
@@ -82,7 +82,7 @@ nav a {
   box-shadow: 0 0 0.63rem rgba(0, 0, 0, 0.1);
   width: 18.75rem;
   border-radius: 0.06rem;
-  display: flex;
+  display: grid;
   flex-direction: column; /*centra los elementos en columna */
   align-items: center;
   justify-content: center;
@@ -128,6 +128,12 @@ nav a {
   margin-bottom: 1.25rem;
   font-weight: bold;
 }
+
+/*.container {
+  margin-top: 2px;
+  display: inline-block;
+  position: fixed;
+} */
 
 @media (max-width: 425px) {
   .log {
