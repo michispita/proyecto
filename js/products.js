@@ -1,7 +1,10 @@
+localStorage
+const catID = localStorage.getItem("catID");
 // creo una constante llamada url con el json que contiene la info
-const url = 'https://japceibal.github.io/emercado-api/cats_products/101.json'; 
+const url = 'https://japceibal.github.io/emercado-api/cats_products$(catID).json'; 
 
 //funcion para obtener y mostrar los products
+
 function fetchProducts() {
     fetch(url)
         .then(response => {
@@ -10,9 +13,10 @@ function fetchProducts() {
             }
             return response.json();
         })
+        
         .then(data => {
             const productList = document.getElementById('product-list');
-
+            console.log(data);
             // Asegurarse de que la categoría tenga productos
             if (data.products && data.products.length > 0) {
                 // Recorrer cada producto en la categoría "Autos"
@@ -55,20 +59,18 @@ function fetchProducts() {
         });
 }
 
-
 // Función para filtrar y ordenar productos
 function updateProducts() {
-    let filteredProducts = products;
-
+    const productList = document.getElementById('product-list');
     // Filtrar por precio
     const minPrice = parseFloat(document.getElementById('priceMin').value) || 0;
     const maxPrice = parseFloat(document.getElementById('priceMax').value) || Infinity;
     filteredProducts = filteredProducts.filter(product => product.cost >= minPrice && product.cost <= maxPrice);
 
     // Ordenar productos
-    const sortByPriceAsc = document.getElementById('sortByPriceAsc').checked;
-    const sortByPriceDesc = document.getElementById('sortByPriceDesc').checked;
-    const sortByRelevance = document.getElementById('sortByRelevance').checked;
+    const sortByPriceAsc = document.getElementById('sortByPriceAsc').value;
+    const sortByPriceDesc = document.getElementById('sortByPriceDesc').value;
+    const sortByRelevance = document.getElementById('sortByRelevance').value;
 
     if (sortByPriceAsc) {
         filteredProducts.sort((a, b) => a.cost - b.cost);                                   
@@ -85,7 +87,7 @@ function updateProducts() {
 function clearFilters() {
     document.getElementById('priceMin').value = '';
     document.getElementById('priceMax').value = '';
-    document.getElementById('sortByRelevance').checked = true;
+    document.getElementById('sortByRelevance').value = true;
     updateProducts();
 }
 
