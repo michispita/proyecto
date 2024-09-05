@@ -23,7 +23,7 @@ if (catID) {
                     data.products.forEach(producto => {
                         const productDiv = document.createElement('div');
                         productDiv.classList.add('product');
-                        productDiv.onclick = () => selectProduct(producto.id); // Almacenar ID
+                        productDiv.onclick = () => selectProduct(producto.id); // Almacenar ID del producto
 
                         const productImage = document.createElement('img');
                         productImage.src = producto.image;
