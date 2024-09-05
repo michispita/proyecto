@@ -313,5 +313,43 @@ a.custom-card:hover {
 #listado-titulo {
   text-align: center;
   font-weight: bolder;
-  margin: 30px 10px 30px 10px;
+  margin: 1.875rem 0.63rem 1.875rem 0.63rem;
+}
+
+@media (max-width: 768px) {
+  .product {
+    width: 40%;
+  }
+
+  .product img {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .product {
+    min-width: 15rem;
+  }
+  
+  .product img {
+    min-width: 2rem;
+  }
+
+  .product h2 { /* nombre */
+    font-size: 1rem;
+    margin-bottom: 0.40rem;
+  }
+  
+  .product p {  /* precio */
+    font-size: 1rem;
+  }
+  
+  .product p:nth-of-type(2) { /* vendidos */
+    font-size: 0.6rem;
+  }
+  
+  .product p:nth-of-type(3) { /* descripcion */
+    font-size: 0.6rem;
+  }
 }
