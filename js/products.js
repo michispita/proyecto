@@ -1,4 +1,3 @@
-
 // Obtener el ID de la categoría guardado en el localStorage
 const catID = localStorage.getItem("catID");
 
@@ -6,25 +5,7 @@ if (catID) {
     // Construir la URL dinámicamente con el ID de la categoría
     const url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
 
-    // Función para obtener y mostrar los productos
-    function fetchProducts() {
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error en la petición');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const productList = document.getElementById('product-list');
-
-localStorage
-const catID = localStorage.getItem("catID");
-// creo una constante llamada url con el json que contiene la info
-const url = 'https://japceibal.github.io/emercado-api/cats_products$(catID).json'; 
-
 //funcion para obtener y mostrar los products
-
 function fetchProducts() {
     fetch(url)
         .then(response => {
@@ -33,17 +14,9 @@ function fetchProducts() {
             }
             return response.json();
         })
-        
         .then(data => {
             const productList = document.getElementById('product-list');
             console.log(data);
-            // Asegurarse de que la categoría tenga productos
-            if (data.products && data.products.length > 0) {
-                // Recorrer cada producto en la categoría "Autos"
-                data.products.forEach(producto => {
-                    const productDiv = document.createElement('div');
-                    productDiv.classList.add('product');
- 
 
                 // Asegurarse de que la categoría tenga productos
                 if (data.products && data.products.length > 0) {
@@ -90,7 +63,7 @@ function fetchProducts() {
 
     // Llamar a la función para cargar los productos cuando la página haya cargado
     document.addEventListener('DOMContentLoaded', fetchProducts);
-};
+}
 
 // Función para filtrar y ordenar productos
 function updateProducts() {
@@ -130,14 +103,9 @@ document.getElementById('clearFilters').addEventListener('click', clearFilters);
 document.querySelectorAll('input[name="sortOptions"]').forEach(input =>
     input.addEventListener('change', updateProducts)
 );
+
 // Llamar a la función para cargar los productos cuando la página haya cargado
 document.addEventListener('DOMContentLoaded', fetchProducts);// creo una constante llamada url con el json que contiene la info
-
-
-//Para ver el nombre de usuario
-document.addEventListener('DOMContentLoaded', function () {
-    // Obtener el nombre de usuario almacenado
-
 
 // Simulación de click en un producto para seleccionar
 function selectProduct(productId) {
