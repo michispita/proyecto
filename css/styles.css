@@ -62,40 +62,45 @@ nav a {
   justify-content: center;
   align-items: center;
   margin: 0;
-  height: 100vh;
+  margin: 10rem auto auto auto;
+  height: 70vh;
+  width: 100%;
 } 
 
 .img01 {
-  margin-top: 350px;
-  width: 700px;
+  width: 50%;
+  display: block;
+  margin: auto auto 1.25rem auto;
 }
 
 .login-container {
   background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  border-radius: 1px;
-  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.63rem rgba(0, 0, 0, 0.1);
+  width: 18.75rem;
+  border-radius: 0.06rem;
+  display: grid;
   flex-direction: column; /*centra los elementos en columna */
   align-items: center;
   justify-content: center;
-
 }
 
 #user , #pass {
-  border-radius: 15px;
-  padding-left: 10px;
+  border-radius: 0.94rem;
+  padding-left: 0.63rem;
+  width: 100%;
 }
 
 #but {
-  border-radius: 15px;
-  width: 198px;
+  border-radius: 0.94rem;
+  width: 12.38rem;
   background-color: white;
   cursor: pointer;
   font-weight: bold;
-
+  width: 100%;
 }
 
 #but:hover {
@@ -104,28 +109,50 @@ nav a {
 
 /* Imagenes dentro de del input  */
 #user {
-  background-image: url(/img/User.png);
+  background-image: url("img/User.png");
   background-repeat: no-repeat;
-  background-position: 160px ;
-  background-size: 20px 20px;
+  background-position: 10rem;
+  background-size: 1.25rem 1.25rem;
 }
 
 #pass {
-  background-image: url(/img/Lock.png);
+  background-image: url("img/Lock.png");
   background-repeat: no-repeat;
-  background-position: 160px ;
-  background-size: 20px 20px;
+  background-position: 10rem;
+  background-size: 1.25rem 1.25rem;
 }
-
 
 .login-container h4 {
   color: darkorange;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   font-weight: bold;
 }
 
+/*.container {
+  margin-top: 2px;
+  display: inline-block;
+  position: fixed;
+} */
 
+@media (max-width: 425px) {
+  .log {
+    margin: 5rem auto auto auto;
+    height: 75vh;
+    justify-content: space-evenly;
+  }
+
+  .text-muted {
+    font-size: 0.7rem;
+  }
+
+  .login-container {
+    width: 12rem; /* Ancho del cuadro */
+    padding: 1.25rem; /* Espacio interior del cuadro */
+    height: 13rem;
+    font-size: 0.8rem;
+  }
+}
 
 
 .jumbotron .container {
@@ -262,44 +289,61 @@ a.custom-card:hover {
 }
 
 .product {
-  padding: 20px;
-  margin: 10px 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  transform-origin: top;
+  padding: 1.25rem;
+  margin: 0.63rem 0.63rem 0.63rem 0.63rem;
   border-style: solid;
-  border-width: 1px;
-  border-radius: 10px;
-  border-color: black;
+  border-width: 0.063rem;
+  border-radius: 0.63rem;
+  border-color: rgb(182, 173, 173);
   width: 28%;
+  overflow: hidden;
 }
 
 .product img {
-  padding: 5px;
+  padding: 0.31rem;
   border-style: solid;
-  border-width: 1px;
-  border-radius: 10px;
-  margin-top: 40px;
-  margin-bottom: 60px;
+  border-color: rgb(182, 173, 173);
+  border-width: 0.063rem;
+  border-radius: 0.63rem;
+  margin-top: 2.5rem;
+  margin-bottom: 3.75rem;
   width: 100%;
 }
 
-.product h2 { 
-  font-size: 18px;
+.product h2 { /* nombre */
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 0.63rem;
+  word-wrap: break-word;
+  word-break: normal;
+  transform: scale(1);
 }
 
-.product p {
-  padding: 5px;
-  font-size: 30px;
+.product p {  /* precio */
+  padding: 0.31rem;
+  font-size: 1.5rem;
   font-weight: bold;
+  word-wrap: break-word;
+  word-break: normal;
+  transform: scale(1);
 }
 
-.product p:nth-of-type(2) {
-  font-size: 10px;
+.product p:nth-of-type(2) { /* vendidos */
+  font-size: 0.63rem;
   float: right;
+  word-wrap: break-word;
+  word-break: normal;
+  transform: scale(1);
 }
 
-.product p:nth-of-type(3) {
-  font-size: 13px;
+.product p:nth-of-type(3) { /* descripcion */
+  font-size: 0.813rem;
+  word-wrap: break-word;
+  word-break: normal;
+  transform: scale(1);
 }
 
 #product-list {
@@ -307,10 +351,10 @@ a.custom-card:hover {
   justify-content: space-around;
   flex-wrap: wrap;
   grid-template-columns: auto auto auto auto;
-  gap: 10px;
+  gap: 0.63rem;
 }
 
-#listado-titulo {
+#listado-titulo, #producto-titulo {
   text-align: center;
   font-weight: bolder;
   margin: 1.875rem 0.63rem 1.875rem 0.63rem;
@@ -352,4 +396,52 @@ a.custom-card:hover {
   .product p:nth-of-type(3) { /* descripcion */
     font-size: 0.6rem;
   }
+
+}
+
+/* aca empeiza el css del prod individual*/
+#product {
+  display: flex;
+  justify-content: center;
+  padding: 1.25rem;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.selectedProduct img {
+  padding: 0.31rem;
+  border-style: solid;
+  border-color: rgb(182, 173, 173);
+  border-width: 0.063rem;
+  border-radius: 0.63rem;
+  margin-top: 2.5rem;
+  margin-bottom: 3.75rem;
+  width: 100%;
+  
+}
+
+.selectedProduct h2 { /*titulo*/
+  font-size: 2rem;
+}
+
+.selectedProduct p:nth-of-type(1) { /*precio*/
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.selectedProduct p:nth-of-type(2) { /*vendidos*/
+  font-size: 0.7rem;
+  float: right;
+}
+
+.selectedProduct p:nth-of-type(3) { /*descripcion*/
+  font-size: 1rem;
+  text-align: justify;
+  word-wrap: break-word;
+  word-break: normal;
+}
+
+.selectedProduct p:nth-of-type(4) { /*categoria*/
+  font-size: 0.7rem;
+  float: right;
 }

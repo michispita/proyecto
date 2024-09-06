@@ -34,22 +34,56 @@
           
               <a class="nav-link" href="products.html">Productos</a>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
               <a class="nav-link" href="login.html">Ingresar</a>
-            </li>
+            </li>!-->
+            <li class="nav-item" id="username-menu-item">
+              <!-- El nombre de usuario se insertará aquí -->
+              <a class="nav-link" href="#">Usuario</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  
   <main class="pb-5 container">
     <div class="container">
         <!-- el div con la class "alert alert-danger text-center", el role="alert" y borre el h4 -->
          <h2 id="listado-titulo">Listado de productos</h2>
+         <!-- Filtro de precio -->
+<div class="row mb-4">
+  <div class="col">
+    <input class="form-control" type="number" placeholder="Precio mínimo" id="priceMin">
+  </div>
+  <div class="col">
+    <input class="form-control" type="number" placeholder="Precio máximo" id="priceMax">
+  </div>
+  <div class="col-3 p-0">
+    <div class="btn-group" role="group">
+      <button class="btn btn-light btn-block" id="applyFilters">Aplicar Filtros</button>
+      <button class="btn btn-link btn-sm" id="clearFilters">Limpiar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Opciones de orden -->
+<div class="row mb-4">
+  <div class="col text-end">
+    <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
+      <input type="radio" class="btn-check" name="sortOptions" id="sortByPriceAsc">
+      <label class="btn btn-light" for="sortByPriceAsc">Precio Ascendente</label>
+      <input type="radio" class="btn-check" name="sortOptions" id="sortByPriceDesc">
+      <label class="btn btn-light" for="sortByPriceDesc">Precio Descendente</label>
+      <input type="radio" class="btn-check" name="sortOptions" id="sortByRelevance" checked>
+      <label class="btn btn-light" for="sortByRelevance">Relevancia</label>
+    </div>
+  </div>
+</div>
         <div id="product-list"></div>
         <!--cree un nuevo id en donde se va a depositar la info del .js de products-->
       </div>
     </div>
+    
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -70,6 +104,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
+  <script src="js/categories.js"></script>
 </body>
 
 </html>
