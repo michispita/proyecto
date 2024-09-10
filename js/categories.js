@@ -39,12 +39,12 @@ function setCatID(id) {
     localStorage.setItem("catID", id);
     window.location = "products.html"
 }
-
-function showCategoriesList(){
+//modificamos la funcion para que muestre solo la busqueda, filtradola
+function showCategoriesList(categoriesArray = currentCategoriesArray){
 
     let htmlContentToAppend = "";
-    for(let i = 0; i < currentCategoriesArray.length; i++){
-        let category = currentCategoriesArray[i];
+    for(let i = 0; i < categoriesArray.length; i++){
+        let category = categoriesArray[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
@@ -80,8 +80,6 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
 
     currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
 
-    //Muestro las categorías ordenadas
-    showCategoriesList();
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -93,6 +91,24 @@ document.addEventListener("DOMContentLoaded", function(e){
             currentCategoriesArray = resultObj.data
             showCategoriesList()
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
+
+ //input para realizar la busqueda
+const searchInput = document.getElementById('search');
+
+//agregamos un even listener para el input
+searchInput.addEventListener('input', function(){
+
+//tenemos el valor del input y lo convierte en minusculas 
+    let searchQ = searchInput.value.toLowerCase();
+
+//filtramos las busqueda, buscando coincidencias en el titulo o descripcion
+    let filterCategories = currentCategoriesArray.filter(category => {
+        return category.name.toLowerCase().includes(searchQ) || category.description.toLowerCase().includes(searchQ);
+     });
+//se muestran los resultados que coincidan con la busqueda
+     showCategoriesList(filterCategories);
+});
+
         }
     });
 
@@ -141,3 +157,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 });
+
+
+
