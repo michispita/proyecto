@@ -107,10 +107,10 @@ if (catID) {
     // Cargar productos cuando la página esté lista
     document.addEventListener('DOMContentLoaded', fetchProducts);
 
-    // Función para seleccionar un producto
+    // Simulación de click en un producto para seleccionar
     function selectProduct(productId) {
-        localStorage.setItem('selectedProductId', productId);
-        window.location.href = 'product-info.html';
+        localStorage.setItem('selectedProductId', productId); // Guardar el ID del producto en el localStorage
+        window.location.href = 'product-info.html'; // Redirigir a la página del producto
     }
 }
 
