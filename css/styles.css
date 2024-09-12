@@ -444,3 +444,11 @@ a.custom-card:hover {
   font-size: 0.7rem;
   float: right;
 }
+
+.filtro-container {
+  display: flex;
+  justify-content: flex-end; /* Alinea el contenido a la derecha */
+  max-width: 10rem; 
+  margin-left: auto;
+  
+}
