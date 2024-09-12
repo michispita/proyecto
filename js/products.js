@@ -1,7 +1,7 @@
 // Obtener el ID de la categoría guardado en el localStorage 
 const catID = localStorage.getItem("catID");
 let products = []; // Variable para almacenar los productos
-let filteredProducts = []; // Variable para almacenar productos filtrados
+let filtradoProductos = []; // Variable para almacenar productos filtrados
 
 if (catID) {
     // Construir la URL dinámicamente con el ID de la categoría
@@ -18,8 +18,8 @@ if (catID) {
             })
             .then(data => {
                 products = data.products; // Guardar productos
-                filteredProducts = products; // Inicialmente, todos los productos están filtrados
-                displayProducts(filteredProducts);
+                filtradoProductos = products; // Inicialmente, todos los productos están filtrados
+                displayProducts(filtradoProductos);
             })
             .catch(error => {
                 console.error('Hubo un problema con la petición:', error);
@@ -71,29 +71,29 @@ if (catID) {
         // Filtrar por precio
         const minPrice = parseFloat(document.getElementById('priceMin').value) || 0;
         const maxPrice = parseFloat(document.getElementById('priceMax').value) || Infinity;
-        filteredProducts = products.filter(product => product.cost >= minPrice && product.cost <= maxPrice);
+        filtradoProductos = products.filter(product => product.cost >= minPrice && product.cost <= maxPrice);
 
         // Ordenar productos
-        const sortByPriceAsc = document.getElementById('sortByPriceAsc').checked;
-        const sortByPriceDesc = document.getElementById('sortByPriceDesc').checked;
-        const sortByRelevance = document.getElementById('sortByRelevance').checked;
+        const precioAsce = document.getElementById('precioAsce').checked;
+        const precioDesc = document.getElementById('precioDesc').checked;
+        const porRelevante = document.getElementById('porRelevante').checked;
 
-        if (sortByPriceAsc) {
-            filteredProducts.sort((a, b) => a.cost - b.cost);
-        } else if (sortByPriceDesc) {
-            filteredProducts.sort((a, b) => b.cost - a.cost);
-        } else if (sortByRelevance) {
-            filteredProducts.sort((a, b) => b.soldCount - a.soldCount);
+        if (precioAsce) {
+            filtradoProductos.sort((a, b) => a.cost - b.cost);
+        } else if (precioDesc) {
+            filtradoProductos.sort((a, b) => b.cost - a.cost);
+        } else if (porRelevante) {
+            filtradoProductos.sort((a, b) => b.soldCount - a.soldCount);
         }
 
-        displayProducts(filteredProducts);
+        displayProducts(filtradoProductos);
     }
 
     // Función para limpiar filtros
     function clearFilters() {
         document.getElementById('priceMin').value = '';
         document.getElementById('priceMax').value = '';
-        document.getElementById('sortByRelevance').checked = true;
+        document.getElementById('porRelevante').checked = true;
         updateProducts();
     }
 
