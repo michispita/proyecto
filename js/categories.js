@@ -42,10 +42,6 @@ function setCatID(id) {
 
 //modificamos la funcion para que muestre solo la busqueda, filtradola
 function showCategoriesList(categoriesArray = currentCategoriesArray){
-=======
-
-
-function showCategoriesList(){
 
     let htmlContentToAppend = "";
     for(let i = 0; i < categoriesArray.length; i++){
