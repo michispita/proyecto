@@ -1,117 +1,129 @@
-// Obtener el ID de la categoría guardado en el localStorage
+// Obtener el ID de la categoría guardado en el localStorage 
 const catID = localStorage.getItem("catID");
+let products = []; // Variable para almacenar los productos
+let filtradoProductos = []; // Variable para almacenar productos filtrados
 
 if (catID) {
     // Construir la URL dinámicamente con el ID de la categoría
     const url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
 
-//funcion para obtener y mostrar los products
-function fetchProducts() {
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error en la petición');
-            }
-            return response.json();
-        })
-        .then(data => {
-            const productList = document.getElementById('product-list');
-            console.log(data);
-
-                // Asegurarse de que la categoría tenga productos
-                if (data.products && data.products.length > 0) {
-                    // Recorrer cada producto en la categoría "Autos"
-                    data.products.forEach(producto => {
-                        const productDiv = document.createElement('div');
-                        productDiv.classList.add('product');
-                        productDiv.onclick = () => selectProduct(producto.id); // Almacenar ID del producto
-
-                        const productImage = document.createElement('img');
-                        productImage.src = producto.image;
-                        productImage.alt = producto.name;
-
-                        const productName = document.createElement('h2');
-                        productName.textContent = producto.name;
-
-                        const productDescription = document.createElement('p');
-                        productDescription.textContent = producto.description;
-
-                        const productPrice = document.createElement('p');
-                        productPrice.textContent = `${producto.currency} $${producto.cost}`;
-
-                        const productSold = document.createElement('p');
-                        productSold.textContent = `Vendidos: ${producto.soldCount}`;
-
-                        // Añadir elementos al div del producto
-                        productDiv.appendChild(productImage);
-                        productDiv.appendChild(productName);
-                        productDiv.appendChild(productPrice);
-                        productDiv.appendChild(productSold);
-                        productDiv.appendChild(productDescription);
-
-                        // Añadir el producto al contenedor principal
-                        productList.appendChild(productDiv);
-                    });
-                } else {
-                    productList.textContent = "No se encontraron productos en esta categoría.";
+    // Función para obtener y mostrar los productos
+    function fetchProducts() {
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la petición');
                 }
+                return response.json();
+            })
+            .then(data => {
+                products = data.products; // Guardar productos
+                filtradoProductos = products; // Inicialmente, todos los productos están filtrados
+                displayProducts(filtradoProductos);
             })
             .catch(error => {
                 console.error('Hubo un problema con la petición:', error);
             });
     }
 
-    // Llamar a la función para cargar los productos cuando la página haya cargado
-    document.addEventListener('DOMContentLoaded', fetchProducts);
-}
+    // Función para mostrar los productos en la página
+    function displayProducts(productsToDisplay) {
+        const productList = document.getElementById('product-list');
+        productList.innerHTML = ''; // Limpiar productos existentes
 
-// Función para filtrar y ordenar productos
-function updateProducts() {
-    const productList = document.getElementById('product-list');
-    // Filtrar por precio
-    const minPrice = parseFloat(document.getElementById('priceMin').value) || 0;
-    const maxPrice = parseFloat(document.getElementById('priceMax').value) || Infinity;
-    filteredProducts = filteredProducts.filter(product => product.cost >= minPrice && product.cost <= maxPrice);
+        if (productsToDisplay.length > 0) {
+            productsToDisplay.forEach(producto => {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product');
+                productDiv.onclick = () => selectProduct(producto.id);
 
-    // Ordenar productos
-    const sortByPriceAsc = document.getElementById('sortByPriceAsc').value;
-    const sortByPriceDesc = document.getElementById('sortByPriceDesc').value;
-    const sortByRelevance = document.getElementById('sortByRelevance').value;
+                const productImage = document.createElement('img');
+                productImage.src = producto.image;
+                productImage.alt = producto.name;
 
-    if (sortByPriceAsc) {
-        filteredProducts.sort((a, b) => a.cost - b.cost);                                   
-    } else if (sortByPriceDesc) {
-        filteredProducts.sort((a, b) => b.cost - a.cost);
-    } else if (sortByRelevance) {
-        filteredProducts.sort((a, b) => b.soldCount - a.soldCount);
+                const productName = document.createElement('h2');
+                productName.textContent = producto.name;
+
+                const productDescription = document.createElement('p');
+                productDescription.textContent = producto.description;
+
+                const productPrice = document.createElement('p');
+                productPrice.textContent = `${producto.currency} $${producto.cost}`;
+
+                const productSold = document.createElement('p');
+                productSold.textContent = `Vendidos: ${producto.soldCount}`;
+
+                productDiv.appendChild(productImage);
+                productDiv.appendChild(productName);
+                productDiv.appendChild(productDescription);
+                productDiv.appendChild(productPrice);
+                productDiv.appendChild(productSold);
+
+                productList.appendChild(productDiv);
+            });
+        } else {
+            productList.textContent = "No se encontraron productos.";
+        }
     }
 
-    displayProducts(filteredProducts);
+    // Función para filtrar y ordenar productos
+    function updateProducts() {
+        // Filtrar por precio
+        const minPrice = parseFloat(document.getElementById('priceMin').value) || 0;
+        const maxPrice = parseFloat(document.getElementById('priceMax').value) || Infinity;
+        filtradoProductos = products.filter(product => product.cost >= minPrice && product.cost <= maxPrice);
+
+        // Ordenar productos
+        const precioAsce = document.getElementById('precioAsce').checked;
+        const precioDesc = document.getElementById('precioDesc').checked;
+        const porRelevante = document.getElementById('porRelevante').checked;
+
+        if (precioAsce) {
+            filtradoProductos.sort((a, b) => a.cost - b.cost);
+        } else if (precioDesc) {
+            filtradoProductos.sort((a, b) => b.cost - a.cost);
+        } else if (porRelevante) {
+            filtradoProductos.sort((a, b) => b.soldCount - a.soldCount);
+        }
+
+        displayProducts(filtradoProductos);
+    }
+
+    // Función para limpiar filtros
+    function clearFilters() {
+        document.getElementById('priceMin').value = '';
+        document.getElementById('priceMax').value = '';
+        document.getElementById('porRelevante').checked = true;
+        updateProducts();
+    }
+
+    // Event listeners para los filtros y ordenamiento
+    document.getElementById('applyFilters').addEventListener('click', updateProducts);
+    document.getElementById('clearFilters').addEventListener('click', clearFilters);
+    document.querySelectorAll('input[name="sortOptions"]').forEach(input =>
+        input.addEventListener('change', updateProducts)
+    );
+
+    // Cargar productos cuando la página esté lista
+    document.addEventListener('DOMContentLoaded', fetchProducts);
+
+    // Simulación de click en un producto para seleccionar
+    function selectProduct(productId) {
+        localStorage.setItem('selectedProductId', productId); // Guardar el ID del producto en el localStorage
+        window.location.href = 'product-info.html'; // Redirigir a la página del producto
+    }
 }
 
-// Función para limpiar filtros
-function clearFilters() {
-    document.getElementById('priceMin').value = '';
-    document.getElementById('priceMax').value = '';
-    document.getElementById('sortByRelevance').value = true;
-    updateProducts();
-}
+//Para ver el nombre de usuario
+document.addEventListener('DOMContentLoaded', function () {
+    // Obtener el nombre de usuario almacenado
+    const storedUsername = localStorage.getItem('username');
 
-// Event listeners para los filtros y ordenamiento
-document.getElementById('applyFilters').addEventListener('click', updateProducts);
-document.getElementById('clearFilters').addEventListener('click', clearFilters);
-document.querySelectorAll('input[name="sortOptions"]').forEach(input =>
-    input.addEventListener('change', updateProducts)
-);
-
-// Llamar a la función para cargar los productos cuando la página haya cargado
-document.addEventListener('DOMContentLoaded', fetchProducts);// creo una constante llamada url con el json que contiene la info
-
-// Simulación de click en un producto para seleccionar
-function selectProduct(productId) {
-    // Guardar el ID del producto en el localStorage
-    localStorage.setItem('selectedProductId', productId);
-    
-    // Redirigir a la página del producto
-    window.location.href = 'product-info.html';
-};
+    // Si hay un nombre de usuario almacenado, actualizar el menú
+    if (storedUsername) {
+        const usernameMenuItem = document.getElementById('username-menu-item');
+        if (usernameMenuItem) {
+            usernameMenuItem.innerHTML = `<a class="nav-link" href="#">${storedUsername}</a>`;
+        }
+    }
+});
