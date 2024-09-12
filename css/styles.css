@@ -13,6 +13,16 @@ nav a {
   text-decoration: none;
 }
 
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
 .search-container {
   position: relative;
   width: 100%; 
@@ -29,15 +39,6 @@ nav a {
 #search {
   border-radius: 0.3rem;
   margin-left: 6rem;
-}
-
-.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 @media (min-width: 768px) {
@@ -419,10 +420,8 @@ a.custom-card:hover {
 /* aca empeiza el css del prod individual*/
 #product {
   display: flex;
-  align-items: flex-start; 
-  justify-content: center; 
+  justify-content: center;
   padding: 1.25rem;
-  margin-top: 6rem;
   margin-inline: auto;
   width: 100%;
 }
@@ -433,29 +432,24 @@ a.custom-card:hover {
   border-color: rgb(182, 173, 173);
   border-width: 0.063rem;
   border-radius: 0.63rem;
-  margin: 2.5rem 2.5rem 3.75rem auto;
-  width: 60%;
-  float: left;
-  object-fit: cover;
+  margin-top: 2.5rem;
+  margin-bottom: 3.75rem;
+  width: 100%;
+  
 }
 
 .selectedProduct h2 { /*titulo*/
   font-size: 2rem;
-  flex: 1;
-  margin-top: 5rem;
 }
 
 .selectedProduct p:nth-of-type(1) { /*precio*/
   font-size: 1.5rem;
   font-weight: bold;
-  margin-top: 1rem;
 }
 
 .selectedProduct p:nth-of-type(2) { /*vendidos*/
   font-size: 0.7rem;
   float: right;
-  text-align: right;
-  margin-left: 3rem;
 }
 
 .selectedProduct p:nth-of-type(3) { /*descripcion*/
@@ -463,21 +457,9 @@ a.custom-card:hover {
   text-align: justify;
   word-wrap: break-word;
   word-break: normal;
-  margin-top: 1rem;
-  margin-right: 0.3rem;
 }
 
 .selectedProduct p:nth-of-type(4) { /*categoria*/
   font-size: 0.7rem;
   float: right;
-  margin-top: 1rem;
-  font-weight: bold;
 }
-
-/* estilos de los filtros*/
-.filtro-container {
-  display: flex;
-  justify-content: flex-end; /* Alinea el contenido a la derecha */
-  max-width: 10rem; 
-  margin-left: auto;
-  
