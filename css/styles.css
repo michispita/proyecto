@@ -13,6 +13,24 @@ nav a {
   text-decoration: none;
 }
 
+.search-container {
+  position: relative;
+  width: 100%; 
+
+}
+
+#search-btn {
+  border-radius: 0.3rem;
+  padding: 0.5 rem 1 rem;
+  position: absolute;
+  left: 18rem;
+}
+
+#search {
+  border-radius: 0.3rem;
+  margin-left: 6rem;
+}
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
@@ -463,5 +481,3 @@ a.custom-card:hover {
   max-width: 10rem; 
   margin-left: auto;
   
-}
-
