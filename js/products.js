@@ -55,8 +55,8 @@ if (catID) {
 
                 productDiv.appendChild(productImage);
                 productDiv.appendChild(productName);
-                productDiv.appendChild(productDescription);
                 productDiv.appendChild(productPrice);
+                productDiv.appendChild(productDescription);
                 productDiv.appendChild(productSold);
 
                 productList.appendChild(productDiv);

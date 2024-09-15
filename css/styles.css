@@ -350,15 +350,15 @@ a.custom-card:hover {
   transform: scale(1);
 }
 
-.product p:nth-of-type(2) { /* vendidos */
-  font-size: 0.63rem;
+.product p:nth-of-type(2) { /* descripción */
+  font-size: 0.8rem;
   float: right;
   word-wrap: break-word;
   word-break: normal;
   transform: scale(1);
 }
 
-.product p:nth-of-type(3) { /* descripcion */
+.product p:nth-of-type(3) { /* vendidos */
   font-size: 0.813rem;
   word-wrap: break-word;
   word-break: normal;
