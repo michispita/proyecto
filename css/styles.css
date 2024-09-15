@@ -465,20 +465,15 @@ a.custom-card:hover {
 
 }
 
-#filtro {
+
+
+.filtrop {
   display: flex;
   gap: 0.7rem;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: right;
+margin-left: 44rem;
+max-width: 20rem;
 }
  
-#priceMin, #priceMax {
-flex-direction: row;
-}
-
-
-
-
-
 
 
