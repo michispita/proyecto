@@ -40,12 +40,11 @@ function setCatID(id) {
     window.location = "products.html"
 }
 
-//modificamos la funcion para que muestre solo la busqueda, filtradola
-function showCategoriesList(categoriesArray = currentCategoriesArray){
+function showCategoriesList(){
 
     let htmlContentToAppend = "";
-    for(let i = 0; i < categoriesArray.length; i++){
-        let category = categoriesArray[i];
+    for(let i = 0; i < currentCategoriesArray.length; i++){
+        let category = currentCategoriesArray[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
@@ -66,10 +65,10 @@ function showCategoriesList(categoriesArray = currentCategoriesArray){
                 </div>
             </div>
             `
-        }
 
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
     }
+}
 }
 
 function sortAndShowCategories(sortCriteria, categoriesArray){
@@ -93,22 +92,6 @@ document.addEventListener("DOMContentLoaded", function(e){
             showCategoriesList()
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
 
- //input para realizar la busqueda
-const searchInput = document.getElementById('search');
-
-//agregamos un even listener para el input
-searchInput.addEventListener('input', function(){
-
-//tenemos el valor del input y lo convierte en minusculas 
-    let searchQ = searchInput.value.toLowerCase();
-
-//filtramos las busqueda, buscando coincidencias en el titulo o descripcion
-    let filterCategories = currentCategoriesArray.filter(category => {
-        return category.name.toLowerCase().includes(searchQ) || category.description.toLowerCase().includes(searchQ);
-     });
-//se muestran los resultados que coincidan con la busqueda
-     showCategoriesList(filterCategories);
-});
 
         }
     });
