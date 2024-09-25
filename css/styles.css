@@ -482,6 +482,74 @@ a.custom-card:hover {
 margin-left: 44rem;
 max-width: 20rem;
 }
+
+
+ /*Aquí comienza el css rating product.info*/
+
+.container.rating {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.rating {
+  direction: rtl;
+  display: inline-block;
+}
+
+.rating input {
+  display: none;
+}
+
+.star {
+  font-size: 30px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.rating input:checked ~ .star {
+  color: #f7b733;
+}
+
+.rating input:checked + .star {
+  color: #f7b733;
+}
+
+.review {
+  margin-top: 20px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+.submit-btn {
+  margin-top: 5px;
+  float: right;
+  padding: 10px 15px;
+  background-color: #f7b733;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #e6a029;
+}
+
  
 /* Estilo de comentarios de productos */
 .comentario {
@@ -566,4 +634,16 @@ max-width: 20rem;
 .comentario p {
   margin: 0.313rem 0;
 }
+
+.rating-static label {
+  font-size: 30px;
+  color: #ccc; /* Estrellas vacías */
+}
+
+.rating-static .filled {
+  color: #ffcc00; /* Estrellas llenas */
+}
+
+
+
 
