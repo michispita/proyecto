@@ -116,16 +116,16 @@ function mostrarComentarios(comentarios) {
               estrellasDiv.appendChild(estrella);
           }
           comentarioDiv.innerHTML = `
-          <p><strong>Usuario:</strong> <span class="usuario">${comentario.user}</span></p>
+          <p> <span class="usuario">${comentario.user}</span></p>
           
-          <p><strong>Calificación:</strong></p> <!-- Añadir solo el encabezado -->
+          <p>Calificación:</p> <!-- Añadir solo el encabezado -->
       `;
 
       // Añadir el div de estrellas al comentario
       comentarioDiv.appendChild(estrellasDiv);
       
       comentarioDiv.innerHTML += `
-          <p><strong>Comentario:</strong> <span class="comentario-texto">${comentario.description}</span></p>
+          <p>Comentario:<span class="comentario-texto">${comentario.description}</span></p>
           <p class="fecha"><em>${comentario.dateTime}</em></p>
       `;
 
