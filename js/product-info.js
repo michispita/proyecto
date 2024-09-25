@@ -99,16 +99,38 @@ function mostrarComentarios(comentarios) {
     comentarios.forEach(comentario => {
         const comentarioDiv = document.createElement('div');
         comentarioDiv.classList.add('comentario');
-        
-        comentarioDiv.innerHTML = `
-            <p><strong>Usuario:</strong> ${comentario.user}</p>
-            <p><strong>Calificación:</strong> ${comentario.score} ⭐</p>
-            <p><strong>Comentario:</strong> ${comentario.description}</p>
-            <p><em>${comentario.dateTime}</em></p>
-        `;
+          // Crear las estrellas dinámicamente según la calificación del comentario
+          const estrellasDiv = document.createElement('div');
+          estrellasDiv.classList.add('rating-static');
+  
+          for (let i = 1; i <= 5; i++) {
+              const estrella = document.createElement('label');
+              estrella.classList.add('star');
+              estrella.textContent = '★'; // Mostrar la estrella
+  
+              // Rellenar la estrella si está por debajo o igual a la calificación
+              if (i <= comentario.score) {
+                  estrella.classList.add('filled');
+              }
+  
+              estrellasDiv.appendChild(estrella);
+          }
+          comentarioDiv.innerHTML = `
+          <p><strong>Usuario:</strong> <span class="usuario">${comentario.user}</span></p>
+          
+          <p><strong>Calificación:</strong></p> <!-- Añadir solo el encabezado -->
+      `;
 
-        contenedorComentarios.appendChild(comentarioDiv);
-    });
+      // Añadir el div de estrellas al comentario
+      comentarioDiv.appendChild(estrellasDiv);
+      
+      comentarioDiv.innerHTML += `
+          <p><strong>Comentario:</strong> <span class="comentario-texto">${comentario.description}</span></p>
+          <p class="fecha"><em>${comentario.dateTime}</em></p>
+      `;
+
+      contenedorComentarios.appendChild(comentarioDiv); 
+  }); 
 }
 
 // Llamar a la función para cargar el producto cuando la página haya cargado
