@@ -631,10 +631,14 @@ textarea {
   color:black;
   margin-top: 0.625rem;
   width: 100%; /* Para que el comentario ocupe toda la línea siguiente */
+  display: flex;
 }
 
 /* Estilo para la fecha */
 .comentario .fecha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   text-align: right;
   font-size: 0.75rem;
   color: #888;
