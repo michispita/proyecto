@@ -491,6 +491,9 @@ max-width: 20rem;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 h1 {
@@ -552,6 +555,13 @@ textarea {
 
  
 /* Estilo de comentarios de productos */
+.titulo-comentario {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 2rem;
+}
+
 .comentario {
   border: 0.063rem solid #ccc;
   padding: 0.938rem;
@@ -562,6 +572,9 @@ textarea {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 /* Contenedor izquierdo para usuario y calificación */
