@@ -66,6 +66,24 @@ if (catID) {
         }
     }
 
+//input para realizar la busqueda
+const searchInput = document.getElementById('search');
+
+//agregamos un even listener para el input
+searchInput.addEventListener('input', function(){
+
+//tenemos el valor del input y lo convierte en minusculas 
+    let searchQ = searchInput.value.toLowerCase();
+
+//filtramos las busqueda, buscando coincidencias en el titulo o descripcion
+    let filterProducts = products.filter(product => {
+        return product.name.toLowerCase().includes(searchQ) || product.description.toLowerCase().includes(searchQ);
+     });
+//se muestran los resultados que coincidan con la busqueda
+     displayProducts(filterProducts);
+});
+
+
     // Función para filtrar y ordenar productos
     function updateProducts() {
         // Filtrar por precio
