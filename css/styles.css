@@ -31,14 +31,14 @@ nav a {
 
 #search-btn {
   border-radius: 0.3rem;
-  padding: 0.5 rem 1 rem;
+  padding: 0.5 rem 0.5 rem;
   position: absolute;
-  left: 18rem;
+  left: 15rem;
 }
 
 #search {
   border-radius: 0.3rem;
-  margin-left: 6rem;
+  margin-left: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -647,8 +647,6 @@ textarea {
   margin: 0.313rem 0;
 }
 
-<<<<<<< HEAD
-=======
 .rating-static label {
   font-size: 30px;
   color: #ccc; /* Estrellas vacías */
@@ -657,8 +655,3 @@ textarea {
 .rating-static .filled {
   color: #ffcc00; /* Estrellas llenas */
 }
-
-
-
-
->>>>>>> 58cde6ef94ed95ed2e89e1b1e12bf7045cea987f

@@ -125,7 +125,7 @@ function mostrarComentarios(comentarios) {
       comentarioDiv.appendChild(estrellasDiv);
       
       comentarioDiv.innerHTML += `
-          <p>Comentario:<span class="comentario-texto">${comentario.description}</span></p>
+          <p><span class="comentario-texto">${comentario.description}</span></p>
           <p class="fecha"><em>${comentario.dateTime}</em></p>
       `;
 
