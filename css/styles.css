@@ -572,8 +572,7 @@ textarea {
   align-items: center;
   flex-wrap: wrap;
   width: 90%;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 2rem auto auto auto;
 }
 
 /* Contenedor izquierdo para usuario y calificación */
