@@ -1,9 +1,10 @@
 // Obtener el ID de la categoría guardado en el localStorage
+const prodID = localStorage.getItem("selectedProductId");
 const catID = localStorage.getItem("catID");
 
-if (catID) {
+if (prodID) {
     // Construir la URL dinámicamente con el ID de la categoría
-    const url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
+    const url = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
 
 // Función para obtener y mostrar el producto
 function fetchProduct() {
@@ -25,7 +26,7 @@ function fetchProduct() {
             }
 
             // Buscar el producto por ID
-            const selectedProduct = data.products.find(producto => producto.id == selectedProductId);
+            const selectedProduct = data;
 
             if (selectedProduct) {
                 // Crear el HTML para mostrar el producto
@@ -33,7 +34,7 @@ function fetchProduct() {
                 productDiv.classList.add('selectedProduct');
 
                 const productImage = document.createElement('img');
-                productImage.src = selectedProduct.image;
+                productImage.src = selectedProduct.images[0];
                 productImage.alt = selectedProduct.name;
 
                 const productName = document.createElement('h2');
@@ -46,7 +47,7 @@ function fetchProduct() {
                 productPrice.textContent = `${selectedProduct.currency} $${selectedProduct.cost}`;
 
                 const productCategory = document.createElement('p');
-                productCategory.textContent = `Categoría: ${data.catName}`; // Asegúrate de que catName exista
+                productCategory.textContent = `Categoría: ${catID}`; 
 
                 const productSold = document.createElement('p');
                 productSold.textContent = `Vendidos: ${selectedProduct.soldCount}`;
