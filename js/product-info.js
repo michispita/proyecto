@@ -25,7 +25,6 @@ function fetchProduct() {
                 return;
             }
 
-            // Buscar el producto por ID
             const selectedProduct = data;
 
             if (selectedProduct) {
@@ -64,6 +63,8 @@ function fetchProduct() {
                 productList.appendChild(productDiv);
                 // Cargar los comentarios del producto
                 cargarComentarios(selectedProductId);
+
+
             } else {
                 productList.textContent = "El producto seleccionado no existe.";
             }
@@ -116,19 +117,18 @@ function mostrarComentarios(comentarios) {
   
               estrellasDiv.appendChild(estrella);
           }
-          comentarioDiv.innerHTML = `
-          <p> <span class="usuario">${comentario.user}</span></p>
-          
-          <p>Calificación:</p> <!-- Añadir solo el encabezado -->
-      `;
 
-      // Añadir el div de estrellas al comentario
-      comentarioDiv.appendChild(estrellasDiv);
-      
-      comentarioDiv.innerHTML += `
-          <p><span class="comentario-texto">${comentario.description}</span></p>
-          <p class="fecha"><em>${comentario.dateTime}</em></p>
-      `;
+                comentarioDiv.innerHTML = `
+                <div class="header-comentario">
+                  <span class="usuario">${comentario.user}</span>
+                  <div class="rating-static">
+                  <p>Calificación:</p>
+                    ${estrellasDiv.innerHTML}
+                  </div>
+                  <p class="fecha"><em>${comentario.dateTime}</em></p>
+                </div>
+                <p class="comentario-texto">${comentario.description}</p>
+              `;
 
       contenedorComentarios.appendChild(comentarioDiv); 
   }); 
