@@ -61,6 +61,8 @@ function fetchProduct() {
 
                 // Añadir el producto al contenedor principal
                 productList.appendChild(productDiv);
+                // Cargar los comentarios del producto
+                cargarComentarios(selectedProductId);
             } else {
                 productList.textContent = "El producto seleccionado no existe.";
             }
@@ -68,6 +70,67 @@ function fetchProduct() {
         .catch(error => {
             console.error('Hubo un problema con la petición:', error);
         });
+}
+
+// Función para cargar los comentarios de un producto
+function cargarComentarios(productId) {
+    const comentariosUrl = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
+    
+    fetch(comentariosUrl)
+        .then(response => response.json())
+        .then(data => {
+            mostrarComentarios(data);
+        })
+        .catch(error => {
+            console.error('Error al cargar los comentarios:', error);
+        });
+}
+
+// Función para mostrar los comentarios en el HTML
+function mostrarComentarios(comentarios) {
+    const contenedorComentarios = document.getElementById('comentarios-producto');
+    contenedorComentarios.innerHTML = '';  // Limpiar comentarios previos
+
+    if (comentarios.length === 0) {
+        contenedorComentarios.textContent = "No hay comentarios para este producto.";
+        return;
+    }
+
+    comentarios.forEach(comentario => {
+        const comentarioDiv = document.createElement('div');
+        comentarioDiv.classList.add('comentario');
+          // Crear las estrellas dinámicamente según la calificación del comentario
+          const estrellasDiv = document.createElement('div');
+          estrellasDiv.classList.add('rating-static');
+  
+          for (let i = 1; i <= 5; i++) {
+              const estrella = document.createElement('label');
+              estrella.classList.add('star');
+              estrella.textContent = '★'; // Mostrar la estrella
+  
+              // Rellenar la estrella si está por debajo o igual a la calificación
+              if (i <= comentario.score) {
+                  estrella.classList.add('filled');
+              }
+  
+              estrellasDiv.appendChild(estrella);
+          }
+          comentarioDiv.innerHTML = `
+          <p> <span class="usuario">${comentario.user}</span></p>
+          
+          <p>Calificación:</p> <!-- Añadir solo el encabezado -->
+      `;
+
+      // Añadir el div de estrellas al comentario
+      comentarioDiv.appendChild(estrellasDiv);
+      
+      comentarioDiv.innerHTML += `
+          <p><span class="comentario-texto">${comentario.description}</span></p>
+          <p class="fecha"><em>${comentario.dateTime}</em></p>
+      `;
+
+      contenedorComentarios.appendChild(comentarioDiv); 
+  }); 
 }
 
 // Llamar a la función para cargar el producto cuando la página haya cargado
