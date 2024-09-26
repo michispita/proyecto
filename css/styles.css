@@ -31,14 +31,14 @@ nav a {
 
 #search-btn {
   border-radius: 0.3rem;
-  padding: 0.5 rem 1 rem;
+  padding: 0.5 rem 0.5 rem;
   position: absolute;
-  left: 18rem;
+  left: 15rem;
 }
 
 #search {
   border-radius: 0.3rem;
-  margin-left: 6rem;
+  margin-left: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -487,12 +487,12 @@ max-width: 20rem;
  /*Aquí comienza el css rating product.info*/
 .container-rating {
   background: rgb(255, 255, 255);
-  padding: 20px;
+  padding: 1rem;
+  padding-bottom: 4rem;
   border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   width: 90%;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 2rem auto 2rem auto;
 }
 
 h1 {
@@ -647,8 +647,6 @@ textarea {
   margin: 0.313rem 0;
 }
 
-<<<<<<< HEAD
-=======
 .rating-static label {
   font-size: 30px;
   color: #ccc; /* Estrellas vacías */
@@ -657,8 +655,3 @@ textarea {
 .rating-static .filled {
   color: #ffcc00; /* Estrellas llenas */
 }
-
-
-
-
->>>>>>> 58cde6ef94ed95ed2e89e1b1e12bf7045cea987f
