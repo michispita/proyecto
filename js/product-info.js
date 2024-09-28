@@ -133,6 +133,63 @@ function mostrarComentarios(comentarios) {
   }); 
 }
 
+/*//////////////////////////////////////////////////////////
+probando
+/*////////////////////////////////////////////////////
+
+// Variable global para almacenar todos los comentarios
+let listaComentarios = []; // Esto se puede colocar al inicio de tu script
+
+// Función para agregar la calificación ingresada a la lista de comentarios
+function agregarComentario() {
+    const radios = document.getElementsByName('rating');
+    let ratingValue = 0; // Valor por defecto si no se selecciona
+
+    // Buscar la calificación seleccionada
+    for (let i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            ratingValue = radios[i].value; // Guardar la calificación seleccionada
+        }
+    }
+
+    // Obtener el comentario ingresado
+    const comentarioInput = document.getElementsByClassName('review')[0].getElementsByTagName('textarea')[0];
+    const comentarioText = comentarioInput.value || 'Sin comentario'; // Mensaje por defecto
+
+    // Obtener la fecha actual
+    const fechaActual = new Date().toLocaleString();
+
+    // Crear el nuevo comentario
+    const nuevoComentario = {
+        user: 'Usuario', // Nombre de usuario
+        score: ratingValue,
+        description: comentarioText,
+        dateTime: fechaActual
+    };
+
+    // Agregar el nuevo comentario a la lista
+    listaComentarios.push(nuevoComentario);
+
+    // Llamar a mostrarComentarios con la lista actualizada
+    mostrarComentarios(listaComentarios);
+
+    // Limpiar el campo de comentario y desmarcar las estrellas
+    comentarioInput.value = '';
+    for (let i = 0; i < radios.length; i++) {
+        radios[i].checked = false;
+    }
+}
+
+// Agregar el evento al botón "Enviar"
+const enviarBtn = document.getElementsByClassName('submit-btn')[0];
+if (enviarBtn) {
+    enviarBtn.addEventListener('click', agregarComentario);
+}
+
+
+
+/*///////////////////////////////////////////////////////////////////*/
+
 // Llamar a la función para cargar el producto cuando la página haya cargado
 document.addEventListener('DOMContentLoaded', fetchProduct);
 };
