@@ -32,9 +32,9 @@ if (prodID) {
 
                 productDiv.innerHTML = `
                     <h2>${data.name}</h2>
-                    <p>${data.description}</p>
                     <p>${data.currency} $${data.cost}</p>
                     <p>Vendidos: ${data.soldCount}</p>
+                    <p>${data.description}</p>
                     <p>Categoría: ${catID}</p>
                 `;
 
