@@ -164,6 +164,7 @@ function agregarComentario() {
 
     // creamos un objeto con calificacion, comentario y fecha
     const nuevoComentario = {
+        user: 'Usuario', // queda fijo 'usuario'
         score: score, //calificacion en estrellas que selecciono usuario
         description: comentarioText, // comentario que ingreso el usuario
         dateTime: new Date().toLocaleString() // fecha y hora actual
