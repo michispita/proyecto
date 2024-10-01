@@ -420,24 +420,44 @@ a.custom-card:hover {
 /* aca empeiza el css del prod individual*/
 #product {
   display: flex;
-  justify-content: center;
-  padding: 1.25rem;
-  margin-top: 6rem;
-  margin-inline: auto;
+  justify-content:center;
   width: 100%;
 }
 
-.selectedProduct img {
-  padding: 0.31rem;
-  border-style: solid;
-  border-color: rgb(182, 173, 173);
-  border-width: 0.063rem;
-  border-radius: 0.63rem;
-  margin: 2.5rem 2.5rem 3.75rem auto;
-  width: 60%;
-  float: left;
-  object-fit: cover;
+  .product-container {
+    margin-top: 5%;
+    display: flex; /* para alinear los elementos */
+    justify-content: space-between; /* Espacio entre los elementos */
+    padding: 1.25rem;
+  }
+
+  #carouselImages {
+    padding: 0.31rem;
+    border: 1px solid rgb(182, 173, 173); /* Mejora la declaración del borde */
+    border-radius: 0.63rem;
+    /* Ajusta el margen como desees */
+  }
+
+
+  .carousel-item img {
+    max-width: 100%;
+    max-height: 400px; /* el tamaño máximo */
+    object-fit: contain; 
 }
+
+  .selectedProduct {
+    width: 55%; /* Ajusta el ancho del producto */
+    margin-right: 1rem; 
+    align-content: flex-start;/* Espacio entre el producto y el carrusel */
+  }
+  
+  /* Asegurarse que las imágenes del carrusel se vean correctamente */
+  .carousel-inner img {
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho */
+    height: auto; /* Mantiene la proporción de la imagen */
+    padding: 0%;
+  } 
+
 
 .selectedProduct h2 { /*titulo*/
   font-size: 2rem;
@@ -483,7 +503,6 @@ margin-left: 44rem;
 max-width: 20rem;
 }
 
-
  /*Aquí comienza el css rating product.info*/
 .container-rating {
   background: rgb(255, 255, 255);
@@ -498,6 +517,7 @@ max-width: 20rem;
 h1 {
   font-size: 1.5rem;
   margin-bottom: 0.625rem;
+
 }
 
 .rating {
@@ -510,6 +530,8 @@ h1 {
 }
 
 .star {
+
+  font-size: 30px;
   font-size: 1.875rem;
   color: #ccc;
   cursor: pointer;
@@ -524,11 +546,15 @@ h1 {
 }
 
 .review {
+  margin-top: 20px;
   margin-top: 1.25;
 }
 
 textarea {
   width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   padding: 0.625rem;
   border: 0.063rem solid #ccc;
   border-radius: 0.313;
@@ -536,6 +562,15 @@ textarea {
 }
 
 .submit-btn {
+
+  margin-top: 5px;
+  float: right;
+  padding: 10px 15px;
+  background-color: #f7b733;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
   margin-top: 0.313rem;
   float: right;
   padding: 0.625rem 0.938rem;
@@ -549,7 +584,7 @@ textarea {
 }
 
 .submit-btn:hover {
-  background-color: #64d16dfb;
+  background-color: #e6a029;
 }
 
  
@@ -572,8 +607,7 @@ textarea {
   align-items: center;
   flex-wrap: wrap;
   width: 90%;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 2rem auto auto auto;
 }
 
 /* Contenedor izquierdo para usuario y calificación */
@@ -626,36 +660,55 @@ textarea {
 }
 
 /* Estilo del comentario */
-.comentario .comentario-texto {
-  font-size: 1rem;
-  color:black;
-  margin-top: 0.625rem;
-  width: 100%; /* Para que el comentario ocupe toda la línea siguiente */
-  display: flex;
+.comentario {
+  margin-bottom: 1rem;
 }
 
-/* Estilo para la fecha */
-.comentario .fecha {
+.comentario .usuario {
+  font-weight: bold;
+  margin-right: auto;
+  margin-right: 1rem;
+}
+
+.comentario .header-comentario {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  text-align: right;
+  width: 100%;
+}
+
+.comentario .comentario-texto {
+  font-size: 1rem;
+  color: black;
+  margin-top: 0.625rem;
+  margin-left: 0.5rem;
+  text-align: left;
+}
+
+.comentario .fecha {
   font-size: 0.75rem;
   color: #888;
   font-style: italic;
-  margin-left: auto; /* Alinear fecha al lado derecho */
+  text-align: right;
+  margin-left: auto;
 }
 
-/* Ajuste general para las estrellas y el contenedor */
-.comentario p {
-  margin: 0.313rem 0;
+.rating-static {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-left: 1rem;
 }
 
 .rating-static label {
-  font-size: 30px;
+  font-size: 20px;
   color: #ccc; /* Estrellas vacías */
 }
 
 .rating-static .filled {
   color: #ffcc00; /* Estrellas llenas */
+}
+
+.comentario p {
+  margin: 0.313rem 0;
 }
