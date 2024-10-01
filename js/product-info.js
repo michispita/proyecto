@@ -133,66 +133,54 @@ function mostrarComentarios(comentarios) {
   }); 
 }
 
-/*//////////////////////////////////////////////////////////
-probando
-/*////////////////////////////////////////////////////
+/*DESAFIATE ENTREGA 4*/
 
-// Variable global para almacenar todos los comentarios
-let listaComentarios = []; // Esto se puede colocar al inicio de tu script
+//  lista vacia para guardar los comentarios
+let listaComentarios = [];
 
-// Función para agregar la calificación ingresada a la lista de comentarios
+//  agregar calificación y comentario
 function agregarComentario() {
-    const radios = document.getElementsByName('rating');
-    let ratingValue = 0; // Valor por defecto si no se selecciona
+    let score = 0; // si no se selecciona ninguno, queda 0 por defecto
 
-    // Buscar la calificación seleccionada
-    for (let i = 0; i < radios.length; i++) {
-        if (radios[i].checked) {
-            ratingValue = radios[i].value; // Guardar la calificación seleccionada
+    //estrellas que puede seleccionar el usuario
+    const calificaciones = document.getElementsByName('rating');
+
+    //buscamos cual selecciono el usuario
+    for (let i = 0; i < calificaciones.length; i++) {
+        if (calificaciones[i].checked) {
+            score = calificaciones[i].value; // se guarda la calificacion
         }
     }
 
-    // Obtener el comentario ingresado
+    // obtenemos comentario que se escribio
     const comentarioInput = document.getElementsByClassName('review')[0].getElementsByTagName('textarea')[0];
-    const comentarioText = comentarioInput.value || 'Sin comentario'; // Mensaje por defecto
+    const comentarioText = comentarioInput.value || 'Sin comentario'; // si no hay comentario, por defecto 'sin comentario'
 
-    // Obtener la fecha actual
-    const fechaActual = new Date().toLocaleString();
-
-    // Crear el nuevo comentario
+    // creamos un objeto con calificacion, comentario y fecha
     const nuevoComentario = {
-        user: 'Usuario', // Nombre de usuario
-        score: ratingValue,
-        description: comentarioText,
-        dateTime: fechaActual
+        score: score, //calificacion en estrellas que selecciono usuario
+        description: comentarioText, // comentario que ingreso el usuario
+        dateTime: new Date().toLocaleString() // fecha y hora actual
     };
 
-    // Agregar el nuevo comentario a la lista
+    //agregamos comentario
     listaComentarios.push(nuevoComentario);
 
-    // Llamar a mostrarComentarios con la lista actualizada
+    // mostramos comentario nuevo
     mostrarComentarios(listaComentarios);
 
-    // Limpiar el campo de comentario y desmarcar las estrellas
+    // se limpia el campo de texyo y estrellas
     comentarioInput.value = '';
-    for (let i = 0; i < radios.length; i++) {
-        radios[i].checked = false;
+    for (let i = 0; i < calificaciones.length; i++) {
+        calificaciones[i].checked = false;
     }
 }
 
-// Agregar el evento al botón "Enviar"
+// le damos funcionalidad al boton enviar
 const enviarBtn = document.getElementsByClassName('submit-btn')[0];
 if (enviarBtn) {
     enviarBtn.addEventListener('click', agregarComentario);
 }
-
-
-
-/*///////////////////////////////////////////////////////////////////*/
-
-// Llamar a la función para cargar el producto cuando la página haya cargado
-document.addEventListener('DOMContentLoaded', fetchProduct);
-};
 
 //Para ver el nombre de usuario
 document.addEventListener('DOMContentLoaded', function () {
