@@ -503,6 +503,19 @@ margin-left: 44rem;
 max-width: 20rem;
 }
 
+/*Aquí comienza el css rating product.info*/
+
+.container.rating {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+
 
  /*Aquí comienza el css rating product.info*/
 .container-rating {
@@ -518,6 +531,7 @@ max-width: 20rem;
 h1 {
   font-size: 1.5rem;
   margin-bottom: 0.625rem;
+
 }
 
 .rating {
@@ -530,6 +544,8 @@ h1 {
 }
 
 .star {
+
+  font-size: 30px;
   font-size: 1.875rem;
   color: #ccc;
   cursor: pointer;
@@ -544,11 +560,15 @@ h1 {
 }
 
 .review {
+  margin-top: 20px;
   margin-top: 1.25;
 }
 
 textarea {
   width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   padding: 0.625rem;
   border: 0.063rem solid #ccc;
   border-radius: 0.313;
@@ -556,6 +576,15 @@ textarea {
 }
 
 .submit-btn {
+
+  margin-top: 5px;
+  float: right;
+  padding: 10px 15px;
+  background-color: #f7b733;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
   margin-top: 0.313rem;
   float: right;
   padding: 0.625rem 0.938rem;
@@ -569,6 +598,9 @@ textarea {
 }
 
 .submit-btn:hover {
+  background-color: #e6a029;
+}
+
   background-color: #64d16dfb;
 }
 

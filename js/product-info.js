@@ -123,8 +123,73 @@ if (prodID) {
         });
     }
 
+
     document.addEventListener('DOMContentLoaded', function () {
         const storedUsername = localStorage.getItem('username');
+// Llamar a la función para cargar el producto cuando la página haya cargado
+document.addEventListener('DOMContentLoaded', fetchProduct);
+};
+
+/*DESAFIATE ENTREGA 4*/
+
+//  lista vacia para guardar los comentarios
+let listaComentarios = [];
+
+//  agregar calificación y comentario
+function agregarComentario() {
+    let score = 0; // si no se selecciona ninguno, queda 0 por defecto
+
+    //estrellas que puede seleccionar el usuario
+    const calificaciones = document.getElementsByName('rating');
+
+    //buscamos cual selecciono el usuario
+    for (let i = 0; i < calificaciones.length; i++) {
+        if (calificaciones[i].checked) {
+            score = calificaciones[i].value; // se guarda la calificacion
+            console.log("Calificación seleccionada:", score);
+        }
+    }
+
+    // obtenemos comentario que se escribio
+    const comentarioInput = document.getElementsByClassName('review')[0].getElementsByTagName('textarea')[0];
+    const comentarioText = comentarioInput.value || 'Sin comentario'; // si no hay comentario, por defecto 'sin comentario'
+
+    // creamos un objeto con calificacion, comentario y fecha
+    const nuevoComentario = {
+        user: 'Usuario', // queda fijo 'usuario'
+        score: score, //calificacion en estrellas que selecciono usuario
+        description: comentarioText, // comentario que ingreso el usuario
+        dateTime: new Date().toLocaleString() // fecha y hora actual
+    };
+    console.log("Comentario creado:", nuevoComentario);
+
+    //agregamos comentario
+    listaComentarios.push(nuevoComentario);
+
+    // mostramos comentario nuevo
+    mostrarComentarios(listaComentarios);
+
+    // se limpia el campo de texyo y estrellas
+    comentarioInput.value = '';
+    for (let i = 0; i < calificaciones.length; i++) {
+        calificaciones[i].checked = false;
+    }
+}
+
+// le damos funcionalidad al boton enviar
+const enviarBtn = document.getElementsByClassName('submit-btn')[0];
+if (enviarBtn) {
+    enviarBtn.addEventListener('click', agregarComentario);
+}
+
+//Para ver el nombre de usuario
+document.addEventListener('DOMContentLoaded', function () {
+    // Obtener el nombre de usuario almacenado
+    const storedUsername = localStorage.getItem('username');
+
+    // Si hay un nombre de usuario almacenado, actualizar el menú
+    if (storedUsername) {
+>>>>>>> 383227bc3343e763104f074ad123b7be1145b016
         const usernameMenuItem = document.getElementById('username-menu-item');
         if (storedUsername && usernameMenuItem) {
             usernameMenuItem.innerHTML = `<a class="nav-link" href="#">${storedUsername}</a>`;
