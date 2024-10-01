@@ -133,6 +133,10 @@ function mostrarComentarios(comentarios) {
   }); 
 }
 
+// Llamar a la función para cargar el producto cuando la página haya cargado
+document.addEventListener('DOMContentLoaded', fetchProduct);
+};
+
 /*DESAFIATE ENTREGA 4*/
 
 //  lista vacia para guardar los comentarios
