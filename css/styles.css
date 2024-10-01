@@ -425,26 +425,22 @@ a.custom-card:hover {
 }
 
   .product-container {
-    margin-top: 5%;
-    display: flex; /* para alinear los elementos */
     justify-content: space-between; /* Espacio entre los elementos */
     padding: 1.25rem;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+    width: 70%;
+    margin: 2rem auto 4rem auto;
   }
 
   #carouselImages {
     padding: 0.31rem;
     border: 1px solid rgb(182, 173, 173); /* Mejora la declaración del borde */
     border-radius: 0.63rem;
-    /* Ajusta el margen como desees */
   }
-
 
   .carousel-item img {
     max-width: 100%;
-    max-height: 25rem; /* el tamaño máximo */
+    max-height: 25rem; /* tamaño máximo */
     object-fit: contain; 
     margin-left: auto;
     margin-right: auto;
@@ -462,7 +458,7 @@ a.custom-card:hover {
     height: auto; /* Mantiene la proporción de la imagen */
   } 
 
-
+  
 .selectedProduct h2 { /*titulo*/
   font-size: 2rem;
   flex: 1;
@@ -498,13 +494,12 @@ a.custom-card:hover {
 }
 
 
-
 .filtrop {
   display: flex;
   gap: 0.7rem;
   justify-content: right;
-margin-left: 44rem;
-max-width: 20rem;
+  margin-left: 44rem;
+  max-width: 20rem;
 }
 
  /*Aquí comienza el css rating product.info*/
@@ -515,7 +510,7 @@ max-width: 20rem;
   border-radius:0.3125rem;
   box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
   width: 90%;
-  margin: 2rem auto 2rem auto;
+  margin: auto auto 2rem auto;
 }
 
 h1 {
