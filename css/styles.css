@@ -420,24 +420,44 @@ a.custom-card:hover {
 /* aca empeiza el css del prod individual*/
 #product {
   display: flex;
-  justify-content: center;
-  padding: 1.25rem;
-  margin-top: 6rem;
-  margin-inline: auto;
+  justify-content:center;
   width: 100%;
 }
 
-.selectedProduct img {
-  padding: 0.31rem;
-  border-style: solid;
-  border-color: rgb(182, 173, 173);
-  border-width: 0.063rem;
-  border-radius: 0.63rem;
-  margin: 2.5rem 2.5rem 3.75rem auto;
-  width: 60%;
-  float: left;
-  object-fit: cover;
+  .product-container {
+    margin-top: 5%;
+    display: flex; /* para alinear los elementos */
+    justify-content: space-between; /* Espacio entre los elementos */
+    padding: 1.25rem;
+  }
+
+  #carouselImages {
+    padding: 0.31rem;
+    border: 1px solid rgb(182, 173, 173); /* Mejora la declaración del borde */
+    border-radius: 0.63rem;
+    /* Ajusta el margen como desees */
+  }
+
+
+  .carousel-item img {
+    max-width: 100%;
+    max-height: 400px; /* el tamaño máximo */
+    object-fit: contain; 
 }
+
+  .selectedProduct {
+    width: 55%; /* Ajusta el ancho del producto */
+    margin-right: 1rem; 
+    align-content: flex-start;/* Espacio entre el producto y el carrusel */
+  }
+  
+  /* Asegurarse que las imágenes del carrusel se vean correctamente */
+  .carousel-inner img {
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho */
+    height: auto; /* Mantiene la proporción de la imagen */
+    padding: 0%;
+  } 
+
 
 .selectedProduct h2 { /*titulo*/
   font-size: 2rem;
@@ -482,20 +502,6 @@ a.custom-card:hover {
 margin-left: 44rem;
 max-width: 20rem;
 }
-
-/*Aquí comienza el css rating product.info*/
-
-.container.rating {
-  background: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-
 
  /*Aquí comienza el css rating product.info*/
 .container-rating {
@@ -579,9 +585,6 @@ textarea {
 
 .submit-btn:hover {
   background-color: #e6a029;
-}
-
-  background-color: #64d16dfb;
 }
 
  
