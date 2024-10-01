@@ -134,6 +134,10 @@ function mostrarComentarios(comentarios) {
   }); 
 }
 
+// Llamar a la función para cargar el producto cuando la página haya cargado
+document.addEventListener('DOMContentLoaded', fetchProduct);
+};
+
 /*DESAFIATE ENTREGA 4*/
 
 //  lista vacia para guardar los comentarios
@@ -150,6 +154,7 @@ function agregarComentario() {
     for (let i = 0; i < calificaciones.length; i++) {
         if (calificaciones[i].checked) {
             score = calificaciones[i].value; // se guarda la calificacion
+            console.log("Calificación seleccionada:", score);
         }
     }
 
@@ -163,6 +168,7 @@ function agregarComentario() {
         description: comentarioText, // comentario que ingreso el usuario
         dateTime: new Date().toLocaleString() // fecha y hora actual
     };
+    console.log("Comentario creado:", nuevoComentario);
 
     //agregamos comentario
     listaComentarios.push(nuevoComentario);
