@@ -42,10 +42,38 @@
     </div>
   </nav>
   <main>
-    <class="container">
-<!--  borre lo de funcionalidad  en desarrollo y el cartel -->
-  <h2 id="producto-titulo">Producto</h2>
-  <div id="product"></div>
+    <div class="product-container">
+      <div class="row align-items-start">
+        <div class="col">
+          <div id="product">
+          </div>
+        </div>
+        <div class="col">
+          <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="carouselImages">
+                <!-- Las imágenes se añadirán aquí dinámicamente -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        </div>
+      </div>
+  
+    
+  
+     
+  </div>
+  
+  
+  
+
+
   <div class="container-rating">
     <h1>Califica este Producto</h1>
     <div class="rating">
