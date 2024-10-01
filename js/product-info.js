@@ -1,9 +1,10 @@
 // Obtener el ID de la categoría guardado en el localStorage
+const prodID = localStorage.getItem("selectedProductId");
 const catID = localStorage.getItem("catID");
 
-if (catID) {
+if (prodID) {
     // Construir la URL dinámicamente con el ID de la categoría
-    const url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
+    const url = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
 
 // Función para obtener y mostrar el producto
 function fetchProduct() {
@@ -24,8 +25,7 @@ function fetchProduct() {
                 return;
             }
 
-            // Buscar el producto por ID
-            const selectedProduct = data.products.find(producto => producto.id == selectedProductId);
+            const selectedProduct = data;
 
             if (selectedProduct) {
                 // Crear el HTML para mostrar el producto
@@ -33,7 +33,7 @@ function fetchProduct() {
                 productDiv.classList.add('selectedProduct');
 
                 const productImage = document.createElement('img');
-                productImage.src = selectedProduct.image;
+                productImage.src = selectedProduct.images[0];
                 productImage.alt = selectedProduct.name;
 
                 const productName = document.createElement('h2');
@@ -46,7 +46,7 @@ function fetchProduct() {
                 productPrice.textContent = `${selectedProduct.currency} $${selectedProduct.cost}`;
 
                 const productCategory = document.createElement('p');
-                productCategory.textContent = `Categoría: ${data.catName}`; // Asegúrate de que catName exista
+                productCategory.textContent = `Categoría: ${catID}`; 
 
                 const productSold = document.createElement('p');
                 productSold.textContent = `Vendidos: ${selectedProduct.soldCount}`;
@@ -61,6 +61,10 @@ function fetchProduct() {
 
                 // Añadir el producto al contenedor principal
                 productList.appendChild(productDiv);
+                // Cargar los comentarios del producto
+                cargarComentarios(selectedProductId);
+
+
             } else {
                 productList.textContent = "El producto seleccionado no existe.";
             }
@@ -70,9 +74,121 @@ function fetchProduct() {
         });
 }
 
+// Función para cargar los comentarios de un producto
+function cargarComentarios(productId) {
+    const comentariosUrl = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
+    
+    fetch(comentariosUrl)
+        .then(response => response.json())
+        .then(data => {
+            mostrarComentarios(data);
+        })
+        .catch(error => {
+            console.error('Error al cargar los comentarios:', error);
+        });
+}
+
+// Función para mostrar los comentarios en el HTML
+function mostrarComentarios(comentarios) {
+    const contenedorComentarios = document.getElementById('comentarios-producto');
+    contenedorComentarios.innerHTML = '';  // Limpiar comentarios previos
+
+    if (comentarios.length === 0) {
+        contenedorComentarios.textContent = "No hay comentarios para este producto.";
+        return;
+    }
+
+    comentarios.forEach(comentario => {
+        const comentarioDiv = document.createElement('div');
+        comentarioDiv.classList.add('comentario');
+          // Crear las estrellas dinámicamente según la calificación del comentario
+          const estrellasDiv = document.createElement('div');
+          estrellasDiv.classList.add('rating-static');
+  
+          for (let i = 1; i <= 5; i++) {
+              const estrella = document.createElement('label');
+              estrella.classList.add('star');
+              estrella.textContent = '★'; // Mostrar la estrella
+  
+              // Rellenar la estrella si está por debajo o igual a la calificación
+              if (i <= comentario.score) {
+                  estrella.classList.add('filled');
+              }
+  
+              estrellasDiv.appendChild(estrella);
+          }
+
+                comentarioDiv.innerHTML = `
+                <div class="header-comentario">
+                  <span class="usuario">${comentario.user}</span>
+                  <div class="rating-static">
+                  <p>Calificación:</p>
+                    ${estrellasDiv.innerHTML}
+                  </div>
+                  <p class="fecha"><em>${comentario.dateTime}</em></p>
+                </div>
+                <p class="comentario-texto">${comentario.description}</p>
+              `;
+
+      contenedorComentarios.appendChild(comentarioDiv); 
+  }); 
+}
+
 // Llamar a la función para cargar el producto cuando la página haya cargado
 document.addEventListener('DOMContentLoaded', fetchProduct);
 };
+
+/*DESAFIATE ENTREGA 4*/
+
+//  lista vacia para guardar los comentarios
+let listaComentarios = [];
+
+//  agregar calificación y comentario
+function agregarComentario() {
+    let score = 0; // si no se selecciona ninguno, queda 0 por defecto
+
+    //estrellas que puede seleccionar el usuario
+    const calificaciones = document.getElementsByName('rating');
+
+    //buscamos cual selecciono el usuario
+    for (let i = 0; i < calificaciones.length; i++) {
+        if (calificaciones[i].checked) {
+            score = calificaciones[i].value; // se guarda la calificacion
+            console.log("Calificación seleccionada:", score);
+        }
+    }
+
+    // obtenemos comentario que se escribio
+    const comentarioInput = document.getElementsByClassName('review')[0].getElementsByTagName('textarea')[0];
+    const comentarioText = comentarioInput.value || 'Sin comentario'; // si no hay comentario, por defecto 'sin comentario'
+
+    // creamos un objeto con calificacion, comentario y fecha
+    const nuevoComentario = {
+        user: 'Usuario', // queda fijo 'usuario'
+        score: score, //calificacion en estrellas que selecciono usuario
+        description: comentarioText, // comentario que ingreso el usuario
+        dateTime: new Date().toLocaleString() // fecha y hora actual
+    };
+    console.log("Comentario creado:", nuevoComentario);
+
+    //agregamos comentario
+    listaComentarios.push(nuevoComentario);
+
+    // mostramos comentario nuevo
+    mostrarComentarios(listaComentarios);
+
+    // se limpia el campo de texyo y estrellas
+    comentarioInput.value = '';
+    for (let i = 0; i < calificaciones.length; i++) {
+        calificaciones[i].checked = false;
+    }
+}
+
+// le damos funcionalidad al boton enviar
+const enviarBtn = document.getElementsByClassName('submit-btn')[0];
+if (enviarBtn) {
+    enviarBtn.addEventListener('click', agregarComentario);
+}
 
 //Para ver el nombre de usuario
 document.addEventListener('DOMContentLoaded', function () {

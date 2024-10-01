@@ -46,13 +46,16 @@
     <div class="container">
         <!-- el div con la class "alert alert-danger text-center", el role="alert" y borre el h4 -->
          <h2 id="listado-titulo">Listado de productos</h2>
+         
          <!-- Filtro de precio -->
+
 
          <div class="search-container"> 
           <input type="search" id="search" placeholder="Buscar productos...">
           <button id="search-btn">Buscar</button>
         </div>
 <!-- Opciones de orden -->
+
 <div class="row mb-4">
   <div class="col text-end">
     <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
@@ -76,26 +79,21 @@
     </div>
   </div>
 </div>
-  <div class="row mb-4">
-      <div class="col">
-         <div class="filtro-container">
-    <input class="form-control" type="number" placeholder="Precio mín." id="priceMin">
-  </div>
-</div>
-  <div class="col">
-       <div class="filtro-container">
-    <input class="form-control" type="number" placeholder="Precio máx." id="priceMax">
-  </div>
-</div>
-  <div class="col-3 p-0">
-    <div class="filtro-container text-end">
+  <div class="filtrop" id="filtro">
+      <div class="col-50">
+      <input class="form-control" type="number" placeholder="Mín." id="priceMin">
+      </div>
+      <div class="col-50">
+      <input class="form-control" type="number" placeholder="Máx." id="priceMax">
+       </div>
+    <div class="col-3 p-0">
     <div class="btn-group" role="group">
       <button class="btn btn-light btn-block" id="applyFilters">Filtrar</button>
       <button class="btn btn-link btn-sm" id="clearFilters">Limpiar</button>
-    </div>
   </div>
     </div>
   </div>
+  
   <div id="product-list"></div>
         <!--cree un nuevo id en donde se va a depositar la info del .js de products-->
       </div>

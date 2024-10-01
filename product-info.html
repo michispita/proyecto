@@ -46,10 +46,61 @@
 <!--  borre lo de funcionalidad  en desarrollo y el cartel -->
   <h2 id="producto-titulo">Producto</h2>
   <div id="product"></div>
+
       </div>
     </div>
   </main>
+  <div class="container.rating">
+  <div class="container-rating">
+    <h1>Califica este Producto</h1>
+    <div class="rating">
+        <input type="radio" id="star5" name="rating" value="5" />
+        <label for="star5" class="star">★</label>
+        <input type="radio" id="star4" name="rating" value="4" />
+        <label for="star4" class="star">★</label>
+        <input type="radio" id="star3" name="rating" value="3" />
+        <label for="star3" class="star">★</label>
+        <input type="radio" id="star2" name="rating" value="2" />
+        <label for="star2" class="star">★</label>
+        <input type="radio" id="star1" name="rating" value="1" />
+        <label for="star1" class="star">★</label>
+    </div>
+    <div class="review">
+        <textarea placeholder="Deja aquí tu comentario..." rows="4"></textarea>
+    </div>
+    <button class="submit-btn">Enviar</button>
+</div>
+
   <footer class="text-muted">
+
+  <h3 class="titulo-comentario">Comentarios</h3> 
+    <div id="comentarios-producto"> <!-- Aquí se cargarán los comentarios del producto -->
+       <div class="comentario">
+         <div class="contenedor-izquierdo">
+            <p class="usuario">Nombre de usuario</p>
+            <div class="calificacion">
+              <div class="rating-static">
+                <label class="star filled">★</label>
+                <label class="star filled">★</label>
+                <label class="star filled">★</label>
+                <label class="star filled">★</label>
+                <label class="star">★</label>
+              </div>
+            </div>
+          </div>
+          <p class="fecha">00/00/00</p>
+          <p class="comentario-texto">Comentario del usuario aquí...</p>
+        </div>
+      </div>
+        </div>
+      </div>  
+    </div> 
+  </div>
+</main>
+
+
+
+      <footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
@@ -65,6 +116,8 @@
       <div></div>
     </div>
   </div>
+
+  
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
