@@ -87,9 +87,15 @@ nav a {
 } 
 
 .img01 {
+<<<<<<< Updated upstream
   width: 50%;
   display: block;
   margin: auto auto 1.25rem auto;
+=======
+  position: static;
+  margin-top: 350px;
+  width: 40%;
+>>>>>>> Stashed changes
 }
 
 .login-container {
@@ -425,24 +431,25 @@ a.custom-card:hover {
 }
 
   .product-container {
-    margin-top: 5%;
-    display: flex; /* para alinear los elementos */
     justify-content: space-between; /* Espacio entre los elementos */
     padding: 1.25rem;
+    justify-content: center;
+    width: 70%;
+    margin: 2rem auto 4rem auto;
   }
 
   #carouselImages {
     padding: 0.31rem;
     border: 1px solid rgb(182, 173, 173); /* Mejora la declaración del borde */
     border-radius: 0.63rem;
-    /* Ajusta el margen como desees */
   }
-
 
   .carousel-item img {
     max-width: 100%;
-    max-height: 400px; /* el tamaño máximo */
+    max-height: 25rem; /* tamaño máximo */
     object-fit: contain; 
+    margin-left: auto;
+    margin-right: auto;
 }
 
   .selectedProduct {
@@ -455,10 +462,9 @@ a.custom-card:hover {
   .carousel-inner img {
     width: 100%; /* Asegura que la imagen ocupe todo el ancho */
     height: auto; /* Mantiene la proporción de la imagen */
-    padding: 0%;
   } 
 
-
+  
 .selectedProduct h2 { /*titulo*/
   font-size: 2rem;
   flex: 1;
@@ -494,13 +500,12 @@ a.custom-card:hover {
 }
 
 
-
 .filtrop {
   display: flex;
   gap: 0.7rem;
   justify-content: right;
-margin-left: 44rem;
-max-width: 20rem;
+  margin-left: 44rem;
+  max-width: 20rem;
 }
 
  /*Aquí comienza el css rating product.info*/
@@ -511,13 +516,12 @@ max-width: 20rem;
   border-radius:0.3125rem;
   box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
   width: 90%;
-  margin: 2rem auto 2rem auto;
+  margin: auto auto 2rem auto;
 }
 
 h1 {
   font-size: 1.5rem;
   margin-bottom: 0.625rem;
-
 }
 
 .rating {
@@ -530,7 +534,6 @@ h1 {
 }
 
 .star {
-
   font-size: 30px;
   font-size: 1.875rem;
   color: #ccc;
@@ -562,7 +565,6 @@ textarea {
 }
 
 .submit-btn {
-
   margin-top: 5px;
   float: right;
   padding: 10px 15px;
@@ -711,4 +713,38 @@ textarea {
 
 .comentario p {
   margin: 0.313rem 0;
+}
+ /*estilos de releted prod*/
+.related-product {
+  padding: 1rem;
+}
+
+ .related-product img {
+  width: 50%; 
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.related-product p {
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+}
+
+#carouselRelatedProducts {
+  margin: 2rem auto 20rem auto;
+  text-align: center;
+  padding: 0.5rem;
+  width: 40%; 
+}
+
+#carousel-control-prev-icon, #carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Color de fondo*/
+    border-radius: 50%; /* Redondear las flechas */
+    margin-top: 16rem;
+}
+
+#carousel-control-prev, #carousel-control-next {
+    width: 5%; /* ancho del área de clic de las flechas */
 }

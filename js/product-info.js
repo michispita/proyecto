@@ -32,10 +32,10 @@ if (prodID) {
 
                 productDiv.innerHTML = `
                     <h2>${data.name}</h2>
-                    <p>${data.description}</p>
                     <p>${data.currency} $${data.cost}</p>
                     <p>Vendidos: ${data.soldCount}</p>
-                    <p>Categoría: ${catID}</p>
+                    <p>${data.description}</p>
+                    <p>Categoría: ${data.category}</p>
                 `;
 
                 // Añadir el producto al contenedor principal
@@ -50,6 +50,31 @@ if (prodID) {
                     carouselItem.innerHTML = `<img src="${imagen}" class=".d-block w-100" alt="Imagen ${index + 1}">`;
                     carouselImages.appendChild(carouselItem);
                 });
+
+                    // Procesar los productos relacionados
+                    data.relatedProducts.forEach((productoRelacionado, index) => {
+                        const carouselItem = document.createElement('div');
+                        carouselItem.classList.add('carousel-item');
+                        if (index === 0) carouselItem.classList.add('active'); // Activar el primer producto del carrusel
+
+                        // Crear el contenido de cada producto relacionado
+                        carouselItem.innerHTML = `
+                            <div class="related-product" class="d-block w-100">
+                                <img id="carouselimg" src="${productoRelacionado.image}" alt="${productoRelacionado.name}">
+                                <p>${productoRelacionado.name}</p>
+                            </div>
+                        `;
+
+                        // Añadir un evento de clic para redirigir al producto relacionado
+                        carouselItem.addEventListener('click', () => {
+                            // Guardar el ID del producto relacionado en el localStorage y redirigir
+                            localStorage.setItem('selectedProductId', productoRelacionado.id);
+                            window.location.href = 'product-info.html'; // Asegúrate de que esta sea la URL de tu página de productos
+                        });
+
+                        // Agregar el producto al carrusel de productos relacionados
+                        document.getElementById('carouselRelatedProducts').appendChild(carouselItem);
+                    });
 
                 // Cargar los comentarios del producto
                 cargarComentarios(prodID);
@@ -87,6 +112,9 @@ if (prodID) {
             contenedorComentarios.textContent = "No hay comentarios para este producto.";
             return;
         }
+
+ // agregar comentarios de json a la lista de comentarios
+    listaComentarios = comentarios;
 
         comentarios.forEach(comentario => {
             const comentarioDiv = document.createElement('div');
@@ -132,4 +160,59 @@ if (prodID) {
     });
 } else {
     console.error('No hay producto seleccionado.');
+}
+
+/*DESAFIATE ENTREGA 4*/
+
+//  lista vacia para guardar los comentarios
+let listaComentarios = [];
+
+//  agregar calificación y comentario
+function agregarComentario() {
+    let score = 0; // si no se selecciona ninguno, queda 0 por defecto
+
+    //estrellas que puede seleccionar el usuario
+    const calificaciones = document.getElementsByName('rating');
+
+    //buscamos cual selecciono el usuario
+    for (let i = 0; i < calificaciones.length; i++) {
+        if (calificaciones[i].checked) {
+            score = calificaciones[i].value; // se guarda la calificacion
+            console.log("Calificación seleccionada:", score);
+        }
+    }
+
+    // obtenemos comentario que se escribio
+    const comentarioInput = document.getElementsByClassName('review')[0].getElementsByTagName('textarea')[0];
+    const comentarioText = comentarioInput.value || 'Sin comentario'; // si no hay comentario, por defecto 'sin comentario'
+
+    // creamos un objeto con calificacion, comentario y fecha
+    const nuevoComentario = {
+        user: 'Usuario', // queda fijo 'usuario'
+        score: score, //calificacion en estrellas que selecciono usuario
+        description: comentarioText, // comentario que ingreso el usuario
+        dateTime: new Date().toLocaleString() // fecha y hora actual
+    };
+  
+
+    //agregamos comentario
+    /* listaComentarios.push(nuevoComentario); */
+    listaComentarios.push(nuevoComentario);
+
+      console.log(listaComentarios);
+
+    // mostramos comentario nuevo
+    mostrarComentarios(listaComentarios);
+
+    // se limpia el campo de texyo y estrellas
+    comentarioInput.value = '';
+    for (let i = 0; i < calificaciones.length; i++) {
+        calificaciones[i].checked = false;
+    }
+}
+
+// le damos funcionalidad al boton enviar
+const enviarBtn = document.getElementsByClassName('submit-btn')[0];
+if (enviarBtn) {
+    enviarBtn.addEventListener('click', agregarComentario);
 }
