@@ -516,7 +516,6 @@ a.custom-card:hover {
 h1 {
   font-size: 1.5rem;
   margin-bottom: 0.625rem;
-
 }
 
 .rating {
@@ -529,7 +528,6 @@ h1 {
 }
 
 .star {
-
   font-size: 30px;
   font-size: 1.875rem;
   color: #ccc;
@@ -561,7 +559,6 @@ textarea {
 }
 
 .submit-btn {
-
   margin-top: 5px;
   float: right;
   padding: 10px 15px;
@@ -710,4 +707,38 @@ textarea {
 
 .comentario p {
   margin: 0.313rem 0;
+}
+ /*estilos de releted prod*/
+.related-product {
+  padding: 1rem;
+}
+
+ .related-product img {
+  width: 50%; 
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.related-product p {
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+}
+
+#carouselRelatedProducts {
+  margin: 2rem auto 20rem auto;
+  text-align: center;
+  padding: 0.5rem;
+  width: 40%; 
+}
+
+#carousel-control-prev-icon, #carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Color de fondo*/
+    border-radius: 50%; /* Redondear las flechas */
+    margin-top: 16rem;
+}
+
+#carousel-control-prev, #carousel-control-next {
+    width: 5%; /* ancho del área de clic de las flechas */
 }
