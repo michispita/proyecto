@@ -35,8 +35,8 @@ if (prodID) {
                     <p>${data.currency} $${data.cost}</p>
                     <p>Vendidos: ${data.soldCount}</p>
                     <p>${data.description}</p>
-                    <p>Categoría: ${catID}</p>
-                `;
+                    <p>Categoría: ${catID}</p> 
+                `;                 // Muestra en numero de categoria, no el nombre? Acceder a category.name por lista currentCategoriesArray[1] def en categories.js?
 
                 // Añadir el producto al contenedor principal
                 productList.appendChild(productDiv);
