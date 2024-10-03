@@ -89,7 +89,7 @@ if (prodID) {
         }
 
  // agregar comentarios de json a la lista de comentarios
- listaComentarios = comentarios;
+    listaComentarios = comentarios;
 
         comentarios.forEach(comentario => {
             const comentarioDiv = document.createElement('div');
