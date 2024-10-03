@@ -32,10 +32,10 @@ if (prodID) {
 
                 productDiv.innerHTML = `
                     <h2>${data.name}</h2>
-                    <p>${data.description}</p>
                     <p>${data.currency} $${data.cost}</p>
                     <p>Vendidos: ${data.soldCount}</p>
-                    <p>Categoría: ${catID}</p>
+                    <p>${data.description}</p>
+                    <p>Categoría: ${data.category}</p>
                 `;
 
                 // Añadir el producto al contenedor principal
@@ -50,6 +50,31 @@ if (prodID) {
                     carouselItem.innerHTML = `<img src="${imagen}" class=".d-block w-100" alt="Imagen ${index + 1}">`;
                     carouselImages.appendChild(carouselItem);
                 });
+
+                    // Procesar los productos relacionados
+                    data.relatedProducts.forEach((productoRelacionado, index) => {
+                        const carouselItem = document.createElement('div');
+                        carouselItem.classList.add('carousel-item');
+                        if (index === 0) carouselItem.classList.add('active'); // Activar el primer producto del carrusel
+
+                        // Crear el contenido de cada producto relacionado
+                        carouselItem.innerHTML = `
+                            <div class="related-product" class="d-block w-100">
+                                <img id="carouselimg" src="${productoRelacionado.image}" alt="${productoRelacionado.name}">
+                                <p>${productoRelacionado.name}</p>
+                            </div>
+                        `;
+
+                        // Añadir un evento de clic para redirigir al producto relacionado
+                        carouselItem.addEventListener('click', () => {
+                            // Guardar el ID del producto relacionado en el localStorage y redirigir
+                            localStorage.setItem('selectedProductId', productoRelacionado.id);
+                            window.location.href = 'product-info.html'; // Asegúrate de que esta sea la URL de tu página de productos
+                        });
+
+                        // Agregar el producto al carrusel de productos relacionados
+                        document.getElementById('carouselRelatedProducts').appendChild(carouselItem);
+                    });
 
                 // Cargar los comentarios del producto
                 cargarComentarios(prodID);
