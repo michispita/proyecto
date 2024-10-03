@@ -35,7 +35,7 @@ if (prodID) {
                     <p>${data.currency} $${data.cost}</p>
                     <p>Vendidos: ${data.soldCount}</p>
                     <p>${data.description}</p>
-                    <p>Categoría: ${catID}</p>
+                    <p>Categoría: ${data.category}</p>
                 `;
 
                 // Añadir el producto al contenedor principal
