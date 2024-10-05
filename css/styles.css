@@ -86,18 +86,18 @@ nav a {
   width: 100%;
 } 
 
-.img01 {
-<<<<<<< Updated upstream
-  width: 50%;
-  display: block;
-  margin: auto auto 1.25rem auto;
-=======
-  position: static;
-  margin-top: 350px;
-  width: 40%;
->>>>>>> Stashed changes
+header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
+.img01 {
+  width: 50%;
+  align-items: center;
+  justify-self: center;
+}
+ 
+ 
 .login-container {
   background-color: #fff;
   margin-left: auto;
@@ -748,3 +748,4 @@ textarea {
 #carousel-control-prev, #carousel-control-next {
     width: 5%; /* ancho del área de clic de las flechas */
 }
+
