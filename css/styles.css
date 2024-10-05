@@ -87,9 +87,15 @@ nav a {
 } 
 
 .img01 {
+<<<<<<< Updated upstream
   width: 50%;
   display: block;
   margin: auto auto 1.25rem auto;
+=======
+  position: static;
+  margin-top: 350px;
+  width: 40%;
+>>>>>>> Stashed changes
 }
 
 .login-container {

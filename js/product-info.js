@@ -35,8 +35,8 @@ if (prodID) {
                     <p>${data.currency} $${data.cost}</p>
                     <p>Vendidos: ${data.soldCount}</p>
                     <p>${data.description}</p>
-                    <p>Categoría: ${catID}</p> 
-                `;                 // Muestra en numero de categoria, no el nombre? Acceder a category.name por lista currentCategoriesArray[1] def en categories.js?
+                    <p>Categoría: ${data.category}</p>
+                `;
 
                 // Añadir el producto al contenedor principal
                 productList.appendChild(productDiv);
@@ -113,6 +113,9 @@ if (prodID) {
             return;
         }
 
+ // agregar comentarios de json a la lista de comentarios
+    listaComentarios = comentarios;
+
         comentarios.forEach(comentario => {
             const comentarioDiv = document.createElement('div');
             comentarioDiv.classList.add('comentario');
@@ -157,4 +160,59 @@ if (prodID) {
     });
 } else {
     console.error('No hay producto seleccionado.');
+}
+
+/*DESAFIATE ENTREGA 4*/
+
+//  lista vacia para guardar los comentarios
+let listaComentarios = [];
+
+//  agregar calificación y comentario
+function agregarComentario() {
+    let score = 0; // si no se selecciona ninguno, queda 0 por defecto
+
+    //estrellas que puede seleccionar el usuario
+    const calificaciones = document.getElementsByName('rating');
+
+    //buscamos cual selecciono el usuario
+    for (let i = 0; i < calificaciones.length; i++) {
+        if (calificaciones[i].checked) {
+            score = calificaciones[i].value; // se guarda la calificacion
+            console.log("Calificación seleccionada:", score);
+        }
+    }
+
+    // obtenemos comentario que se escribio
+    const comentarioInput = document.getElementsByClassName('review')[0].getElementsByTagName('textarea')[0];
+    const comentarioText = comentarioInput.value || 'Sin comentario'; // si no hay comentario, por defecto 'sin comentario'
+
+    // creamos un objeto con calificacion, comentario y fecha
+    const nuevoComentario = {
+        user: 'Usuario', // queda fijo 'usuario'
+        score: score, //calificacion en estrellas que selecciono usuario
+        description: comentarioText, // comentario que ingreso el usuario
+        dateTime: new Date().toLocaleString() // fecha y hora actual
+    };
+  
+
+    //agregamos comentario
+    /* listaComentarios.push(nuevoComentario); */
+    listaComentarios.push(nuevoComentario);
+
+      console.log(listaComentarios);
+
+    // mostramos comentario nuevo
+    mostrarComentarios(listaComentarios);
+
+    // se limpia el campo de texyo y estrellas
+    comentarioInput.value = '';
+    for (let i = 0; i < calificaciones.length; i++) {
+        calificaciones[i].checked = false;
+    }
+}
+
+// le damos funcionalidad al boton enviar
+const enviarBtn = document.getElementsByClassName('submit-btn')[0];
+if (enviarBtn) {
+    enviarBtn.addEventListener('click', agregarComentario);
 }
