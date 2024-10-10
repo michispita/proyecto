@@ -69,7 +69,7 @@ if (prodID) {
                         carouselItem.addEventListener('click', () => {
                             // Guardar el ID del producto relacionado en el localStorage y redirigir
                             localStorage.setItem('selectedProductId', productoRelacionado.id);
-                            window.location.href = 'product-info.html'; // Asegúrate de que esta sea la URL de tu página de productos
+                            window.location.href = 'product-info.html'; 
                         });
 
                         // Agregar el producto al carrusel de productos relacionados
