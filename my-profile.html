@@ -56,11 +56,48 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <!--saque el funcionalidad en desarrollo-->
+      <div class="userHeader"> <!--aca va la primera parte de la pagina con la foto y nombre--> 
+        <div class="userName"> <!--aca va el nombre y el apellido que se agregan por el js--></div>
       </div>
-    </div>
+
+      <div class="userdata"> <!--aca van los datos del usuario-->
+        <label for="userNombre">Nombre: *</label> <br>
+        <input name="userNombre" type="text" id="nombre" required> <br><br>
+
+        <label for="userSegNombre">Segundo nombre: </label> <br>
+        <input name="userSegNombre" type="text" id="segNombre"> <br><br>
+
+        <label for="userApellido">Apellido: *</label> <br>
+        <input name="userApellido" type="text" id="apellido" required> <br><br>
+
+        <label for="userSegApellido">Segundo apellido: </label> <br>
+        <input name="userSegApellido" type="text" id="segApellido"> <br><br>
+
+        <label for="userEmail">Email: *</label> <br>
+        <input name="userEmail" type="text" id="email" required> <br><br>
+
+        <label for="userContacto">Telefono de contacto: </label> <br>
+        <input name="userContacto" type="text" id="contacto"> <br><br>
+
+        <nav> <!--el modo oscuro o claro-->
+          <div class="mode">      
+            <i class="fas fa-sun"></i>
+            <p class="toggleText">Modo dia</p>
+            <label class="toggleLabel">
+              <input class="toggleInput" id="toggle" type="checkbox">
+              <span class="toggle-circle"></span>
+            </label>
+            <p class="toggleText">Modo noche</p>
+            <i class="fa-solid fa-moon"></i>
+          </div>
+        </nav>
+
+        <button class="userbtn" type="button">Guardar Cambios</button>
+
+
+
+      </div>
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -73,6 +110,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
+  <script src="https://kit.fontawesome.com/0733e418ed.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
