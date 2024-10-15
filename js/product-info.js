@@ -155,7 +155,7 @@ if (prodID) {
         const storedUsername = localStorage.getItem('username');
         const usernameMenuItem = document.getElementById('username-menu-item');
         if (storedUsername && usernameMenuItem) {
-            usernameMenuItem.innerHTML = `<a class="nav-link" href="#">${storedUsername}</a>`;
+            usernameMenuItem.innerHTML = `<a class="nav-link" href="my-profile.html">${storedUsername}</a>`;
         }
     });
 } else {
