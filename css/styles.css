@@ -765,7 +765,7 @@ textarea {
 
 .userdata label {
   font-weight: bold;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   width: 80%;  
   text-align: left;   
 }
@@ -775,7 +775,7 @@ textarea {
   padding: 0.5rem;
   border-radius: 3rem;
   border: 1px solid #ccc;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .toggle {
