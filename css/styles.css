@@ -750,6 +750,20 @@ textarea {
 }
 
 /* aca empieza el estilo de my profile*/
+.fotoPerfil {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  border-radius: 6rem;
+  width: 30%;
+}
+
+.userName {
+  margin: 1rem auto 1rem auto;
+  width: 100%;
+  text-align: center;
+}
+
 .userdata {  
   display: flex;
   flex-direction: column;
