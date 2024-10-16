@@ -764,6 +764,12 @@ textarea {
   text-align: center;
 }
 
+#form {
+  align-items: center;
+  width: 80%;
+  margin: auto;
+}
+
 .userdata {  
   display: flex;
   flex-direction: column;
@@ -779,13 +785,13 @@ textarea {
 
 .userdata label {
   font-weight: bold;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
   width: 80%;  
   text-align: left;   
 }
 
 .userdata input {
-  width: 80%;
   padding: 0.5rem;
   border-radius: 3rem;
   border: 1px solid #ccc;
@@ -804,6 +810,8 @@ textarea {
   align-items: center;
   text-align: center;
   color: var(--font-primary);
+  width: 46%;
+  margin: auto;
 }
 
 /* toggle */
@@ -823,7 +831,7 @@ textarea {
 }
 
 input:checked + span::before {
-  left: 3rem;
+  left: 2.1rem;
 }
 
 .toggle-circle {
