@@ -859,6 +859,17 @@ input:checked + span::before {
   background-color: #f5a623;
 }
 
+/* Estilos para modo oscuro */
+[data-bs-theme="dark"] {
+  background-color: black;
+  color: white;
+}
+
+/* Estilos para modo claro */
+[data-bs-theme="light"] {
+  background-color: white;
+  color: black;
+}
 /* Responsive */
 @media (max-width: 768px) {
   .userdata {
