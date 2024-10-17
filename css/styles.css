@@ -750,6 +750,26 @@ textarea {
 }
 
 /* aca empieza el estilo de my profile*/
+.fotoPerfil {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  border-radius: 6rem;
+  width: 30%;
+}
+
+.userName {
+  margin: 1rem auto 1rem auto;
+  width: 100%;
+  text-align: center;
+}
+
+#form {
+  align-items: center;
+  width: 80%;
+  margin: auto;
+}
+
 .userdata {  
   display: flex;
   flex-direction: column;
@@ -765,14 +785,15 @@ textarea {
 
 .userdata label {
   font-weight: bold;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
   width: 80%;  
   text-align: left;   
 }
 
 .userdata input {
-  width: 80%;
   padding: 0.5rem;
+  padding-left: 1rem;
   border-radius: 3rem;
   border: 1px solid #ccc;
   margin-bottom: 0.5rem;
@@ -790,6 +811,8 @@ textarea {
   align-items: center;
   text-align: center;
   color: var(--font-primary);
+  width: 46%;
+  margin: auto;
 }
 
 /* toggle */
@@ -809,7 +832,7 @@ textarea {
 }
 
 input:checked + span::before {
-  left: 3rem;
+  left: 2.1rem;
 }
 
 .toggle-circle {
@@ -859,6 +882,17 @@ input:checked + span::before {
   background-color: #f5a623;
 }
 
+/* Estilos para modo oscuro */
+[data-bs-theme="dark"] {
+  background-color: black;
+  color: white;
+}
+
+/* Estilos para modo claro */
+[data-bs-theme="light"] {
+  background-color: white;
+  color: black;
+}
 /* Responsive */
 @media (max-width: 768px) {
   .userdata {
