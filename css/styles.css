@@ -701,10 +701,7 @@ textarea {
   justify-content: left;
   margin-left: 1rem;
 }
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 .rating-static label {
   font-size: 20px;
   color: #ccc; /* Estrellas vacías */
@@ -729,7 +726,7 @@ textarea {
   object-fit: cover;
 }
 
-<<<<<<< Updated upstream
+
 .related-product p {
   font-size: 14px;
   color: #333;
@@ -754,6 +751,26 @@ textarea {
 }
 
 /* aca empieza el estilo de my profile*/
+.fotoPerfil {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  border-radius: 6rem;
+  width: 30%;
+}
+
+.userName {
+  margin: 1rem auto 1rem auto;
+  width: 100%;
+  text-align: center;
+}
+
+#form {
+  align-items: center;
+  width: 80%;
+  margin: auto;
+}
+
 .userdata {  
   display: flex;
   flex-direction: column;
@@ -769,14 +786,15 @@ textarea {
 
 .userdata label {
   font-weight: bold;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
   width: 80%;  
   text-align: left;   
 }
 
 .userdata input {
-  width: 80%;
   padding: 0.5rem;
+  padding-left: 1rem;
   border-radius: 3rem;
   border: 1px solid #ccc;
   margin-bottom: 0.5rem;
@@ -794,6 +812,8 @@ textarea {
   align-items: center;
   text-align: center;
   color: var(--font-primary);
+  width: 46%;
+  margin: auto;
 }
 
 /* toggle */
@@ -813,7 +833,7 @@ textarea {
 }
 
 input:checked + span::before {
-  left: 3rem;
+  left: 2.1rem;
 }
 
 .toggle-circle {
@@ -894,6 +914,7 @@ input:checked + span::before {
     padding: 0.4rem 1rem;
   }
 }
+
 /* Foto de perfil */
 .fotoPerfil {
   display: flex;
@@ -920,5 +941,17 @@ input:checked + span::before {
     font-size: 3.5rem;
   }
 }
-=======
->>>>>>> Stashed changes
+
+ /* Css botón logout*/
+
+#logoutBtn {
+  background-color: #ff6b6b;
+  color: #fff;     
+  border: none;           
+  border-radius: 30px;      
+  padding: 10px 20px;        
+  font-size: 16px;           
+  cursor: pointer;           
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}

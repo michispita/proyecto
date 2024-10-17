@@ -28,19 +28,19 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">Ingresar</a>
-            </li>
+
             <li class="nav-item" id="username-menu-item">
               <!-- El nombre de usuario se insertará aquí -->
               <a class="nav-link" href="my-profile.html">Usuario</a>
           </li>
+
         </ul>
       </div>
     </div>
   </nav>
   <main>
       <!--saque el funcionalidad en desarrollo-->
+
       <div class="userdata">
         <div class="userHeader">
             <!-- Imagen de perfil -->
@@ -56,20 +56,42 @@
         <label for="userNombre">Nombre: *</label> <br>
         <input name="userNombre" type="text" id="nombre" required> <br><br>
 
-        <label for="userSegNombre">Segundo nombre: </label> <br>
-        <input name="userSegNombre" type="text" id="segNombre"> <br><br>
+      <div class="userdata"> <!--aca van los datos del usuario-->
 
-        <label for="userApellido">Apellido: *</label> <br>
-        <input name="userApellido" type="text" id="apellido" required> <br><br>
 
-        <label for="userSegApellido">Segundo apellido: </label> <br>
-        <input name="userSegApellido" type="text" id="segApellido"> <br><br>
+        <div class="userHeader"> <!--aca va la primera parte de la pagina con la foto y nombre--> 
+          <img src="img/gato 6.jpg" class="fotoPerfil img-fluid img-thumbnail" id="fotoPerfil" alt="Tu foto de perfil">
+          <div class="userName"> <h2>Nombre de Usuario</h2> <!--aca va el nombre y el apellido que se agregan por el js--></div>
+        </div>
 
-        <label for="userEmail">Email: *</label> <br>
-        <input name="userEmail" type="text" id="email" required> <br><br>
+        <form action="#" method="get" class="row needs-validation" id="form" novalidate>
+          
+        <label for="userNombre" class="form-label">Nombre: *</label> <br>
+        <input name="userNombre" type="text" id="nombre" class="form-control" required> <br><br>
+        <div class="invalid-feedback">
+          Debe ingresar un nombre.
+        </div>
 
-        <label for="userContacto">Telefono de contacto: </label> <br>
-        <input name="userContacto" type="text" id="contacto"> <br><br>
+        <label for="userSegNombre" class="form-label">Segundo nombre: </label> <br>
+        <input name="userSegNombre" type="text" id="segNombre" class="form-control"> <br><br>
+
+        <label for="userApellido" class="form-label">Apellido: *</label> <br>
+        <input name="userApellido" type="text" id="apellido" class="form-control" required> <br><br>
+        <div class="invalid-feedback">
+          Debe ingresar un apellido.
+        </div>
+
+        <label for="userSegApellido" class="form-label">Segundo apellido: </label> <br>
+        <input name="userSegApellido" type="text" id="segApellido" class="form-control"> <br><br>
+
+        <label for="userEmail" class="form-label">Email: *</label> <br>
+        <input name="userEmail" type="email" id="email" class="form-control" required> <br><br>
+        <div class="invalid-feedback">
+          Debe ingresar un mail.
+        </div>
+
+        <label for="userContacto" class="form-label">Telefono de contacto: </label> <br>
+        <input name="userContacto" type="text" id="contacto" class="form-control"> <br><br>
 
         <nav> <!--el modo oscuro o claro-->
           <div class="mode">      
@@ -84,7 +106,10 @@
           </div>
         </nav>
 
-        <button class="userbtn" type="button" >Guardar Cambios</button>
+        <button class="userbtn" type="submit">Guardar Cambios</button>
+
+      </form>
+
 
 
 
@@ -101,6 +126,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js" defer></script>
+  <script src="js/login.js"></script>
   <script src="https://kit.fontawesome.com/0733e418ed.js" crossorigin="anonymous"></script>
 </body>
 
