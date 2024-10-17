@@ -1,4 +1,19 @@
+//Para ver el nombre de usuario
 document.addEventListener('DOMContentLoaded', function () {
+  // Obtener el nombre de usuario almacenado
+  const storedUsername = localStorage.getItem('username');
+  // Sino hay un nombre de usuario lo manda al login
+  if (!storedUsername) {
+      window.location.href = 'login.html';
+  } else {
+          // Si hay un nombre de usuario almacenado, actualizar el menú
+      const usernameMenuItem = document.getElementById('username-menu-item');
+      if (usernameMenuItem) {
+          usernameMenuItem.innerHTML = `<a class="nav-link" href="my-profile.html">${storedUsername}</a>`;
+      }
+  }
+});
+
 // Script de validación de Bootstrap
 (() => {
   'use strict'
@@ -114,7 +129,6 @@ function guardarDatos() {
   
   // llamamos a cargarDatos() cuando la página se carga
   window.onload = cargarDatos;
-});
 
 
 
