@@ -913,3 +913,16 @@ input:checked + span::before {
     padding: 0.4rem 1rem;
   }
 }
+ /* Css botón logout*/
+
+#logoutBtn {
+  background-color: #ff6b6b;
+  color: #fff;     
+  border: none;           
+  border-radius: 30px;      
+  padding: 10px 20px;        
+  font-size: 16px;           
+  cursor: pointer;           
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}

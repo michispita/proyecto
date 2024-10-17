@@ -31,4 +31,18 @@ let saveLogin = function (usuario, password) {
 }
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    const logoutBtn = document.getElementById('logoutBtn');
+    
+    logoutBtn.addEventListener('click', function() {
+        
+        // Elimina el token o datos de usuario del almacenamiento local
+        localStorage.removeItem('authToken');
+        
+        // Redirige al usuario a la página de inicio de sesión
+        window.location.href = 'login.html';
+    });
+});
+
+
 
