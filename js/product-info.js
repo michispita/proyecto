@@ -69,7 +69,7 @@ if (prodID) {
                         carouselItem.addEventListener('click', () => {
                             // Guardar el ID del producto relacionado en el localStorage y redirigir
                             localStorage.setItem('selectedProductId', productoRelacionado.id);
-                            window.location.href = 'product-info.html'; // Asegúrate de que esta sea la URL de tu página de productos
+                            window.location.href = 'product-info.html'; 
                         });
 
                         // Agregar el producto al carrusel de productos relacionados
@@ -155,7 +155,7 @@ if (prodID) {
         const storedUsername = localStorage.getItem('username');
         const usernameMenuItem = document.getElementById('username-menu-item');
         if (storedUsername && usernameMenuItem) {
-            usernameMenuItem.innerHTML = `<a class="nav-link" href="#">${storedUsername}</a>`;
+            usernameMenuItem.innerHTML = `<a class="nav-link" href="my-profile.html">${storedUsername}</a>`;
         }
     });
 } else {
@@ -188,7 +188,7 @@ function agregarComentario() {
 
     // creamos un objeto con calificacion, comentario y fecha
     const nuevoComentario = {
-        user: 'Usuario', // queda fijo 'usuario'
+        user: localStorage.getItem('username'), // el usuario cambia en base al local storage
         score: score, //calificacion en estrellas que selecciono usuario
         description: comentarioText, // comentario que ingreso el usuario
         dateTime: new Date().toLocaleString() // fecha y hora actual
