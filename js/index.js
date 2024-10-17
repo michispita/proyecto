@@ -28,3 +28,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+
+ // Elementos del DOM
+ const usernameBtn = document.getElementById('usernameBtn');
+ const dropdownMenu = document.getElementById('dropdownMenu');
+
+ // Mostrar/ocultar el menú al hacer clic en el botón de usuario
+ usernameBtn.addEventListener('click', function() {
+     dropdownMenu.classList.toggle('show');
+ });
+
+ // Cerrar el menú si se hace clic fuera de él
+ window.addEventListener('click', function(event) {
+     if (!usernameBtn.contains(event.target)) {
+         dropdownMenu.classList.remove('show');
+     }
+ });
