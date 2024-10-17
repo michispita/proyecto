@@ -701,7 +701,10 @@ textarea {
   justify-content: left;
   margin-left: 1rem;
 }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 .rating-static label {
   font-size: 20px;
   color: #ccc; /* Estrellas vacías */
@@ -726,6 +729,7 @@ textarea {
   object-fit: cover;
 }
 
+<<<<<<< Updated upstream
 .related-product p {
   font-size: 14px;
   color: #333;
@@ -915,4 +919,6 @@ input:checked + span::before {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
-}}
+}
+=======
+>>>>>>> Stashed changes
