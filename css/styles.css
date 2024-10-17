@@ -793,6 +793,7 @@ textarea {
 
 .userdata input {
   padding: 0.5rem;
+  padding-left: 1rem;
   border-radius: 3rem;
   border: 1px solid #ccc;
   margin-bottom: 0.5rem;
