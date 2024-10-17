@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', function () {
 // Script de validación de Bootstrap
 (() => {
   'use strict'
@@ -21,14 +22,28 @@
   })
 })();
 
+
+
 // para poder guardar datos en el localStorage
 function guardarDatos() {
+
+  //recuperamos el mail que ingreso el usuario al principio del login
+  const storedUsername = localStorage.getItem("username");
+  if (!storedUsername) {
+    alert("No se encontró un storedUsername. Asegúrate de haber iniciado sesión correctamente.");
+    return;
+  };
+
+
   const nombre = document.getElementById("nombre").value;
   const segNombre = document.getElementById("segNombre").value;
   const apellido = document.getElementById("apellido").value;
   const segApellido = document.getElementById("segApellido").value;
-  const email = document.getElementById("email").value;
+        //const email = document.getElementById("email").value;
+  //sustituimos en el email ese ingreso
+  const email = storedUsername;
   const contacto = document.getElementById("contacto").value;
+
 
   // creamos un objeto con los datos del formulario
   const datosUsuario = {
@@ -45,6 +60,14 @@ function guardarDatos() {
 
   console.log(localStorage.getItem("datosUsuario"));
 
+  actualizarNombreApellido();
+
+};
+
+
+
+
+
   // actualizar el nombre y apellido en el div .userName
   function actualizarNombreApellido() {
     const nombre = document.getElementById("nombre").value;
@@ -52,16 +75,20 @@ function guardarDatos() {
   
     const userNameDiv = document.querySelector(".userName h2");
   
-    // Actualizamos el contenido del <h2> con el nombre y apellido ingresados
     userNameDiv.textContent = nombre + " " + apellido;
   };
 
-  actualizarNombreApellido();
-
-};
 
   // función para cargar los datos guardados en localStorage cuando se carga la página
   function cargarDatos() {
+    const storedUsername = localStorage.getItem("username");
+      // Si existe storedUsername, llenamos el campo email
+  if (storedUsername) {
+    document.getElementById("email").value = storedUsername;
+  } else {
+    document.getElementById("email").value = '';
+  } 
+
     const datosGuardados = localStorage.getItem("datosUsuario");
   
     if (datosGuardados) {
@@ -69,24 +96,25 @@ function guardarDatos() {
       const datosUsuario = JSON.parse(datosGuardados);
   
       // Actualizamos los campos del formulario con los datos guardados
-      document.getElementById("nombre").value = datosUsuario.nombre;
-      document.getElementById("segNombre").value = datosUsuario.segNombre;
-      document.getElementById("apellido").value = datosUsuario.apellido;
-      document.getElementById("segApellido").value = datosUsuario.segApellido;
-      document.getElementById("email").value = datosUsuario.email;
-      document.getElementById("contacto").value = datosUsuario.contacto;
+      document.getElementById("nombre").value = datosUsuario.nombre || '';
+      document.getElementById("segNombre").value = datosUsuario.segNombre || '';
+      document.getElementById("apellido").value = datosUsuario.apellido || '';
+      document.getElementById("segApellido").value = datosUsuario.segApellido || '';
+      //document.getElementById("email").value = datosUsuario.email;
+      document.getElementById("contacto").value = datosUsuario.contacto || '';
   
       // actualizamos el div .userName con el nombre y apellido
       const userNameDiv = document.querySelector(".userName h2");
       userNameDiv.textContent = `${datosUsuario.nombre} ${datosUsuario.apellido}`;
     };
   };
+
+
   
-  console.log(cargarDatos);
   
   // llamamos a cargarDatos() cuando la página se carga
   window.onload = cargarDatos;
-
+});
 
 
 
