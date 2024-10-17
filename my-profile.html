@@ -8,22 +8,6 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -57,11 +41,18 @@
   </nav>
   <main>
       <!--saque el funcionalidad en desarrollo-->
-      <div class="userHeader"> <!--aca va la primera parte de la pagina con la foto y nombre--> 
-        <div class="userName"> <!--aca va el nombre y el apellido que se agregan por el js--></div>
-      </div>
-
-      <div class="userdata"> <!--aca van los datos del usuario-->
+      <div class="userdata">
+        <div class="userHeader">
+            <!-- Imagen de perfil -->
+            <img src="img/silueta.png" class="fotoPerfil img-fluid img-thumbnail" id="fotoPerfil" alt="foto de perfil">
+        
+            <!-- Boton para cambiar la foto oculto en la foto -->
+            <input type="file" id="inputFotoPerfil" accept="image/*">
+            <div class="userName">
+              <h2>Registrate!</h2>
+            </div>
+          </div>
+        <!-- Formulario de datos del usuario -->
         <label for="userNombre">Nombre: *</label> <br>
         <input name="userNombre" type="text" id="nombre" required> <br><br>
 
