@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-them="" id="htmlProfile"></html>
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -44,7 +44,7 @@
       <div class="userdata">
         <div class="userHeader">
             <!-- Imagen de perfil -->
-            <img src="img/silueta.png" class="fotoPerfil img-fluid img-thumbnail" id="fotoPerfil" alt="foto de perfil">
+            <img src="img/silueta.png" class="fotoPerfil img-fluid img-thumbnail" id="fotoPerfil" alt="Tu foto de perfil">
         
             <!-- Boton para cambiar la foto oculto en la foto -->
             <input type="file" id="inputFotoPerfil" accept="image/*">
@@ -53,18 +53,10 @@
             </div>
             
           </div>
+
+
+
         <!-- Formulario de datos del usuario -->
-        <label for="userNombre">Nombre: *</label> <br>
-        <input name="userNombre" type="text" id="nombre" required> <br><br>
-
-      <div class="userdata"> <!--aca van los datos del usuario-->
-
-
-        <div class="userHeader"> <!--aca va la primera parte de la pagina con la foto y nombre--> 
-          <img src="img/gato 6.jpg" class="fotoPerfil img-fluid img-thumbnail" id="fotoPerfil" alt="Tu foto de perfil">
-          <div class="userName"> <h2>Nombre de Usuario</h2> <!--aca va el nombre y el apellido que se agregan por el js--></div>
-        </div>
-
         <form action="#" method="get" class="row needs-validation" id="form" novalidate>
           
         <label for="userNombre" class="form-label">Nombre: *</label> <br>
@@ -72,6 +64,8 @@
         <div class="invalid-feedback">
           Debe ingresar un nombre.
         </div>
+
+
 
         <label for="userSegNombre" class="form-label">Segundo nombre: </label> <br>
         <input name="userSegNombre" type="text" id="segNombre" class="form-control"> <br><br>
@@ -97,9 +91,15 @@
         <nav>
           <div class="mode">
             <i class="fas fa-sun"></i>
+
             <p class="toggleText">Modo día</p>
             <label class="toggleLabel">
               <input class="toggleInput" id="globalThemeToggle" type="checkbox">
+
+            <p class="toggleText">Modo dia</p>
+            <label class="toggleLabel" for="checkbox" >
+              <input class="toggleInput" id="checkbox" type="checkbox">
+
               <span class="toggle-circle"></span>
             </label>
             <p class="toggleText">Modo noche</p>
