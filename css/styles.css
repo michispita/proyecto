@@ -40,6 +40,9 @@ nav a {
   border-radius: 0.3rem;
   margin-left: 1rem;
 }
+.darkmode{
+  background-color: #000;
+  color: white};
 
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
@@ -811,6 +814,9 @@ textarea {
 input:checked + span::before {
   left: 3rem;
 }
+.checkbok:checked + .checkbok-label .toggle-circle{
+  transform: translateX(24px);
+}
 
 .toggle-circle {
   height: 100%;
@@ -860,16 +866,7 @@ input:checked + span::before {
 }
 
 /* Estilos para modo oscuro */
-[data-bs-theme="dark"] {
-  background-color: black;
-  color: white;
-}
 
-/* Estilos para modo claro */
-[data-bs-theme="light"] {
-  background-color: white;
-  color: black;
-}
 /* Responsive */
 @media (max-width: 768px) {
   .userdata {
