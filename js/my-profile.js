@@ -248,3 +248,20 @@ btnGuardar.addEventListener("click", function () {
   alert("¡Cambios guardados!"); //Le puse un alert porque no sabia si guardaba 
 });
 
+// Probando el modo oscuro y claro Meli
+  // Funcionalidad de cambio de modo oscuro y claro
+
+  const globalToggle = document.getElementById("globalThemeToggle");
+
+  // Cargar el tema actual desde localStorage
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    globalToggle.checked = savedTheme === "dark"; // Ajusta el toggle según el tema guardado
+  });
+
+  // Guardar el tema seleccionado en localStorage sin afectar el perfil
+  globalToggle.addEventListener("change", () => {
+    const theme = globalToggle.checked ? "dark" : "light";
+    localStorage.setItem("theme", theme);
+    alert(`Has cambiado el tema global a ${theme}. Este cambio afectará otras páginas, pero no el perfil.`);
+  });

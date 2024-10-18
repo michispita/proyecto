@@ -10,7 +10,7 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body>
+<body data-bs-theme="light">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -51,6 +51,7 @@
             <div class="userName">
               <h2>Registrate!</h2>
             </div>
+            
           </div>
 
 
@@ -87,12 +88,18 @@
         <label for="userContacto" class="form-label">Telefono de contacto: </label> <br>
         <input name="userContacto" type="text" id="contacto" class="form-control"> <br><br>
 
-        <nav> <!--el modo oscuro o claro-->
-          <div class="mode">      
+        <nav>
+          <div class="mode">
             <i class="fas fa-sun"></i>
+
+            <p class="toggleText">Modo día</p>
+            <label class="toggleLabel">
+              <input class="toggleInput" id="globalThemeToggle" type="checkbox">
+
             <p class="toggleText">Modo dia</p>
             <label class="toggleLabel" for="checkbox" >
               <input class="toggleInput" id="checkbox" type="checkbox">
+
               <span class="toggle-circle"></span>
             </label>
             <p class="toggleText">Modo noche</p>
