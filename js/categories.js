@@ -148,6 +148,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 document.addEventListener('DOMContentLoaded', function () {
     // Obtener el nombre de usuario almacenado
     const storedUsername = localStorage.getItem('username');
+    console.log(storedUsername);
 
     // Si hay un nombre de usuario almacenado, actualizar el menú
     if (storedUsername) {

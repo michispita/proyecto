@@ -40,6 +40,9 @@ nav a {
   border-radius: 0.3rem;
   margin-left: 1rem;
 }
+.darkmode{
+  background-color: #000;
+  color: white};
 
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
@@ -726,6 +729,7 @@ textarea {
   object-fit: cover;
 }
 
+
 .related-product p {
   font-size: 14px;
   color: #333;
@@ -750,6 +754,26 @@ textarea {
 }
 
 /* aca empieza el estilo de my profile*/
+.fotoPerfil {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  border-radius: 6rem;
+  width: 30%;
+}
+
+.userName {
+  margin: 1rem auto 1rem auto;
+  width: 100%;
+  text-align: center;
+}
+
+#form {
+  align-items: center;
+  width: 80%;
+  margin: auto;
+}
+
 .userdata {  
   display: flex;
   flex-direction: column;
@@ -765,14 +789,15 @@ textarea {
 
 .userdata label {
   font-weight: bold;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
   width: 80%;  
   text-align: left;   
 }
 
 .userdata input {
-  width: 80%;
   padding: 0.5rem;
+  padding-left: 1rem;
   border-radius: 3rem;
   border: 1px solid #ccc;
   margin-bottom: 0.5rem;
@@ -790,6 +815,8 @@ textarea {
   align-items: center;
   text-align: center;
   color: var(--font-primary);
+  width: 46%;
+  margin: auto;
 }
 
 /* toggle */
@@ -809,7 +836,10 @@ textarea {
 }
 
 input:checked + span::before {
-  left: 3rem;
+  left: 2.1rem;
+}
+.checkbok:checked + .checkbok-label .toggle-circle{
+  transform: translateX(24px);
 }
 
 .toggle-circle {
@@ -859,6 +889,8 @@ input:checked + span::before {
   background-color: #f5a623;
 }
 
+/* Estilos para modo oscuro */
+
 /* Responsive */
 @media (max-width: 768px) {
   .userdata {
@@ -879,6 +911,34 @@ input:checked + span::before {
     padding: 0.4rem 1rem;
   }
 }
+
+/* Foto de perfil */
+.fotoPerfil {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  border-radius: 6rem;
+  width: 30%;
+  cursor: pointer;
+}
+#inputFotoPerfil {
+  display: none; /* Oculta el input de archivo */
+}
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
  /* Css botón logout*/
 
 #logoutBtn {
@@ -896,4 +956,135 @@ input:checked + span::before {
 .nav-item{
 align-items:center;
 margin: auto;
+}
+
+ /*probando el modo*/
+ /* Estilos para el modo claro */
+ body[data-bs-theme="light"] {
+  background-color: white;
+  color: black;
+}
+/* Estilos para el modo oscuro */
+body[data-bs-theme="dark"] {
+  background-color: #121212;
+  color: white;
+}
+/* Estilos del switch Modo noche*/
+/* Contenedor del switch */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 0.5rem; 
+  width: 100%;
+}
+
+/* Estilos del switch */
+.theme-toggle input[type="checkbox"] {
+  appearance: none;
+  width: 2.5rem; /* Ancho del switch */
+  height: 1.25rem; /* Alto del switch */
+  background-color: #ccc;
+  border-radius: 1.25rem; 
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* El círculo dentro del switch */
+.theme-toggle input[type="checkbox"]::before {
+  content: '';
+  position: absolute;
+  top: 0.0625rem;
+  left: 0.0625rem;
+  width: 1.125rem; 
+  height: 1.125rem; 
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Cuando el switch está activado (modo oscuro) */
+.theme-toggle input[type="checkbox"]:checked {
+  background-color: #333;
+}
+
+/* Mover el círculo hacia la derecha cuando está activado */
+.theme-toggle input[type="checkbox"]:checked::before {
+  transform: translateX(1.25rem);
+}
+
+/* texto e iconos */
+.theme-toggle label {
+  font-size: 1rem; 
+  color: #333;
+}
+
+/* Iconos de sol y luna */
+.theme-toggle label i {
+  font-size: 1.5rem; 
+  vertical-align: middle;
+}
+
+/* Cambiar el color del texto cuando el switch está activado */
+.theme-toggle input[type="checkbox"]:checked + label {
+  color: white;
+}
+
+
+/* AJUSTES RESPONSIVO */
+
+/* Para celus */
+@media (max-width: 600px) {
+  .theme-toggle {
+      flex-direction: column;
+      gap: 0.3rem; 
+  }
+
+  .theme-toggle input[type="checkbox"] {
+      width: 2rem; 
+      height: 1rem; 
+  }
+
+  .theme-toggle input[type="checkbox"]::before {
+      width: 0.875rem; /* tamaño del círculo */
+      height: 0.875rem;
+  }
+
+  .theme-toggle input[type="checkbox"]:checked::before {
+      transform: translateX(1rem); /* movimiento del círculo */
+  }
+
+  .theme-toggle label {
+      font-size: 0.875rem; /* etiquetas */
+  }
+
+  .theme-toggle label i {
+      font-size: 1rem; /* iconos */
+  }
+}
+
+/* Para tablets */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .theme-toggle input[type="checkbox"] {
+      width: 2.25rem; 
+      height: 1.125rem; 
+  }
+
+  .theme-toggle input[type="checkbox"]::before {
+      width: 1rem; /*  tamaño del círculo */
+      height: 1rem;
+  }
+
+  .theme-toggle input[type="checkbox"]:checked::before {
+      transform: translateX(1.125rem); /*  movimiento del círculo */
+  }
+
+  .theme-toggle label {
+      font-size: 0.9375rem; /*  etiquetas */
+  }
+
+  .theme-toggle label i {
+      font-size: 1.125rem; /*  iconos */
+  }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-them="" id="htmlProfile"></html>
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,26 +8,11 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
 </head>
 
-<body>
+<body data-bs-theme="light">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  </nav>
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,44 +29,90 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">Ingresar</a>
-            </li>
+
+
+            <li class="nav-item" id="username-menu-item">
+              <!-- El nombre de usuario se insertará aquí -->
+              <a class="nav-link" href="my-profile.html">Usuario</a>
+
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Ingresar</a>
+          </li>
+          <li class="nav-item dropdown" id="username-menu-item">
+            <!-- El nombre de usuario se insertará aquí -->
+            <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Usuario
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="login.html"  id="logout-btn">Cerrar sesión</a></li>
+            </ul>
+
+          </li>
+
         </ul>
       </div>
     </div>
   </nav>
   <main>
+
       <!--saque el funcionalidad en desarrollo-->
-      <div class="userHeader"> <!--aca va la primera parte de la pagina con la foto y nombre--> 
-        <div class="userName"> <!--aca va el nombre y el apellido que se agregan por el js--></div>
-      </div>
 
-      <div class="userdata"> <!--aca van los datos del usuario-->
-        <label for="userNombre">Nombre: *</label> <br>
-        <input name="userNombre" type="text" id="nombre" required> <br><br>
+      <div class="userdata">
+        <div class="userHeader">
+            <!-- Imagen de perfil -->
+            <img src="img/silueta.png" class="fotoPerfil img-fluid img-thumbnail" id="fotoPerfil" alt="Tu foto de perfil">
+        
+            <!-- Boton para cambiar la foto oculto en la foto -->
+            <input type="file" id="inputFotoPerfil" accept="image/*">
+            <div class="userName">
+              <h2>Registrate!</h2>
+            </div>
+            
+          </div>
 
-        <label for="userSegNombre">Segundo nombre: </label> <br>
-        <input name="userSegNombre" type="text" id="segNombre"> <br><br>
 
-        <label for="userApellido">Apellido: *</label> <br>
-        <input name="userApellido" type="text" id="apellido" required> <br><br>
 
-        <label for="userSegApellido">Segundo apellido: </label> <br>
-        <input name="userSegApellido" type="text" id="segApellido"> <br><br>
+        <!-- Formulario de datos del usuario -->
+        <form action="#" method="get" class="row needs-validation" id="form" novalidate>
+          
+        <label for="userNombre" class="form-label">Nombre: *</label> <br>
+        <input name="userNombre" type="text" id="nombre" class="form-control" required> <br><br>
+        <div class="invalid-feedback">
+          Debe ingresar un nombre.
+        </div>
 
-        <label for="userEmail">Email: *</label> <br>
-        <input name="userEmail" type="text" id="email" required> <br><br>
 
-        <label for="userContacto">Telefono de contacto: </label> <br>
-        <input name="userContacto" type="text" id="contacto"> <br><br>
 
-        <nav> <!--el modo oscuro o claro-->
-          <div class="mode">      
+        <label for="userSegNombre" class="form-label">Segundo nombre: </label> <br>
+        <input name="userSegNombre" type="text" id="segNombre" class="form-control"> <br><br>
+
+        <label for="userApellido" class="form-label">Apellido: *</label> <br>
+        <input name="userApellido" type="text" id="apellido" class="form-control" required> <br><br>
+        <div class="invalid-feedback">
+          Debe ingresar un apellido.
+        </div>
+
+        <label for="userSegApellido" class="form-label">Segundo apellido: </label> <br>
+        <input name="userSegApellido" type="text" id="segApellido" class="form-control"> <br><br>
+
+        <label for="userEmail" class="form-label">Email: *</label> <br>
+        <input name="userEmail" type="email" id="email" class="form-control" required> <br><br>
+        <div class="invalid-feedback">
+          Debe ingresar un mail.
+        </div>
+
+        <label for="userContacto" class="form-label">Telefono de contacto: </label> <br>
+        <input name="userContacto" type="text" id="contacto" class="form-control"> <br><br>
+
+        <nav>
+          <div class="mode">
             <i class="fas fa-sun"></i>
-            <p class="toggleText">Modo dia</p>
-            <label class="toggleLabel">
-              <input class="toggleInput" id="toggle" type="checkbox">
+              <p class="toggleText">Modo día</p>
+              <label class="toggleLabel">
+              <input class="toggleInput" id="globalThemeToggle" type="checkbox">
               <span class="toggle-circle"></span>
             </label>
             <p class="toggleText">Modo noche</p>
@@ -89,11 +120,19 @@
           </div>
         </nav>
 
-        <button class="userbtn" type="button">Guardar Cambios</button>
+        <button class="userbtn" type="submit">Guardar Cambios</button>
+
+      </form>
+
 
 
 
       </div>
+
+    <div class="container">
+      <!-- Contenido principal aquí -->
+    </div>
+
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -105,7 +144,8 @@
   </footer>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
-  <script src="js/my-profile.js"></script>
+  <script src="js/my-profile.js" defer></script>
+  <script src="js/login.js"></script>
   <script src="https://kit.fontawesome.com/0733e418ed.js" crossorigin="anonymous"></script>
 </body>
 
