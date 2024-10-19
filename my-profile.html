@@ -30,9 +30,26 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
 
+
             <li class="nav-item" id="username-menu-item">
               <!-- El nombre de usuario se insertará aquí -->
               <a class="nav-link" href="my-profile.html">Usuario</a>
+
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Ingresar</a>
+          </li>
+          <li class="nav-item dropdown" id="username-menu-item">
+            <!-- El nombre de usuario se insertará aquí -->
+            <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Usuario
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="login.html"  id="logout-btn">Cerrar sesión</a></li>
+            </ul>
+
           </li>
 
         </ul>
@@ -40,6 +57,7 @@
     </div>
   </nav>
   <main>
+
       <!--saque el funcionalidad en desarrollo-->
 
       <div class="userdata">
@@ -110,6 +128,11 @@
 
 
       </div>
+
+    <div class="container">
+      <!-- Contenido principal aquí -->
+    </div>
+
   </main>
   <footer class="text-muted">
     <div class="container">
