@@ -29,17 +29,29 @@
           <li class="nav-item">
             <a class="nav-link active" href="sell.html">Vender</a>
           </li>
-            <!--<li class="nav-item">
-              <a class="nav-link" href="login.html">Ingresar</a>
-            </li>!-->
-            <li class="nav-item" id="username-menu-item">
-              <!-- El nombre de usuario se insertará aquí -->
-              <a class="nav-link" href="#">Usuario</a>
+      
+        
+ <!-- Menú desplegable de usuario -->
+ <li class="nav-item dropdown">
+  <!-- Botón con el nombre del usuario que abre el menú -->
+  <a class="nav-link dropdown" href="#" id="username-menu-item" role="button" data-bs-toggle="dropdown">
+  </a>
+  
+  <!-- Menú desplegable -->
+  <ul class="dropdown-menu" aria-labelledby="username-menu-item">
+    <li><a class="dropdown-item" href="cart.html" id="mi-carrito">Mi carrito</a></li>
+    <li><a class="dropdown-item" href="my-profile.html" id="mi-perfil">Mi perfil</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li> <button id="logoutBtn">Cerrar sesión</button>
+  </ul>
+</li>  
+
           </li>
         </ul>
       </div>
     </div>
   </nav>
+
   <div class="container">
     <div class="text-center p-4">
       <h2>Vender</h2>
@@ -230,6 +242,7 @@
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/sell.js"></script>
+  <script src="js/login.js"></script>
 </body>
 
 </html>

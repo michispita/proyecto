@@ -69,7 +69,7 @@ if (prodID) {
                         carouselItem.addEventListener('click', () => {
                             // Guardar el ID del producto relacionado en el localStorage y redirigir
                             localStorage.setItem('selectedProductId', productoRelacionado.id);
-                            window.location.href = 'product-info.html'; // Asegúrate de que esta sea la URL de tu página de productos
+                            window.location.href = 'product-info.html'; 
                         });
 
                         // Agregar el producto al carrusel de productos relacionados
@@ -155,7 +155,7 @@ if (prodID) {
         const storedUsername = localStorage.getItem('username');
         const usernameMenuItem = document.getElementById('username-menu-item');
         if (storedUsername && usernameMenuItem) {
-            usernameMenuItem.innerHTML = `<a class="nav-link" href="#">${storedUsername}</a>`;
+            usernameMenuItem.innerHTML = `<a class="nav-link" href="my-profile.html">${storedUsername}</a>`;
         }
     });
 } else {
@@ -216,3 +216,10 @@ const enviarBtn = document.getElementsByClassName('submit-btn')[0];
 if (enviarBtn) {
     enviarBtn.addEventListener('click', agregarComentario);
 }
+
+// probando temas modo oscuro
+  // Aplicar el tema guardado en localStorage en la carga de la página
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.body.setAttribute("data-bs-theme", savedTheme);
+  });

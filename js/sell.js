@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (storedUsername) {
         const usernameMenuItem = document.getElementById('username-menu-item');
         if (usernameMenuItem) {
-            usernameMenuItem.innerHTML = `<a class="nav-link" href="#">${storedUsername}</a>`;
+            usernameMenuItem.innerHTML = `<a class="nav-link" href="my-profile.html">${storedUsername}</a>`;
         }
     }
 });

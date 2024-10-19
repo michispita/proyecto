@@ -24,7 +24,23 @@ document.addEventListener('DOMContentLoaded', function () {
             // Si hay un nombre de usuario almacenado, actualizar el menú
         const usernameMenuItem = document.getElementById('username-menu-item');
         if (usernameMenuItem) {
-            usernameMenuItem.innerHTML = `<a class="nav-link" href="#">${storedUsername}</a>`;
+            usernameMenuItem.innerHTML = `<a class="nav-link" href="my-profile.html">${storedUsername}</a>`;
         }
     }
 });
+
+ // Elementos del DOM
+ const usernameBtn = document.getElementById('usernameBtn');
+ const dropdownMenu = document.getElementById('dropdownMenu');
+
+ // Mostrar/ocultar el menú al hacer clic en el botón de usuario
+ usernameBtn.addEventListener('click', function() {
+     dropdownMenu.classList.toggle('show');
+ });
+
+ // Cerrar el menú si se hace clic fuera de él
+ window.addEventListener('click', function(event) {
+     if (!usernameBtn.contains(event.target)) {
+         dropdownMenu.classList.remove('show');
+     }
+ });
