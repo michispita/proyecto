@@ -216,3 +216,10 @@ const enviarBtn = document.getElementsByClassName('submit-btn')[0];
 if (enviarBtn) {
     enviarBtn.addEventListener('click', agregarComentario);
 }
+
+// probando temas modo oscuro
+  // Aplicar el tema guardado en localStorage en la carga de la página
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.body.setAttribute("data-bs-theme", savedTheme);
+  });

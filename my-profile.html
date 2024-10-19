@@ -10,7 +10,7 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body>
+<div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -20,18 +20,27 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="index.html">Inicio</a>
           </li>
+  
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
           </li>
+            
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
 
-            <li class="nav-item" id="username-menu-item">
-              <!-- El nombre de usuario se insertará aquí -->
-              <a class="nav-link" href="my-profile.html">Usuario</a>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Ingresar</a>
+          </li>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="login.html"  id="logout-btn">Cerrar sesión</a></li>
+            </ul>
+
           </li>
 
         </ul>
@@ -39,6 +48,7 @@
     </div>
   </nav>
   <main>
+
       <!--saque el funcionalidad en desarrollo-->
 
       <div class="userdata">
@@ -51,6 +61,7 @@
             <div class="userName">
               <h2>Registrate!</h2>
             </div>
+            
           </div>
 
 
@@ -87,12 +98,12 @@
         <label for="userContacto" class="form-label">Telefono de contacto: </label> <br>
         <input name="userContacto" type="text" id="contacto" class="form-control"> <br><br>
 
-        <nav> <!--el modo oscuro o claro-->
-          <div class="mode">      
+        <nav>
+          <div class="mode">
             <i class="fas fa-sun"></i>
-            <p class="toggleText">Modo dia</p>
-            <label class="toggleLabel" for="checkbox" >
-              <input class="toggleInput" id="checkbox" type="checkbox">
+              <p class="toggleText">Modo día</p>
+              <label class="toggleLabel">
+              <input class="toggleInput" id="globalThemeToggle" type="checkbox">
               <span class="toggle-circle"></span>
             </label>
             <p class="toggleText">Modo noche</p>
@@ -108,6 +119,11 @@
 
 
       </div>
+
+    <div class="container">
+      <!-- Contenido principal aquí -->
+    </div>
+
   </main>
   <footer class="text-muted">
     <div class="container">
