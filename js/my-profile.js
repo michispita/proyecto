@@ -184,7 +184,7 @@ btnGuardar.addEventListener("click", function () {
     localStorage.setItem("theme", theme);
     alert(`Has cambiado el tema global a ${theme}. Este cambio afectará otras páginas, pero no el perfil.`);
   });
-=======
+
 document.getElementById("logout-btn").addEventListener("click", function() {
     //eliminar informacion de usuario al cerrar sesion
     localStorage.removeItem("usuario");
