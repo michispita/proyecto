@@ -40,6 +40,9 @@ nav a {
   border-radius: 0.3rem;
   margin-left: 1rem;
 }
+.darkmode{
+  background-color: #000;
+  color: white};
 
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
@@ -835,6 +838,9 @@ textarea {
 input:checked + span::before {
   left: 2.1rem;
 }
+.checkbok:checked + .checkbok-label .toggle-circle{
+  transform: translateX(24px);
+}
 
 .toggle-circle {
   height: 100%;
@@ -884,16 +890,7 @@ input:checked + span::before {
 }
 
 /* Estilos para modo oscuro */
-[data-bs-theme="dark"] {
-  background-color: black;
-  color: white;
-}
 
-/* Estilos para modo claro */
-[data-bs-theme="light"] {
-  background-color: white;
-  color: black;
-}
 /* Responsive */
 @media (max-width: 768px) {
   .userdata {
@@ -954,4 +951,140 @@ input:checked + span::before {
   cursor: pointer;           
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+ /* alineacion de los botones de menu.*/
+.nav-item{
+align-items:center;
+margin: auto;
+}
+
+ /*probando el modo*/
+ /* Estilos para el modo claro */
+ body[data-bs-theme="light"] {
+  background-color: white;
+  color: black;
+}
+/* Estilos para el modo oscuro */
+body[data-bs-theme="dark"] {
+  background-color: #121212;
+  color: white;
+}
+/* Estilos del switch Modo noche*/
+/* Contenedor del switch */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 0.5rem; 
+  width: 100%;
+}
+
+/* Estilos del switch */
+.theme-toggle input[type="checkbox"] {
+  appearance: none;
+  width: 2.5rem; /* Ancho del switch */
+  height: 1.25rem; /* Alto del switch */
+  background-color: #ccc;
+  border-radius: 1.25rem; 
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* El círculo dentro del switch */
+.theme-toggle input[type="checkbox"]::before {
+  content: '';
+  position: absolute;
+  top: 0.0625rem;
+  left: 0.0625rem;
+  width: 1.125rem; 
+  height: 1.125rem; 
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Cuando el switch está activado (modo oscuro) */
+.theme-toggle input[type="checkbox"]:checked {
+  background-color: #333;
+}
+
+/* Mover el círculo hacia la derecha cuando está activado */
+.theme-toggle input[type="checkbox"]:checked::before {
+  transform: translateX(1.25rem);
+}
+
+/* texto e iconos */
+.theme-toggle label {
+  font-size: 1rem; 
+  color: #333;
+}
+
+/* Iconos de sol y luna */
+.theme-toggle label i {
+  font-size: 1.5rem; 
+  vertical-align: middle;
+}
+
+/* Cambiar el color del texto cuando el switch está activado */
+.theme-toggle input[type="checkbox"]:checked + label {
+  color: white;
+}
+
+
+/* AJUSTES RESPONSIVO */
+
+/* Para celus */
+@media (max-width: 600px) {
+  .theme-toggle {
+      flex-direction: column;
+      gap: 0.3rem; 
+  }
+
+  .theme-toggle input[type="checkbox"] {
+      width: 2rem; 
+      height: 1rem; 
+  }
+
+  .theme-toggle input[type="checkbox"]::before {
+      width: 0.875rem; /* tamaño del círculo */
+      height: 0.875rem;
+  }
+
+  .theme-toggle input[type="checkbox"]:checked::before {
+      transform: translateX(1rem); /* movimiento del círculo */
+  }
+
+  .theme-toggle label {
+      font-size: 0.875rem; /* etiquetas */
+  }
+
+  .theme-toggle label i {
+      font-size: 1rem; /* iconos */
+  }
+}
+
+/* Para tablets */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .theme-toggle input[type="checkbox"] {
+      width: 2.25rem; 
+      height: 1.125rem; 
+  }
+
+  .theme-toggle input[type="checkbox"]::before {
+      width: 1rem; /*  tamaño del círculo */
+      height: 1rem;
+  }
+
+  .theme-toggle input[type="checkbox"]:checked::before {
+      transform: translateX(1.125rem); /*  movimiento del círculo */
+  }
+
+  .theme-toggle label {
+      font-size: 0.9375rem; /*  etiquetas */
+  }
+
+  .theme-toggle label i {
+      font-size: 1.125rem; /*  iconos */
+  }
 }
