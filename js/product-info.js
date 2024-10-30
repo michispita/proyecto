@@ -2,6 +2,8 @@
 const prodID = localStorage.getItem("selectedProductId");
 const catID = localStorage.getItem("catID");
 
+let data;
+
 if (prodID) {
     const url = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
 
@@ -25,6 +27,8 @@ if (prodID) {
                     productList.textContent = "El producto seleccionado no existe.";
                     return;
                 }
+
+                
 
                 // Crear el HTML para mostrar el producto
                 const productDiv = document.createElement('div');
@@ -223,3 +227,27 @@ if (enviarBtn) {
     const savedTheme = localStorage.getItem("theme") || "light";
     document.body.setAttribute("data-bs-theme", savedTheme);
   });
+
+
+// darle funcionalidad al boton comprar
+const btnComprar = document.getElementById('btn-comprar');
+
+if (btnComprar) {
+    btnComprar.addEventListener('click', () => {
+        // objeto con la info de prodducto
+        const productoGuardado = {
+            id: prodID,
+            name: productData.name,
+            cost: productData.cost,
+            currency: productData.currency
+
+        };
+
+        // guardar el producto en localStorage
+        localStorage.setItem('productoComprado', JSON.stringify(productoGuardado));
+
+        // redirigir a cart.html
+        window.location.href = 'cart.html';
+    });
+}
+
