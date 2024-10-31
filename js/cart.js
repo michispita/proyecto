@@ -75,6 +75,7 @@ function displayProd () { //si hay productos se despliegan
                 <h2>${producto.productName}</h2>
                 <img src="${producto.productImage}" alt="${producto.productName}">
                 <p>Cantidad: ${producto.cantidad}</p>
+                <a href="#" class="badge badge-secondary">Cantidad</a> 
             </div>
             <div class="col">
                 <h2>Precio total: $${producto.precioTotal.toFixed(2)}</h2>
