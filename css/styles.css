@@ -1031,6 +1031,19 @@ body[data-bs-theme="dark"] {
   color: white;
 }
 
+#btn-comprar {
+  max-width: 20rem;            
+  width: 25%;                   
+  height: auto;                
+  font-size: clamp(1rem, 1.2vw, 1.5rem); 
+  border-radius: 1rem;          
+  background-color: #bfbfbf;    
+  color: black;                  
+  margin: auto;                  
+  display: block;                
+  padding: 0.5rem 1rem;          
+  text-align: center;            
+}
 
 /* AJUSTES RESPONSIVO */
 
