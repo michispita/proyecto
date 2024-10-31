@@ -1,4 +1,5 @@
 
+
 //Para ver el nombre de usuario
 document.addEventListener('DOMContentLoaded', function () {
   // Obtener el nombre de usuario almacenado
@@ -183,3 +184,12 @@ btnGuardar.addEventListener("click", function () {
     localStorage.setItem("theme", theme);
     alert(`Has cambiado el tema global a ${theme}. Este cambio afectará otras páginas, pero no el perfil.`);
   });
+
+document.getElementById("logout-btn").addEventListener("click", function() {
+    //eliminar informacion de usuario al cerrar sesion
+    localStorage.removeItem("usuario");
+
+    //redirigir al login cuando se cierra
+    window.location.href = "login.html";
+  });
+
