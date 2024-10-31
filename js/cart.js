@@ -88,12 +88,12 @@ const displayProd = () => {
             carritoEspacio.innerHTML += `
             <div class="row">
                 <div class="col">
-                    <h2>${producto.name}</h2>
-                    <img src="${producto.img}" alt="${producto.name}">
-                    <p>Cantidad: ${cart.quantity}</p>
+                    <h2 class="prodCarritoName">${producto.name}</h2>
+                    <img src="${producto.img}" alt="${producto.name}" class="prodCarritoImg">
+                    <p class="prodCarritoQuantity">Cantidad: ${cart.quantity}</p> 
                 </div>
                 <div class="col">
-                    <h2>Precio total: $${precioTotal}</h2>
+                    <h2 class="prodCarritoTotal">Precio total: $${precioTotal}</h2>
                 </div>
             </div>
             `;
