@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
 /*
 document.addEventListener('DOMContentLoaded', () => {
     const precio = 100; // Precio del producto
@@ -38,29 +36,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 //recuperar el prod agregado al carrito 
-const productosSeleccionados = JSON.parse(localStorage.getItem('prodSeleccionados')) || [];
-//le puse ese nombre pero depdende de como se guarde, deberia ser un conjunto de objs
+const productosSeleccionados = carts = JSON.parse(localStorage.getItem('cart'));
+console.log(productosSeleccionados[0])
+console.log(productosSeleccionados)
+
+    /*en la constante de la url hay que suplantar la id del prod para poder recuperar la info
+    para eso hay que acceder al indice de lo agurardado en el carrito, para poder acceder despues
+    al id de ese indice y recien ahi suplantar ese id en la url que se fetchea  */
+
+    /*let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];  
+    cartItems.forEach(item => { console.log(`ID: ${item.id}, Nombre: ${item.name}, Precio: ${item.price}`); }); */
+
+//espacio en el html
 const carritoEspacio = document.getElementById("carritoEspacio");
 
-// Función para agrupar productos y contar la cantidad
-function agruparProductos(productos) {
-    const productosAgrupados = {};
-
-    productos.forEach(producto => {
-        if (productosAgrupados[producto.productName]) {
-            productosAgrupados[producto.productName].cantidad += 1;
-            productosAgrupados[producto.productName].precioTotal += producto.productPrice;
-        } else {
-            productosAgrupados[producto.productName] = {
-                ...producto,
-                cantidad: 1,
-                precioTotal: producto.productPrice
-            };
-        }
-    });
-
-    return productosAgrupados;
-};
 
 function carritoVacio () { //se verifica si el carrito esta vacio
     if (productosSeleccionados.length === 0) {
@@ -87,12 +76,42 @@ function carritoVacio () { //se verifica si el carrito esta vacio
     };
 };
 
-function displayProd () { //si hay productos se despliegan
-    // Agrupar los productos
-    const productosAgrupados = agruparProductos(productosSeleccionados);
+const displayProd = () => {
+    carritoEspacio.innerHTML += '';
+    carts.forEach(cart => {
+        // Buscar el producto en el catálogo principal por su prodID
+        const producto = productosSeleccionados.find(prod => prod.prodID === cart.prodID);
 
-    // Mostrar productos agrupados
-    Object.values(productosAgrupados).forEach(producto => {
+        if (producto) { // Solo mostrar si el producto existe en el catálogo
+            const precioTotal = producto.cost * cart.quantity;
+
+            carritoEspacio.innerHTML += `
+            <div class="row">
+                <div class="col">
+                    <h2>${producto.name}</h2>
+                    <img src="${producto.img}" alt="${producto.name}">
+                    <p>Cantidad: ${cart.quantity}</p>
+                </div>
+                <div class="col">
+                    <h2>Precio total: $${precioTotal}</h2>
+                </div>
+            </div>
+            `;
+        }
+    });
+}
+
+
+
+
+carritoVacio ();
+
+
+/* { //si hay productos se despliegan
+    // Mostrar productos 
+    let positionOfProd = carts.findIndex((index) => index.prodID == prodID)
+
+    positionOfProd.forEach(producto => {
         carritoEspacio.innerHTML += `
         <div class="row">
             <div class="col">
@@ -102,12 +121,9 @@ function displayProd () { //si hay productos se despliegan
                 <a href="#" class="badge badge-secondary">Cantidad</a> 
             </div>
             <div class="col">
-                <h2>Precio total: $${producto.precioTotal.toFixed(2)}</h2>
+                <h2>Precio total: $${producto.precioTotal}</h2>
             </div>
         </div>
         `;
     });
-}
-
-carritoVacio ();
-
+} */
