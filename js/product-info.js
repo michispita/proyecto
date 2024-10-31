@@ -2,6 +2,8 @@
 const prodID = localStorage.getItem("selectedProductId");
 const catID = localStorage.getItem("catID");
 
+let carts = [];
+
 if (prodID) {
     const url = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
 
@@ -78,6 +80,43 @@ if (prodID) {
 
                 // Cargar los comentarios del producto
                 cargarComentarios(prodID);
+                document.getElementById('btn-comprar').addEventListener('click', () => {
+                    addToCart(prodID);
+                });
+
+                const addToCart = (prodID) => {
+                    let positionThisProdInCart = carts.findIndex((value) => value.prodID == prodID)
+                    if(carts.length <= 0) {
+                        carts = [{
+                            prodID: prodID,
+                            quantity: 1,
+                            name: data.name,
+                            img: data.images[0],
+                            cost: data.cost,
+                            currency: data.currency
+                        }]
+                    } else if(positionThisProdInCart < 0){
+                        carts.push({
+                            prodID: prodID,
+                            quantity: 1,
+                            name: data.name,
+                            img: data.images[0],
+                            cost: data.cost,
+                            currency: data.currency
+                        });
+                    } else {
+                        carts[positionThisProdInCart].quantity = carts[positionThisProdInCart].quantity + 1;
+                    }
+                    console.log(carts)
+                    addCartToMemory();
+                };
+
+                const addCartToMemory = () => {
+                    localStorage.setItem('cart', JSON.stringify(carts));
+                };
+
+                console.log(localStorage.getItem('cart'))
+        
             })
             .catch(error => {
                 console.error('Hubo un problema con la petición:', error);
@@ -223,3 +262,5 @@ if (enviarBtn) {
     const savedTheme = localStorage.getItem("theme") || "light";
     document.body.setAttribute("data-bs-theme", savedTheme);
   });
+
+
