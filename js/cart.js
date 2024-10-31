@@ -13,6 +13,30 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+
+
+/*
+document.addEventListener('DOMContentLoaded', () => {
+    const precio = 100; // Precio del producto
+    const cantidadInput = document.getElementById('cantidad');
+    const subtotalDisplay = document.getElementById('subtotal');
+
+    // Función para actualizar el subtotal
+    function actualizarSubtotal() {
+        const cantidad = parseInt(cantidadInput.value) || 0; // Obtiene la cantidad
+        const subtotal = precio * cantidad; // Calcula el subtotal
+        subtotalDisplay.textContent = subtotal; // Actualiza el subtotal en el DOM
+    }
+
+    // Evento que escucha cambios en el campo de cantidad
+    cantidadInput.addEventListener('change', actualizarSubtotal);
+
+    // Llamar a la función al cargar la página para mostrar el subtotal inicial
+    actualizarSubtotal();
+});
+*/
+
+
 //recuperar el prod agregado al carrito 
 const productosSeleccionados = JSON.parse(localStorage.getItem('prodSeleccionados')) || [];
 //le puse ese nombre pero depdende de como se guarde, deberia ser un conjunto de objs
@@ -86,3 +110,4 @@ function displayProd () { //si hay productos se despliegan
 }
 
 carritoVacio ();
+
