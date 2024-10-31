@@ -28,8 +28,6 @@ if (prodID) {
                     return;
                 }
 
-                
-
                 // Crear el HTML para mostrar el producto
                 const productDiv = document.createElement('div');
                 productDiv.classList.add('selectedProduct');
@@ -82,6 +80,30 @@ if (prodID) {
 
                 // Cargar los comentarios del producto
                 cargarComentarios(prodID);
+
+      /*           
+        // darle funcionalidad al boton comprar
+        const btnComprar = document.getElementById('btn-comprar');
+
+        if (btnComprar) {
+        btnComprar.addEventListener('click', () => {
+        // objeto con la info de prodducto
+        const productoGuardado = {
+          id: prodID,
+          name: data.name
+       };
+
+         //guardar el producto en localStorage
+       localStorage.setItem('productoComprado', JSON.stringify(productoGuardado));
+
+        //redirigir a cart.html
+        window.location.href = 'cart.html';
+    });
+}
+*/
+           
+
+
             })
             .catch(error => {
                 console.error('Hubo un problema con la petición:', error);
@@ -228,26 +250,4 @@ if (enviarBtn) {
     document.body.setAttribute("data-bs-theme", savedTheme);
   });
 
-
-// darle funcionalidad al boton comprar
-const btnComprar = document.getElementById('btn-comprar');
-
-if (btnComprar) {
-    btnComprar.addEventListener('click', () => {
-        // objeto con la info de prodducto
-        const productoGuardado = {
-            id: prodID,
-            name: productData.name,
-            cost: productData.cost,
-            currency: productData.currency
-
-        };
-
-        // guardar el producto en localStorage
-        localStorage.setItem('productoComprado', JSON.stringify(productoGuardado));
-
-        // redirigir a cart.html
-        window.location.href = 'cart.html';
-    });
-}
 
