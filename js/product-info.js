@@ -82,6 +82,7 @@ if (prodID) {
                 cargarComentarios(prodID);
                 document.getElementById('btn-comprar').addEventListener('click', () => {
                     addToCart(prodID);
+                    window.location.href = 'cart.html';
                 });
 
                 const addToCart = (prodID) => {
@@ -254,7 +255,6 @@ function agregarComentario() {
 const enviarBtn = document.getElementsByClassName('submit-btn')[0];
 if (enviarBtn) {
     enviarBtn.addEventListener('click', agregarComentario);
-    window.location.href = 'cart.html';
 }
 
 // probando temas modo oscuro
