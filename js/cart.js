@@ -86,14 +86,14 @@ const displayProd = () => {
             const precioTotal = producto.cost * cart.quantity;
 
             carritoEspacio.innerHTML += `
-            <div class="row">
+            <div class="row" id="prodCarritoDiv">
                 <div class="col">
-                    <h2>${producto.name}</h2>
-                    <img src="${producto.img}" alt="${producto.name}">
-                    <p>Cantidad: ${cart.quantity}</p>
+                    <h2 class="prodCarritoName">${producto.name}</h2>
+                    <img src="${producto.img}" alt="${producto.name}" class="prodCarritoImg">
+                    <p class="prodCarritoQuantity">Cantidad: ${cart.quantity}</p> 
                 </div>
                 <div class="col">
-                    <h2>Precio total: $${precioTotal}</h2>
+                    <h4 class="prodCarritoTotal">$${precioTotal} ${producto.currency}</h4>
                 </div>
             </div>
             `;
