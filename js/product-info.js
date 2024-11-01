@@ -254,6 +254,7 @@ function agregarComentario() {
 const enviarBtn = document.getElementsByClassName('submit-btn')[0];
 if (enviarBtn) {
     enviarBtn.addEventListener('click', agregarComentario);
+    window.location.href = 'cart.html';
 }
 
 // probando temas modo oscuro

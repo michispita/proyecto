@@ -1101,3 +1101,36 @@ body[data-bs-theme="dark"] {
       font-size: 1.125rem; /*  iconos */
   }
 }
+
+/* css de cada prod en el carrito*/
+#prodCarritoDiv {
+  margin: 1rem auto 1rem auto;
+  width: 80%;
+}
+
+.prodCarritoName {
+  text-align: center;
+  font-weight: bold;
+}
+
+.prodCarritoImg {
+  width: 100%;
+  padding: 2rem;
+  padding: 0.31rem;
+  border-style: solid;
+  border-color: rgb(182, 173, 173);
+  border-width: 0.063rem;
+  border-radius: 0.63rem;
+  margin: 1rem auto;
+  align-self: center;
+}
+
+.prodCarritoTotal {
+  text-align: center;
+  margin: 5rem auto;
+}
+
+.prodCarritoQuantity {
+  text-align: center;
+  margin: auto;
+}
