@@ -2,7 +2,7 @@
 const prodID = localStorage.getItem("selectedProductId");
 const catID = localStorage.getItem("catID");
 
-let data;
+let carts = [];
 
 if (prodID) {
     const url = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
@@ -80,30 +80,43 @@ if (prodID) {
 
                 // Cargar los comentarios del producto
                 cargarComentarios(prodID);
+                document.getElementById('btn-comprar').addEventListener('click', () => {
+                    addToCart(prodID);
+                });
 
-      /*           
-        // darle funcionalidad al boton comprar
-        const btnComprar = document.getElementById('btn-comprar');
+                const addToCart = (prodID) => {
+                    let positionThisProdInCart = carts.findIndex((value) => value.prodID == prodID)
+                    if(carts.length <= 0) {
+                        carts = [{
+                            prodID: prodID,
+                            quantity: 1,
+                            name: data.name,
+                            img: data.images[0],
+                            cost: data.cost,
+                            currency: data.currency
+                        }]
+                    } else if(positionThisProdInCart < 0){
+                        carts.push({
+                            prodID: prodID,
+                            quantity: 1,
+                            name: data.name,
+                            img: data.images[0],
+                            cost: data.cost,
+                            currency: data.currency
+                        });
+                    } else {
+                        carts[positionThisProdInCart].quantity = carts[positionThisProdInCart].quantity + 1;
+                    }
+                    console.log(carts)
+                    addCartToMemory();
+                };
 
-        if (btnComprar) {
-        btnComprar.addEventListener('click', () => {
-        // objeto con la info de prodducto
-        const productoGuardado = {
-          id: prodID,
-          name: data.name
-       };
+                const addCartToMemory = () => {
+                    localStorage.setItem('cart', JSON.stringify(carts));
+                };
 
-         //guardar el producto en localStorage
-       localStorage.setItem('productoComprado', JSON.stringify(productoGuardado));
-
-        //redirigir a cart.html
-        window.location.href = 'cart.html';
-    });
-}
-*/
-           
-
-
+                console.log(localStorage.getItem('cart'))
+        
             })
             .catch(error => {
                 console.error('Hubo un problema con la petición:', error);
@@ -241,6 +254,7 @@ function agregarComentario() {
 const enviarBtn = document.getElementsByClassName('submit-btn')[0];
 if (enviarBtn) {
     enviarBtn.addEventListener('click', agregarComentario);
+    window.location.href = 'cart.html';
 }
 
 // probando temas modo oscuro
