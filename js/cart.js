@@ -48,16 +48,16 @@ function carritoVacio () { // Verifica si el carrito está vacío
         const subtotal = calcularSubtotal(); // Calcula el subtotal
 
         carritoEspacio.innerHTML += `
-        <div class="final">
+        <div class="row align-items-start" id="carritoFinal">
             <div class="col">
-                <div class="row">
                     <h3>Subtotal:</h3>
-                </div>
-                <div class="row">
-                    <h3>$${subtotal}</h3> <!-- Muestra el subtotal aquí -->
-                </div>
             </div>
-            <button type="button" class="btn btn-secondary">Checkout</button>
+            <div class="col">
+                    <h3>$${subtotal} UYU</h3> <!-- Muestra el subtotal aquí -->
+            </div>
+            <div class="row">
+                        <button type="button" class="btn btn-light" id="btnCheckout">Checkout</button>
+            </div>
         </div>
         `;
     }
@@ -74,18 +74,20 @@ const displayProd = () => {
             const precioTotal = producto.cost * cart.quantity;
 
             carritoEspacio.innerHTML += `
-            <div class="row">
+            <div class="row" id="prodCarritoDiv">
                 <div class="col">
-                    <h2>${producto.name}</h2>
-                    <img src="${producto.img}" alt="${producto.name}">
+                    <h2 class="prodCarritoName">${producto.name}</h2>
+                    <img src="${producto.img}" alt="${producto.name}" class="prodCarritoImg">
 
                     <!-- Botones de cantidad -->
-                    <button onclick="updateQuantity(${index}, -1)">-</button>
-                    <span id="quantityDisplay-${index}">${cart.quantity}</span>
-                    <button onclick="updateQuantity(${index}, 1)">+</button>
+                    <div class="prodCarritoQuantity">
+                        <button onclick="updateQuantity(${index}, -1)">-</button>
+                        <span id="quantityDisplay-${index}">${cart.quantity}</span>
+                        <button onclick="updateQuantity(${index}, 1)">+</button>
+                    </div>
                 </div>
                 <div class="col">
-                    <h2>Precio total: $${precioTotal}</h2>
+                    <h2 class="prodCarritoTotal">$${precioTotal}</h2>
                 </div>
             </div>
             `;
