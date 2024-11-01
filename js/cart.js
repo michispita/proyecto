@@ -13,27 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-/*
-document.addEventListener('DOMContentLoaded', () => {
-    const precio = 100; // Precio del producto
-    const cantidadInput = document.getElementById('cantidad');
-    const subtotalDisplay = document.getElementById('subtotal');
-
-    // Función para actualizar el subtotal
-    function actualizarSubtotal() {
-        const cantidad = parseInt(cantidadInput.value) || 0; // Obtiene la cantidad
-        const subtotal = precio * cantidad; // Calcula el subtotal
-        subtotalDisplay.textContent = subtotal; // Actualiza el subtotal en el DOM
-    }
-
-    // Evento que escucha cambios en el campo de cantidad
-    cantidadInput.addEventListener('change', actualizarSubtotal);
-
-    // Llamar a la función al cargar la página para mostrar el subtotal inicial
-    actualizarSubtotal();
-});
-*/
-
 
 //recuperar el prod agregado al carrito 
 const productosSeleccionados = carts = JSON.parse(localStorage.getItem('cart'));
@@ -49,51 +28,64 @@ console.log(productosSeleccionados)
 
 //espacio en el html
 const carritoEspacio = document.getElementById("carritoEspacio");
+function calcularSubtotal() {
+    return carts.reduce((total, cart) => {
+        const producto = productosSeleccionados.find(prod => prod.prodID === cart.prodID);
+        return producto ? total + producto.cost * cart.quantity : total;
+    }, 0);
+}
 
-
-function carritoVacio () { //se verifica si el carrito esta vacio
+function carritoVacio () { // Verifica si el carrito está vacío
     if (productosSeleccionados.length === 0) {
-        carritoEspacio.innerHTML += `
+        carritoEspacio.innerHTML = `
         <div class="alert alert-dark" role="alert">
-            Aún no has seleccionado un producto!
+            ¡Aún no has seleccionado un producto!
         </div>
         `;
     } else {
-        displayProd ();
+        displayProd();
+        
+        const subtotal = calcularSubtotal(); // Calcula el subtotal
+
         carritoEspacio.innerHTML += `
         <div class="final">
-            <div class=col>
-            <div class=row>
-                <h3>Subtotal:</h3>
+            <div class="col">
+                <div class="row">
+                    <h3>Subtotal:</h3>
+                </div>
+                <div class="row">
+                    <h3>$${subtotal}</h3> <!-- Muestra el subtotal aquí -->
+                </div>
             </div>
-            <div class=row>
-                <h3>Sumatoria que tengo que ver como se hace</h3>
-            </div>
-            </div>
-                <button type="button" class="btn btn-secondary">Checkout</button>
+            <button type="button" class="btn btn-secondary">Checkout</button>
         </div>
         `;
-    };
-};
+    }
+}
+
 
 const displayProd = () => {
-    carritoEspacio.innerHTML += '';
-    carts.forEach(cart => {
+    carritoEspacio.innerHTML = ''; // Reinicia el contenido
+    carts.forEach((cart, index) => {
         // Buscar el producto en el catálogo principal por su prodID
         const producto = productosSeleccionados.find(prod => prod.prodID === cart.prodID);
 
-        if (producto) { // Solo mostrar si el producto existe en el catálogo
+        if (producto) { 
             const precioTotal = producto.cost * cart.quantity;
 
             carritoEspacio.innerHTML += `
-            <div class="row" id="prodCarritoDiv">
+            <div class="row">
                 <div class="col">
-                    <h2 class="prodCarritoName">${producto.name}</h2>
-                    <img src="${producto.img}" alt="${producto.name}" class="prodCarritoImg">
-                    <p class="prodCarritoQuantity">Cantidad: ${cart.quantity}</p> 
+                    <h2>${producto.name}</h2>
+                    <img src="${producto.img}" alt="${producto.name}">
+
+                    <!-- Botones de cantidad -->
+                    <button onclick="updateQuantity(${index}, -1)">-</button>
+                    <span id="quantityDisplay-${index}">${cart.quantity}</span>
+                    <button onclick="updateQuantity(${index}, 1)">+</button>
                 </div>
                 <div class="col">
-                    <h4 class="prodCarritoTotal">$${precioTotal} ${producto.currency}</h4>
+                    <h2>Precio total: $${precioTotal}</h2>
                 </div>
             </div>
             `;
@@ -101,6 +93,29 @@ const displayProd = () => {
     });
 }
 
+
+function updateQuantity(index, change) {
+    const cart = carts[index];
+    cart.quantity += change;
+
+    // Esto va a hacer que la cantidad no sea menor a 1 
+    if (cart.quantity < 1) cart.quantity = 1;
+
+    // Actualiza el HTML de la cantidad y el precio total de ese producto
+    document.getElementById(`quantityDisplay-${index}`).textContent = cart.quantity;
+
+    // Esto va a actualizar el precio total del producto específico
+    const producto = productosSeleccionados.find(prod => prod.prodID === cart.prodID);
+    if (producto) {
+        const precioTotal = producto.cost * cart.quantity;
+        const precioTotalElemento = document.querySelectorAll(".col h2")[index * 2 + 1];
+        precioTotalElemento.textContent = `Precio total: $${precioTotal}`;
+    }
+
+    //Con esto recalcula todo y va a actualizar el subtotal
+    const subtotal = calcularSubtotal();
+    document.querySelector(".final .row:nth-child(2) h3").textContent = `$${subtotal}`;
+}
 
 
 
