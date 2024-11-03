@@ -1134,3 +1134,25 @@ body[data-bs-theme="dark"] {
   text-align: center;
   margin: auto;
 }
+
+#carritoFinal {
+  margin: 4rem auto;
+  width: 100%;
+}
+
+#carritoFinal h3 {
+  text-align: center;
+}
+
+#carritoFinal button {
+  border: solid black 2rem;
+  border-radius: 2rem;
+  border-width: 0.1rem;
+  width: 8rem;
+  margin: 1rem auto;
+}
+
+
+.navbar .bi-cart {
+  color: white !important; /* Usamos !important para asegurar que se aplique el color */
+}
