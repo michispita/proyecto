@@ -100,26 +100,34 @@ function updateQuantity(index, change) {
     const cart = carts[index];
     cart.quantity += change;
 
-    // Esto va a hacer que la cantidad no sea menor a 1 
+    // Asegúrate de que la cantidad no sea menor a 1
     if (cart.quantity < 1) cart.quantity = 1;
 
-    // Actualiza el HTML de la cantidad y el precio total de ese producto
+    // Actualiza el HTML de la cantidad
     document.getElementById(`quantityDisplay-${index}`).textContent = cart.quantity;
 
-    // Esto va a actualizar el precio total del producto específico
+    // Actualiza el precio total del producto específico
     const producto = productosSeleccionados.find(prod => prod.prodID === cart.prodID);
     if (producto) {
         const precioTotal = producto.cost * cart.quantity;
         const precioTotalElemento = document.querySelectorAll(".col h2")[index * 2 + 1];
-        precioTotalElemento.textContent = `Precio total: $${precioTotal}`;
+        precioTotalElemento.textContent = `$${precioTotal}`; // Muestra el precio total correcto
     }
 
-    //Con esto recalcula todo y va a actualizar el subtotal
+    // Recalcula el subtotal y actualiza el elemento correspondiente
     const subtotal = calcularSubtotal();
-    document.querySelector(".final .row:nth-child(2) h3").textContent = `$${subtotal}`;
+    const subtotalElement = document.querySelector("#carritoFinal h3:nth-child(2)");
+    if (subtotalElement) {
+        subtotalElement.textContent = `$${subtotal} UYU`; // Actualiza el subtotal en el DOM
+    }
+
+    // Actualiza localStorage
     localStorage.setItem('cart', JSON.stringify(carts));
-    actualizarBadgeCarrito();
+
+    // Actualiza el carrito en la vista
+    carritoVacio(); // Llama a esta función para actualizar el estado del carrito
 }
+
 // Desafiate carrito
 function updateCartCount() {
     let carts = JSON.parse(localStorage.getItem('cart')) || [];
