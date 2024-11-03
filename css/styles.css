@@ -1151,3 +1151,8 @@ body[data-bs-theme="dark"] {
   width: 8rem;
   margin: 1rem auto;
 }
+
+
+.navbar .bi-cart {
+  color: white !important; /* Usamos !important para asegurar que se aplique el color */
+}

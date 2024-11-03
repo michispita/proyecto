@@ -117,11 +117,33 @@ function updateQuantity(index, change) {
     //Con esto recalcula todo y va a actualizar el subtotal
     const subtotal = calcularSubtotal();
     document.querySelector(".final .row:nth-child(2) h3").textContent = `$${subtotal}`;
+    localStorage.setItem('cart', JSON.stringify(carts));
+    actualizarBadgeCarrito();
+}
+// Desafiate carrito
+function updateCartCount() {
+    let carts = JSON.parse(localStorage.getItem('cart')) || [];
+    let totalItems = 0;
+
+    // Sumar la cantidad de todos los productos en el carrito
+    carts.forEach(item => {
+        totalItems += item.quantity;
+    });
+
+    // Actualizar el contador en el icono del carrito
+    const cartCountElement = document.getElementById('cart-count');
+    if (cartCountElement) {
+        cartCountElement.textContent = totalItems;
+    }
 }
 
-
+// Llama la funcion
+document.addEventListener('DOMContentLoaded', function() {
+    updateCartCount();
+});
 
 carritoVacio ();
+
 
 
 /* { //si hay productos se despliegan
