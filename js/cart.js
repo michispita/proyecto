@@ -13,18 +13,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
 //recuperar el prod agregado al carrito 
 const productosSeleccionados = carts = JSON.parse(localStorage.getItem('cart'));
 console.log(productosSeleccionados[0])
 console.log(productosSeleccionados)
 
-    /*en la constante de la url hay que suplantar la id del prod para poder recuperar la info
-    para eso hay que acceder al indice de lo agurardado en el carrito, para poder acceder despues
-    al id de ese indice y recien ahi suplantar ese id en la url que se fetchea  */
-
-    /*let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];  
-    cartItems.forEach(item => { console.log(`ID: ${item.id}, Nombre: ${item.name}, Precio: ${item.price}`); }); */
 
 //espacio en el html
 const carritoEspacio = document.getElementById("carritoEspacio");
@@ -154,23 +147,15 @@ carritoVacio ();
 
 
 
-/* { //si hay productos se despliegan
-    // Mostrar productos 
-    let positionOfProd = carts.findIndex((index) => index.prodID == prodID)
+//Modal
+const modal = new bootstrap.Modal(document.getElementById('modal'));
+const inputModal = document.getElementById('inputModal');
+const btnCheckout = document.getElementById('btnCheckout');
 
-    positionOfProd.forEach(producto => {
-        carritoEspacio.innerHTML += `
-        <div class="row">
-            <div class="col">
-                <h2>${producto.productName}</h2>
-                <img src="${producto.productImage}" alt="${producto.productName}">
-                <p>Cantidad: ${producto.cantidad}</p>
-                <a href="#" class="badge badge-secondary">Cantidad</a> 
-            </div>
-            <div class="col">
-                <h2>Precio total: $${producto.precioTotal}</h2>
-            </div>
-        </div>
-        `;
-    });
-} */
+btnCheckout.addEventListener('click', () => {
+    modal.show(); // Muestra el modal
+});
+
+// abrir el modal
+document.getElementById('modal').addEventListener('shown.bs.modal', () => {
+});
