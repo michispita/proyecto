@@ -49,54 +49,45 @@ if (prodID) {
                     carouselItem.classList.add('carousel-item');
                     if (index === 0) carouselItem.classList.add('active'); // La primera imagen debe estar activa por defecto
 
-                    carouselItem.innerHTML = `<img src="${imagen}" class=".d-block w-100" alt="Imagen ${index + 1}">`;
+                    carouselItem.innerHTML = `<img src="${imagen}" class="d-block w-100" alt="Imagen ${index + 1}">`;
                     carouselImages.appendChild(carouselItem);
                 });
 
-                    // Procesar los productos relacionados
-                    data.relatedProducts.forEach((productoRelacionado, index) => {
-                        const carouselItem = document.createElement('div');
-                        carouselItem.classList.add('carousel-item');
-                        if (index === 0) carouselItem.classList.add('active'); // Activar el primer producto del carrusel
+                // Procesar los productos relacionados
+                data.relatedProducts.forEach((productoRelacionado, index) => {
+                    const carouselItem = document.createElement('div');
+                    carouselItem.classList.add('carousel-item');
+                    if (index === 0) carouselItem.classList.add('active'); // Activar el primer producto del carrusel
 
-                        // Crear el contenido de cada producto relacionado
-                        carouselItem.innerHTML = `
-                            <div class="related-product" class="d-block w-100">
-                                <img id="carouselimg" src="${productoRelacionado.image}" alt="${productoRelacionado.name}">
-                                <p>${productoRelacionado.name}</p>
-                            </div>
-                        `;
+                    // Crear el contenido de cada producto relacionado
+                    carouselItem.innerHTML = `
+                        <div class="related-product d-block w-100">
+                            <img id="carouselimg" src="${productoRelacionado.image}" alt="${productoRelacionado.name}">
+                            <p>${productoRelacionado.name}</p>
+                        </div>
+                    `;
 
-                        // Añadir un evento de clic para redirigir al producto relacionado
-                        carouselItem.addEventListener('click', () => {
-                            // Guardar el ID del producto relacionado en el localStorage y redirigir
-                            localStorage.setItem('selectedProductId', productoRelacionado.id);
-                            window.location.href = 'product-info.html'; 
-                        });
-
-                        // Agregar el producto al carrusel de productos relacionados
-                        document.getElementById('carouselRelatedProducts').appendChild(carouselItem);
+                    // Añadir un evento de clic para redirigir al producto relacionado
+                    carouselItem.addEventListener('click', () => {
+                        // Guardar el ID del producto relacionado en el localStorage y redirigir
+                        localStorage.setItem('selectedProductId', productoRelacionado.id);
+                        window.location.href = 'product-info.html'; 
                     });
+
+                    // Agregar el producto al carrusel de productos relacionados
+                    document.getElementById('carouselRelatedProducts').appendChild(carouselItem);
+                });
 
                 // Cargar los comentarios del producto
                 cargarComentarios(prodID);
-                document.getElementById('btn-comprar').addEventListener('click', () => {
-                    addToCart(prodID);
-                    window.location.href = 'cart.html';
-                });
 
+                // Función de añadir al carrito
                 const addToCart = (prodID) => {
-                    let positionThisProdInCart = carts.findIndex((value) => value.prodID == prodID)
-                    if(carts.length <= 0) {
-                        carts = [{
-                            prodID: prodID,
-                            quantity: 1,
-                            name: data.name,
-                            img: data.images[0],
-                            cost: data.cost,
-                            currency: data.currency
-                        }]
-                    } else if(positionThisProdInCart < 0){
+                    // Recupera el carrito desde localStorage o inicializarlo vacío
+                    let carts = JSON.parse(localStorage.getItem('cart')) || [];
+
+                    let positionThisProdInCart = carts.findIndex((value) => value.prodID == prodID);
+                    if (positionThisProdInCart < 0) {
                         carts.push({
                             prodID: prodID,
                             quantity: 1,
@@ -106,25 +97,27 @@ if (prodID) {
                             currency: data.currency
                         });
                     } else {
-                        carts[positionThisProdInCart].quantity = carts[positionThisProdInCart].quantity + 1;
+                        carts[positionThisProdInCart].quantity += 1;
                     }
-                    console.log(carts)
-                    addCartToMemory();
-                };
 
-                const addCartToMemory = () => {
+                    // Guarda el carrito actualizado en localStorage
                     localStorage.setItem('cart', JSON.stringify(carts));
-                };
-
-                console.log(localStorage.getItem('cart'))
-        
+                    console.log("Carrito actualizado:", carts);
+                    };
+                // Evento de compra
+                document.getElementById('btn-comprar').addEventListener('click', () => {
+                    addToCart(prodID);
+                    window.location.href = 'cart.html';
+                });
             })
+              
             .catch(error => {
                 console.error('Hubo un problema con la petición:', error);
             });
     }
 
     document.addEventListener('DOMContentLoaded', fetchProduct);
+}
 
     function cargarComentarios(productId) {
         const comentariosUrl = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
@@ -198,9 +191,7 @@ if (prodID) {
             usernameMenuItem.innerHTML = `<a class="nav-link" href="my-profile.html">${storedUsername}</a>`;
         }
     });
-} else {
-    console.error('No hay producto seleccionado.');
-}
+
 
 /*DESAFIATE ENTREGA 4*/
 

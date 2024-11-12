@@ -9,6 +9,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -28,6 +29,15 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+          
+                <a href="cart.html" class=" nav-link position-relative">
+                    <i class="bbi bi-cart3" ></i>
+                    <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        0
+                    </span>
+                </a>
           </li>
 <!-- Menú desplegable de usuario -->
 <li class="nav-item dropdown">
@@ -103,6 +113,7 @@
     </div>
   </div>
   <script src="js/bootstrap.bundle.min.js"></script>
+  
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/login.js"></script>
