@@ -159,3 +159,66 @@ btnCheckout.addEventListener('click', () => {
 // abrir el modal
 document.getElementById('modal').addEventListener('shown.bs.modal', () => {
 });
+
+// opciones de pago
+const btnOpcionesPago = document.getElementById("btnOpcionesPago");
+const opcionesPago = document.querySelectorAll(".formaPago-item");
+
+let metodoPagoSeleccionado = "";  
+
+// Agrega un evento a cada opción 
+opcionesPago.forEach(opcion => {
+    opcion.addEventListener("click", function(event) {
+        event.preventDefault(); 
+
+        // Actualiza el texto del botón 
+        btnOpcionesPago.textContent = this.textContent;
+
+        // Guarda
+        metodoPagoSeleccionado = this.textContent;
+    });
+});
+
+// finalizar compra y validaciones
+document.addEventListener('DOMContentLoaded', function () {
+    // Recupera el botón y asigna el evento 
+    const btnFinalizarCompra = document.getElementById("btnFinalizarCompra");
+    if (btnFinalizarCompra) {
+        btnFinalizarCompra.addEventListener("click", finalizarCompra);
+    }
+});
+
+function finalizarCompra() {
+    const inputDep = document.getElementById('inputDep').value.trim();
+    const inputBarrio = document.getElementById('inputBarrio').value.trim();
+    const inputCalle = document.getElementById('inputCalle').value.trim();
+
+    let mensajeError = ""; // guarda errores para mostrarlos si falta algo
+
+    //  dirección
+    if (!inputDep || !inputBarrio || !inputCalle) {
+        mensajeError += "Completa todos los campos de dirección.\n";
+    }
+
+    //  opción de pago 
+    if (!metodoPagoSeleccionado) {
+        mensajeError += "Selecciona una forma de pago.\n";
+    }
+
+    // cantidad de productos en el carrito
+    const cantidadesValidas = carts.every(cart => cart.quantity > 0);
+    if (!cantidadesValidas) {
+        mensajeError += "Verifica las cantidades de cada producto en el carrito.\n";
+    }
+
+    // da errores o confirmar la compra
+    if (mensajeError) {
+        alert(mensajeError); 
+    } else {
+        // oculta el modal y confirma la compra
+        modal.hide();
+        alert("¡Compra finalizada con éxito!");
+    }
+}
+
+document.getElementById("btnFinalizarCompra").addEventListener("click", finalizarCompra);
