@@ -170,15 +170,6 @@ const opcionesPago = document.querySelectorAll(".formaPago-item");
 let metodoPagoSeleccionado = "";  
 
 
-
-});
-
-// opciones de pago
-const btnOpcionesPago = document.getElementById("btnOpcionesPago");
-const opcionesPago = document.querySelectorAll(".formaPago-item");
-
-let metodoPagoSeleccionado = "";  
-
 // Agrega un evento a cada opción 
 opcionesPago.forEach(opcion => {
     opcion.addEventListener("click", function(event) {
@@ -213,7 +204,7 @@ function costosEnvio() {
     let metodoPagoSeleccionado;
     let sum = subtotalCheckout;
 
-    if (metodoPagoSeleccionado === document.getElementById("prem")) //  usar .check ?
+    if (metodoPagoSeleccionado === document.getElementById("prem")) //  usar .check ? asociarlo a los eventos?
         {
        let sum = subtotalCheckout * 0.15; // alert para ver si entra
 
@@ -229,25 +220,9 @@ function costosEnvio() {
  console.log(subtotalCheckout);
 
  function costoTotal(){
-
-
+    
+ // subtotal + costo de envio
  }
-/*
-
-
- function getTotal(){
-    let totalItems= carts.map(function(item){
-        return parseFloat(item.precioTotal)
-    });
-
-    let sum = totalItems.reduce(function(prev, next){
-        return prev+ next;
-    }, 0);
-
-console.log(totalItems)
-console.log(sum)
-}
-getTotal();*/
 
 // finalizar compra y validaciones
 document.addEventListener('DOMContentLoaded', function () {
