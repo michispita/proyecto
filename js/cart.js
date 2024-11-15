@@ -39,7 +39,7 @@ function carritoVacio () { // Verifica si el carrito está vacío
         displayProd();
         
         const subtotal = calcularSubtotal(); // Calcula el subtotal
-
+        localStorage.setItem('subtotalCheck', subtotal);
         carritoEspacio.innerHTML += `
         <div class="row align-items-start" id="carritoFinal">
             <div class="col">
@@ -115,7 +115,7 @@ function updateQuantity(index, change) {
     }
 
     // Actualiza localStorage
-    localStorage.setItem('cart', JSON.stringify(carts));
+    localStorage.setItem('cart', JSON.stringify(carts)); // USAR
 
     // Actualiza el carrito en la vista
     carritoVacio(); // Llama a esta función para actualizar el estado del carrito
@@ -123,7 +123,7 @@ function updateQuantity(index, change) {
 
 // Desafiate carrito
 function updateCartCount() {
-    let carts = JSON.parse(localStorage.getItem('cart')) || [];
+    
     let totalItems = 0;
 
     // Sumar la cantidad de todos los productos en el carrito
@@ -158,4 +158,78 @@ btnCheckout.addEventListener('click', () => {
 
 // abrir el modal
 document.getElementById('modal').addEventListener('shown.bs.modal', () => {
+
+
 });
+// opciones de pago MELI
+const btnOpcionesPago = document.getElementById("btnOpcionesPago");
+const opcionesPago = document.querySelectorAll(".formaPago-item");
+
+
+let metodoPagoSeleccionado = "";  
+
+
+// Agrega un evento a cada opción 
+opcionesPago.forEach(opcion => {
+    opcion.addEventListener("click", function(event) {
+        event.preventDefault(); 
+
+
+        // Actualiza el texto del botón 
+        btnOpcionesPago.textContent = this.textContent;
+
+
+        // Guarda
+        metodoPagoSeleccionado = this.textContent;
+    });
+});
+
+// Sección Costos LAU
+
+console.log(localStorage.getItem('subtotalCheck'));
+const subtotalCheckout = localStorage.getItem('subtotalCheck');
+const espacioSubtotal = document.getElementById('subtotal');
+
+espacioSubtotal.textContent = `Subtotal: $${subtotalCheckout} UYU`
+
+//Costo de envío (subtotal * porcentaje del envío seleccionado:Premium (0.15), Express (0.07) y Standard (0.05)
+
+function costosEnvio() {
+    let metodoPagoSeleccionado;
+    let sum = subtotalCheckout;
+
+    if (metodoPagoSeleccionado === document.getElementById("prem")) //  usar .check ?
+        {
+       let sum = subtotalCheckout * 0.15; // alert para ver si entra
+
+    } else if (metodoPagoSeleccionado === document.getElementById("express")) {
+        let sum = subtotalCheckout * 0.07;
+        
+    } else if (metodoPagoSeleccionado === document.getElementById("stand")){ 
+        let sum = subtotalCheckout * 0.05;
+    }
+    console.log(sum);
+};
+ costosEnvio();
+ console.log(subtotalCheckout);
+
+ function costoTotal(){
+
+
+ }
+/*
+
+
+ function getTotal(){
+    let totalItems= carts.map(function(item){
+        return parseFloat(item.precioTotal)
+    });
+
+    let sum = totalItems.reduce(function(prev, next){
+        return prev+ next;
+    }, 0);
+
+console.log(totalItems)
+console.log(sum)
+}
+getTotal();*/
