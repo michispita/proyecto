@@ -104,13 +104,20 @@
                   <label for="formaPago" class="col form-label checkoutOpc">Forma de Pago</label> <br>
                   
                   <div class="col dropdown">
-                    <button class=" btn btn-light dropdown-toggle btnOpciones" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-light dropdown-toggle btnOpciones" type="button" id="btnOpcionesPago" data-bs-toggle="dropdown" aria-expanded="false">
                       Opciones
+
                     </button>
                     <ul name="formaPago" class="dropdown-menu">
                       <li><a class="dropdown-item" href="#" >Tarjeta de crédito</a></li>
                       <li><a class="dropdown-item" href="#">Tarjeta de débito</a></li>
                       <li><a class="dropdown-item" href="#">Transferencia</a></li>
+
+                  </button>
+                    <ul name="formaPago" class="dropdown-menu" id="formaPagoMenu">
+                      <li><a class="dropdown-item formaPago-item" href="#">Tarjeta de crédito</a></li>
+                      <li><a class="dropdown-item formaPago-item" href="#">Tarjeta de débito</a></li>
+                      <li><a class="dropdown-item formaPago-item" href="#">Transferencia</a></li>
                     </ul>
                   </div>
                 </div>
@@ -131,7 +138,7 @@
             </form>
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-secondary">Finalizar compra</button>
+            <button type="button" class="btn btn-secondary" id="btnFinalizarCompra">Finalizar compra</button>
           </div>
       </div>
   </div>
