@@ -80,9 +80,9 @@
                         Opciones
                       </button>
                       <ul name="tipoEnvio" class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Premium 2 a 5 días (15%)</a></li>
-                        <li><a class="dropdown-item" href="#">Express 5 a 8 días (7%)</a></li>
-                        <li><a class="dropdown-item" href="#">Standard 12 a 15 días (5%)</a></li>
+                        <li><a class="dropdown-item" href="#"id="prem">Premium 2 a 5 días (15%)</a></li>
+                        <li><a class="dropdown-item" href="#" id="express">Express 5 a 8 días (7%)</a></li>
+                        <li><a class="dropdown-item" href="#" id="stand">Standard 12 a 15 días (5%)</a></li>
                       </ul>
                     </div>
                   </div>
@@ -106,6 +106,13 @@
                   <div class="col dropdown">
                     <button class="btn btn-light dropdown-toggle btnOpciones" type="button" id="btnOpcionesPago" data-bs-toggle="dropdown" aria-expanded="false">
                       Opciones
+
+                    </button>
+                    <ul name="formaPago" class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#" >Tarjeta de crédito</a></li>
+                      <li><a class="dropdown-item" href="#">Tarjeta de débito</a></li>
+                      <li><a class="dropdown-item" href="#">Transferencia</a></li>
+
                   </button>
                     <ul name="formaPago" class="dropdown-menu" id="formaPagoMenu">
                       <li><a class="dropdown-item formaPago-item" href="#">Tarjeta de crédito</a></li>
@@ -119,11 +126,11 @@
               <div class="seccionCheckout costosTotal">
                 <div class="row">
                   <label for="costosTotal" class="col form-label checkoutOpc">Costos</label> 
-                  <p class="col">Subototal</p>
-                  <p class="col">Costo de envio</p>
+                  <p class="col" id="subtotal">Subtotal</p>
+                  <p class="col" id="costEnvio">Costo de envio</p>
                 </div>
                 <div class="row">
-                  <p class="col">Total</p>
+                  <p class="col" id="total">Total</p>
                 </div>
               </div>
 
