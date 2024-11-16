@@ -13,18 +13,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
 //recuperar el prod agregado al carrito 
 const productosSeleccionados = carts = JSON.parse(localStorage.getItem('cart'));
 console.log(productosSeleccionados[0])
 console.log(productosSeleccionados)
 
-    /*en la constante de la url hay que suplantar la id del prod para poder recuperar la info
-    para eso hay que acceder al indice de lo agurardado en el carrito, para poder acceder despues
-    al id de ese indice y recien ahi suplantar ese id en la url que se fetchea  */
-
-    /*let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];  
-    cartItems.forEach(item => { console.log(`ID: ${item.id}, Nombre: ${item.name}, Precio: ${item.price}`); }); */
 
 //espacio en el html
 const carritoEspacio = document.getElementById("carritoEspacio");
@@ -46,7 +39,7 @@ function carritoVacio () { // Verifica si el carrito está vacío
         displayProd();
         
         const subtotal = calcularSubtotal(); // Calcula el subtotal
-
+        localStorage.setItem('subtotalCheck', subtotal);
         carritoEspacio.innerHTML += `
         <div class="row align-items-start" id="carritoFinal">
             <div class="col">
@@ -122,7 +115,7 @@ function updateQuantity(index, change) {
     }
 
     // Actualiza localStorage
-    localStorage.setItem('cart', JSON.stringify(carts));
+    localStorage.setItem('cart', JSON.stringify(carts)); // USAR
 
     // Actualiza el carrito en la vista
     carritoVacio(); // Llama a esta función para actualizar el estado del carrito
@@ -130,7 +123,7 @@ function updateQuantity(index, change) {
 
 // Desafiate carrito
 function updateCartCount() {
-    let carts = JSON.parse(localStorage.getItem('cart')) || [];
+    
     let totalItems = 0;
 
     // Sumar la cantidad de todos los productos en el carrito
@@ -154,23 +147,124 @@ carritoVacio ();
 
 
 
-/* { //si hay productos se despliegan
-    // Mostrar productos 
-    let positionOfProd = carts.findIndex((index) => index.prodID == prodID)
+//Modal
+const modal = new bootstrap.Modal(document.getElementById('modal'));
+const inputModal = document.getElementById('inputModal');
+const btnCheckout = document.getElementById('btnCheckout');
 
-    positionOfProd.forEach(producto => {
-        carritoEspacio.innerHTML += `
-        <div class="row">
-            <div class="col">
-                <h2>${producto.productName}</h2>
-                <img src="${producto.productImage}" alt="${producto.productName}">
-                <p>Cantidad: ${producto.cantidad}</p>
-                <a href="#" class="badge badge-secondary">Cantidad</a> 
-            </div>
-            <div class="col">
-                <h2>Precio total: $${producto.precioTotal}</h2>
-            </div>
-        </div>
-        `;
+btnCheckout.addEventListener('click', () => {
+    modal.show(); // Muestra el modal
+});
+
+// abrir el modal
+document.getElementById('modal').addEventListener('shown.bs.modal', () => {
+ laura
+
+
+});
+// opciones de pago MELI
+const btnOpcionesPago = document.getElementById("btnOpcionesPago");
+const opcionesPago = document.querySelectorAll(".formaPago-item");
+
+
+let metodoPagoSeleccionado = "";  
+
+
+// Agrega un evento a cada opción 
+opcionesPago.forEach(opcion => {
+    opcion.addEventListener("click", function(event) {
+        event.preventDefault(); 
+
+
+
+        // Actualiza el texto del botón 
+        btnOpcionesPago.textContent = this.textContent;
+
+
+
+        // Actualiza el texto del botón 
+        btnOpcionesPago.textContent = this.textContent;
+        // Guarda
+        metodoPagoSeleccionado = this.textContent;
     });
-} */
+});
+
+
+// Sección Costos LAU
+
+console.log(localStorage.getItem('subtotalCheck'));
+const subtotalCheckout = localStorage.getItem('subtotalCheck');
+const espacioSubtotal = document.getElementById('subtotal');
+
+espacioSubtotal.textContent = `Subtotal: $${subtotalCheckout} UYU`
+
+//Costo de envío (subtotal * porcentaje del envío seleccionado:Premium (0.15), Express (0.07) y Standard (0.05)
+
+function costosEnvio() {
+    let metodoPagoSeleccionado;
+    let sum = subtotalCheckout;
+
+    if (metodoPagoSeleccionado === document.getElementById("prem")) //  usar .check ? asociarlo a los eventos?
+        {
+       let sum = subtotalCheckout * 0.15; // alert para ver si entra
+
+    } else if (metodoPagoSeleccionado === document.getElementById("express")) {
+        let sum = subtotalCheckout * 0.07;
+        
+    } else if (metodoPagoSeleccionado === document.getElementById("stand")){ 
+        let sum = subtotalCheckout * 0.05;
+    }
+    console.log(sum);
+};
+ costosEnvio();
+ console.log(subtotalCheckout);
+
+ function costoTotal(){
+    
+ // subtotal + costo de envio
+ }
+
+// finalizar compra y validaciones
+document.addEventListener('DOMContentLoaded', function () {
+    // Recupera el botón y asigna el evento 
+    const btnFinalizarCompra = document.getElementById("btnFinalizarCompra");
+    if (btnFinalizarCompra) {
+        btnFinalizarCompra.addEventListener("click", finalizarCompra);
+    }
+});
+
+function finalizarCompra() {
+    const inputDep = document.getElementById('inputDep').value.trim();
+    const inputBarrio = document.getElementById('inputBarrio').value.trim();
+    const inputCalle = document.getElementById('inputCalle').value.trim();
+
+    let mensajeError = ""; // guarda errores para mostrarlos si falta algo
+
+    //  dirección
+    if (!inputDep || !inputBarrio || !inputCalle) {
+        mensajeError += "Completa todos los campos de dirección.\n";
+    }
+
+    //  opción de pago 
+    if (!metodoPagoSeleccionado) {
+        mensajeError += "Selecciona una forma de pago.\n";
+    }
+
+    // cantidad de productos en el carrito
+    const cantidadesValidas = carts.every(cart => cart.quantity > 0);
+    if (!cantidadesValidas) {
+        mensajeError += "Verifica las cantidades de cada producto en el carrito.\n";
+    }
+
+    // da errores o confirmar la compra
+    if (mensajeError) {
+        alert(mensajeError); 
+    } else {
+        // oculta el modal y confirma la compra
+        modal.hide();
+        alert("¡Compra finalizada con éxito!");
+    }
+}
+
+document.getElementById("btnFinalizarCompra").addEventListener("click", finalizarCompra);
+
