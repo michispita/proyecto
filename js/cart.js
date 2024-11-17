@@ -71,12 +71,19 @@ const displayProd = () => {
                 <div class="col">
                     <h2 class="prodCarritoName">${producto.name}</h2>
                     <img src="${producto.img}" alt="${producto.name}" class="prodCarritoImg">
-
+            
                     <!-- Botones de cantidad -->
-                    <div class="prodCarritoQuantity">
+
+                    <div class="prodCarritoQuantity d-flex align-items-center">
+
                         <button onclick="updateQuantity(${index}, -1)">-</button>
                         <span id="quantityDisplay-${index}">${cart.quantity}</span>
                         <button onclick="updateQuantity(${index}, 1)">+</button>
+                        
+                        <!-- Ícono de basura -->
+                     <button onclick="eliminarProducto(${index})" class="btn btn-danger ms-3 btn-trash">
+                      <i class="fas fa-trash"></i>
+                     </button>
                     </div>
                 </div>
                 <div class="col">
@@ -145,8 +152,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 carritoVacio ();
 
-
-
 //Modal
 const modal = new bootstrap.Modal(document.getElementById('modal'));
 const inputModal = document.getElementById('inputModal');
@@ -158,4 +163,4 @@ btnCheckout.addEventListener('click', () => {
 
 // abrir el modal
 document.getElementById('modal').addEventListener('shown.bs.modal', () => {
-});
+})
