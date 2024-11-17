@@ -186,7 +186,6 @@ document.getElementById('modal').addEventListener('shown.bs.modal', () => {
 
 })
 
-});
 
 // Usar la función existente calcularSubtotal
 function calcularCostoEnvio(subtotal, porcentajeEnvio) {
