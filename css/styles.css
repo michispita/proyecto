@@ -1185,3 +1185,14 @@ body[data-bs-theme="dark"] {
 .costosTotal {
   margin-top: 2rem;
 }
+
+/*css del boton borrar y la cantidad*/
+
+.prodCarritoQuantity {
+  justify-content: center;
+  gap: 5px;
+}
+
+.btn-trash {
+  margin-left: 100px; 
+}
