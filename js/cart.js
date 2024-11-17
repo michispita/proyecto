@@ -222,12 +222,13 @@ document.addEventListener('DOMContentLoaded', actualizarTotal);
 
 // finalizar compra y validaciones
 document.addEventListener('DOMContentLoaded', function () {
-    // Recupera el botón y asigna el evento 
+    // recupera el botón y asigna el evento 
     const btnFinalizarCompra = document.getElementById("btnFinalizarCompra");
     if (btnFinalizarCompra) {
         btnFinalizarCompra.addEventListener("click", finalizarCompra);
     }
     metodoEnvioSelect.addEventListener('change', actualizarModalCostos);
+    
 });
 
 
@@ -263,7 +264,7 @@ function finalizarCompra() {
     const inputDep = document.getElementById('inputDep').value.trim();
     const inputBarrio = document.getElementById('inputBarrio').value.trim();
     const inputCalle = document.getElementById('inputCalle').value.trim();
-
+    const metodoEnvioSeleccionado = metodoEnvioSelect.value;
     let mensajeError = ""; // guarda errores para mostrarlos si falta algo
 
     //  dirección
@@ -276,6 +277,9 @@ function finalizarCompra() {
         mensajeError += "Selecciona una forma de pago.\n";
     }
 
+    if (!metodoEnvioSeleccionado || parseFloat(metodoEnvioSeleccionado) === 0) {
+        mensajeError += "Selecciona un método de envío.\n";
+    }
     // cantidad de productos en el carrito
     const cantidadesValidas = carts.every(cart => cart.quantity > 0);
     if (!cantidadesValidas) {
