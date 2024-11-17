@@ -152,8 +152,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 carritoVacio ();
 
-
-
 //Modal
 const modal = new bootstrap.Modal(document.getElementById('modal'));
 const inputModal = document.getElementById('inputModal');
@@ -185,7 +183,9 @@ btnCheckout.addEventListener('click', () => {
 
 // abrir el modal
 document.getElementById('modal').addEventListener('shown.bs.modal', () => {
-});
+
+})
+
 
 // Usar la función existente calcularSubtotal
 function calcularCostoEnvio(subtotal, porcentajeEnvio) {
@@ -305,6 +305,7 @@ function finalizarCompra() {
 
 document.getElementById("btnFinalizarCompra").addEventListener("click", finalizarCompra);
 
+
 function eliminarProducto(index) {
     // aqui se elimina el producto del array 'carts'
     carts.splice(index, 1);
@@ -346,4 +347,3 @@ function eliminarProducto(index) {
     updateCartCount();
     actualizarSubtotal(); // Recalcula el subtotal
 }
-
