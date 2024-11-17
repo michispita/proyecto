@@ -157,37 +157,9 @@ btnCheckout.addEventListener('click', () => {
     modal.show(); // Muestra el modal
 });
 
+
 // abrir el modal
 document.getElementById('modal').addEventListener('shown.bs.modal', () => {
- laura
-
-
-});
-// opciones de pago MELI
-const btnOpcionesPago = document.getElementById("btnOpcionesPago");
-const opcionesPago = document.querySelectorAll(".formaPago-item");
-
-
-let metodoPagoSeleccionado = "";  
-
-
-// Agrega un evento a cada opción 
-opcionesPago.forEach(opcion => {
-    opcion.addEventListener("click", function(event) {
-        event.preventDefault(); 
-
-
-
-        // Actualiza el texto del botón 
-        btnOpcionesPago.textContent = this.textContent;
-
-
-
-        // Actualiza el texto del botón 
-        btnOpcionesPago.textContent = this.textContent;
-        // Guarda
-        metodoPagoSeleccionado = this.textContent;
-    });
 });
 
 
@@ -223,6 +195,35 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+
+// opciones de pago MELI
+const btnOpcionesPago = document.getElementById("btnOpcionesPago");
+const opcionesPago = document.querySelectorAll(".formaPago-item");
+
+
+let metodoPagoSeleccionado = "";  
+
+
+// Agrega un evento a cada opción 
+opcionesPago.forEach(opcion => {
+    opcion.addEventListener("click", function(event) {
+        event.preventDefault(); 
+
+
+
+        // Actualiza el texto del botón 
+        btnOpcionesPago.textContent = this.textContent;
+
+
+
+        // Actualiza el texto del botón 
+        btnOpcionesPago.textContent = this.textContent;
+        // Guarda
+        metodoPagoSeleccionado = this.textContent;
+    });
+});
+
+
 function finalizarCompra() {
     const inputDep = document.getElementById('inputDep').value.trim();
     const inputBarrio = document.getElementById('inputBarrio').value.trim();
@@ -257,4 +258,3 @@ function finalizarCompra() {
 }
 
 document.getElementById("btnFinalizarCompra").addEventListener("click", finalizarCompra);
-
