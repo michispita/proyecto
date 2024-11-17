@@ -153,7 +153,25 @@ const inputModal = document.getElementById('inputModal');
 const btnCheckout = document.getElementById('btnCheckout');
 
 
+function calcularCostoEnvio(subtotal, porcentajeEnvio) {
+    return subtotal * porcentajeEnvio;
+}
+
+function actualizarModalCostos() {
+    const subtotal = calcularSubtotal(); // esta arriba del todo
+    const porcentajeEnvio = parseFloat(metodoEnvioSelect.value || 0); // valor selecionado
+    const costoEnvio = calcularCostoEnvio(subtotal, porcentajeEnvio); // costo del envío
+    const total = subtotal + costoEnvio; // calculado total
+
+    // actu los valores en modal
+    document.getElementById('subtotal').textContent = `Subtotal: $${subtotal.toFixed(2)} UYU`;
+    document.getElementById('costEnvio').textContent = `Costo de Envío: $${costoEnvio.toFixed(2)} UYU`;
+    document.getElementById('total').textContent = `Total: $${total.toFixed(2)} UYU`;
+}
+
+
 btnCheckout.addEventListener('click', () => {
+    actualizarModalCostos();
     modal.show(); // Muestra el modal
 });
 
@@ -162,6 +180,22 @@ btnCheckout.addEventListener('click', () => {
 document.getElementById('modal').addEventListener('shown.bs.modal', () => {
 });
 
+// Usar la función existente calcularSubtotal
+function calcularCostoEnvio(subtotal, porcentajeEnvio) {
+    return subtotal * porcentajeEnvio;
+}
+
+function actualizarModalCostos() {
+    const subtotal = calcularSubtotal(); // Usar función existente
+    const porcentajeEnvio = parseFloat(metodoEnvioSelect.value || 0); // Valor del método de envío seleccionado
+    const costoEnvio = calcularCostoEnvio(subtotal, porcentajeEnvio); // Costo del envío
+    const total = subtotal + costoEnvio; // Total calculado
+
+    // Actualizar los valores en el modal
+    document.getElementById('subtotal').textContent = `Subtotal: $${subtotal.toFixed(2)} UYU`;
+    document.getElementById('costEnvio').textContent = `Costo de Envío: $${costoEnvio.toFixed(2)} UYU`;
+    document.getElementById('total').textContent = `Total: $${total.toFixed(2)} UYU`;
+}
 
 // Sección Costos LAU
 const metodoEnvioSelect = document.getElementById('metodoEnvio');
@@ -193,6 +227,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (btnFinalizarCompra) {
         btnFinalizarCompra.addEventListener("click", finalizarCompra);
     }
+    metodoEnvioSelect.addEventListener('change', actualizarModalCostos);
 });
 
 
@@ -258,3 +293,4 @@ function finalizarCompra() {
 }
 
 document.getElementById("btnFinalizarCompra").addEventListener("click", finalizarCompra);
+
