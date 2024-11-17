@@ -79,10 +79,13 @@
                       <button class="btn btn-light dropdown-toggle btnOpciones" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Opciones
                       </button>
-                      <ul name="tipoEnvio" class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"id="prem">Premium 2 a 5 días (15%)</a></li>
-                        <li><a class="dropdown-item" href="#" id="express">Express 5 a 8 días (7%)</a></li>
-                        <li><a class="dropdown-item" href="#" id="stand">Standard 12 a 15 días (5%)</a></li>
+                      <ul class="dropdown-menu">
+                        <label for="metodoEnvio">Método de envío:</label>
+                        <select id="metodoEnvio" class="form-select">
+                          <option value="0.15">Premium 2 a 5 días (15%)</option>
+                          <option value="0.07">Express 5 a 8 días (7%)</option>
+                          <option value="0.05">Standard 12 a 15 días (5%)</option>
+                        </select>
                       </ul>
                     </div>
                   </div>
