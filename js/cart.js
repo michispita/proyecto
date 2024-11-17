@@ -337,13 +337,3 @@ function updateCartCount() {
         cartCountElement.textContent = totalItems;
     }
 }
-
-
-
-function eliminarProducto(index) {
-    carts.splice(index, 1);
-    localStorage.setItem('cart', JSON.stringify(carts));
-    carritoVacio();
-    updateCartCount();
-    actualizarSubtotal(); // Recalcula el subtotal
-}
