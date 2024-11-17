@@ -152,6 +152,7 @@ const modal = new bootstrap.Modal(document.getElementById('modal'));
 const inputModal = document.getElementById('inputModal');
 const btnCheckout = document.getElementById('btnCheckout');
 
+
 btnCheckout.addEventListener('click', () => {
     modal.show(); // Muestra el modal
 });
@@ -191,38 +192,27 @@ opcionesPago.forEach(opcion => {
 
 
 // Sección Costos LAU
-
-console.log(localStorage.getItem('subtotalCheck'));
-const subtotalCheckout = localStorage.getItem('subtotalCheck');
+const metodoEnvioSelect = document.getElementById('metodoEnvio');
 const espacioSubtotal = document.getElementById('subtotal');
+const espacioTotal = document.getElementById('total');
 
-espacioSubtotal.textContent = `Subtotal: $${subtotalCheckout} UYU`
+const subtotalCheckout = parseFloat(localStorage.getItem('subtotalCheck')) || 0;
 
 //Costo de envío (subtotal * porcentaje del envío seleccionado:Premium (0.15), Express (0.07) y Standard (0.05)
 
-function costosEnvio() {
-    let metodoPagoSeleccionado;
-    let sum = subtotalCheckout;
+function actualizarTotal() {
+    const porcentajeEnvio = parseFloat(metodoEnvioSelect.value); // Obtiene el porcentaje del envío
+    const costoEnvio = subtotalCheckout * porcentajeEnvio; // Calcula el costo de envío
+    const total = subtotalCheckout + costoEnvio; // Calcula el total
 
-    if (metodoPagoSeleccionado === document.getElementById("prem")) //  usar .check ? asociarlo a los eventos?
-        {
-       let sum = subtotalCheckout * 0.15; // alert para ver si entra
+    // muestra el total actualizado
+    espacioTotal.textContent = `Total: $${total.toFixed(2)} UYU`;
+}
 
-    } else if (metodoPagoSeleccionado === document.getElementById("express")) {
-        let sum = subtotalCheckout * 0.07;
-        
-    } else if (metodoPagoSeleccionado === document.getElementById("stand")){ 
-        let sum = subtotalCheckout * 0.05;
-    }
-    console.log(sum);
-};
- costosEnvio();
- console.log(subtotalCheckout);
+metodoEnvioSelect.addEventListener('change', actualizarTotal);
 
- function costoTotal(){
-    
- // subtotal + costo de envio
- }
+// da el total al cargar la página (en caso de que haya un valor preseleccionado)
+document.addEventListener('DOMContentLoaded', actualizarTotal);
 
 // finalizar compra y validaciones
 document.addEventListener('DOMContentLoaded', function () {
