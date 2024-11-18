@@ -39,7 +39,7 @@ function carritoVacio () { // Verifica si el carrito está vacío
         displayProd();
         
         const subtotal = calcularSubtotal(); // Calcula el subtotal
-
+        localStorage.setItem('subtotalCheck', subtotal);
         carritoEspacio.innerHTML += `
         <div class="row align-items-start" id="carritoFinal">
             <div class="col">
@@ -71,12 +71,19 @@ const displayProd = () => {
                 <div class="col">
                     <h2 class="prodCarritoName">${producto.name}</h2>
                     <img src="${producto.img}" alt="${producto.name}" class="prodCarritoImg">
-
+            
                     <!-- Botones de cantidad -->
-                    <div class="prodCarritoQuantity">
+
+                    <div class="prodCarritoQuantity d-flex align-items-center">
+
                         <button onclick="updateQuantity(${index}, -1)">-</button>
                         <span id="quantityDisplay-${index}">${cart.quantity}</span>
                         <button onclick="updateQuantity(${index}, 1)">+</button>
+                        
+                        <!-- Ícono de basura -->
+                     <button onclick="eliminarProducto(${index})" class="btn btn-danger ms-3 btn-trash">
+                      <i class="fas fa-trash"></i>
+                     </button>
                     </div>
                 </div>
                 <div class="col">
@@ -115,7 +122,7 @@ function updateQuantity(index, change) {
     }
 
     // Actualiza localStorage
-    localStorage.setItem('cart', JSON.stringify(carts));
+    localStorage.setItem('cart', JSON.stringify(carts)); // USAR
 
     // Actualiza el carrito en la vista
     carritoVacio(); // Llama a esta función para actualizar el estado del carrito
@@ -123,7 +130,7 @@ function updateQuantity(index, change) {
 
 // Desafiate carrito
 function updateCartCount() {
-    let carts = JSON.parse(localStorage.getItem('cart')) || [];
+    
     let totalItems = 0;
 
     // Sumar la cantidad de todos los productos en el carrito
@@ -145,17 +152,188 @@ document.addEventListener('DOMContentLoaded', function() {
 
 carritoVacio ();
 
-
-
 //Modal
 const modal = new bootstrap.Modal(document.getElementById('modal'));
 const inputModal = document.getElementById('inputModal');
 const btnCheckout = document.getElementById('btnCheckout');
 
+
+function calcularCostoEnvio(subtotal, porcentajeEnvio) {
+    return subtotal * porcentajeEnvio;
+}
+
+function actualizarModalCostos() {
+    const subtotal = calcularSubtotal(); // esta arriba del todo
+    const porcentajeEnvio = parseFloat(metodoEnvioSelect.value || 0); // valor selecionado
+    const costoEnvio = calcularCostoEnvio(subtotal, porcentajeEnvio); // costo del envío
+    const total = subtotal + costoEnvio; // calculado total
+
+    // actu los valores en modal
+    document.getElementById('subtotal').textContent = `Subtotal: $${subtotal.toFixed(2)} UYU`;
+    document.getElementById('costEnvio').textContent = `Costo de Envío: $${costoEnvio.toFixed(2)} UYU`;
+    document.getElementById('total').textContent = `Total: $${total.toFixed(2)} UYU`;
+}
+
+
 btnCheckout.addEventListener('click', () => {
+    actualizarModalCostos();
     modal.show(); // Muestra el modal
 });
 
+
 // abrir el modal
 document.getElementById('modal').addEventListener('shown.bs.modal', () => {
+
+})
+
+
+// Usar la función existente calcularSubtotal
+function calcularCostoEnvio(subtotal, porcentajeEnvio) {
+    return subtotal * porcentajeEnvio;
+}
+
+function actualizarModalCostos() {
+    const subtotal = calcularSubtotal(); // Usar función existente
+    const porcentajeEnvio = parseFloat(metodoEnvioSelect.value || 0); // Valor del método de envío seleccionado
+    const costoEnvio = calcularCostoEnvio(subtotal, porcentajeEnvio); // Costo del envío
+    const total = subtotal + costoEnvio; // Total calculado
+
+    // Actualizar los valores en el modal
+    document.getElementById('subtotal').textContent = `Subtotal: $${subtotal.toFixed(2)} UYU`;
+    document.getElementById('costEnvio').textContent = `Costo de Envío: $${costoEnvio.toFixed(2)} UYU`;
+    document.getElementById('total').textContent = `Total: $${total.toFixed(2)} UYU`;
+}
+
+// Sección Costos LAU
+const metodoEnvioSelect = document.getElementById('metodoEnvio');
+const espacioSubtotal = document.getElementById('subtotal');
+const espacioTotal = document.getElementById('total');
+
+const subtotalCheckout = parseFloat(localStorage.getItem('subtotalCheck')) || 0;
+
+//Costo de envío (subtotal * porcentaje del envío seleccionado:Premium (0.15), Express (0.07) y Standard (0.05)
+
+function actualizarTotal() {
+    const porcentajeEnvio = parseFloat(metodoEnvioSelect.value); // Obtiene el porcentaje del envío
+    const costoEnvio = subtotalCheckout * porcentajeEnvio; // Calcula el costo de envío
+    const total = subtotalCheckout + costoEnvio; // Calcula el total
+
+    // muestra el total actualizado
+    espacioTotal.textContent = `Total: $${total.toFixed(2)} UYU`;
+}
+
+metodoEnvioSelect.addEventListener('change', actualizarTotal);
+
+// da el total al cargar la página (en caso de que haya un valor preseleccionado)
+document.addEventListener('DOMContentLoaded', actualizarTotal);
+
+// finalizar compra y validaciones
+document.addEventListener('DOMContentLoaded', function () {
+    // recupera el botón y asigna el evento 
+    const btnFinalizarCompra = document.getElementById("btnFinalizarCompra");
+    if (btnFinalizarCompra) {
+        btnFinalizarCompra.addEventListener("click", finalizarCompra);
+    }
+    metodoEnvioSelect.addEventListener('change', actualizarModalCostos);
+    
 });
+
+
+// opciones de pago MELI
+const btnOpcionesPago = document.getElementById("btnOpcionesPago");
+const opcionesPago = document.querySelectorAll(".formaPago-item");
+
+
+let metodoPagoSeleccionado = "";  
+
+
+// Agrega un evento a cada opción 
+opcionesPago.forEach(opcion => {
+    opcion.addEventListener("click", function(event) {
+        event.preventDefault(); 
+
+
+
+        // Actualiza el texto del botón 
+        btnOpcionesPago.textContent = this.textContent;
+
+
+
+        // Actualiza el texto del botón 
+        btnOpcionesPago.textContent = this.textContent;
+        // Guarda
+        metodoPagoSeleccionado = this.textContent;
+    });
+});
+
+
+function finalizarCompra() {
+    const inputDep = document.getElementById('inputDep').value.trim();
+    const inputBarrio = document.getElementById('inputBarrio').value.trim();
+    const inputCalle = document.getElementById('inputCalle').value.trim();
+    const metodoEnvioSeleccionado = metodoEnvioSelect.value;
+    let mensajeError = ""; // guarda errores para mostrarlos si falta algo
+
+    //  dirección
+    if (!inputDep || !inputBarrio || !inputCalle) {
+        mensajeError += "Completa todos los campos de dirección.\n";
+    }
+
+    //  opción de pago 
+    if (!metodoPagoSeleccionado) {
+        mensajeError += "Selecciona una forma de pago.\n";
+    }
+
+    if (!metodoEnvioSeleccionado || parseFloat(metodoEnvioSeleccionado) === 0) {
+        mensajeError += "Selecciona un método de envío.\n";
+    }
+    // cantidad de productos en el carrito
+    const cantidadesValidas = carts.every(cart => cart.quantity > 0);
+    if (!cantidadesValidas) {
+        mensajeError += "Verifica las cantidades de cada producto en el carrito.\n";
+    }
+
+    // da errores o confirmar la compra
+    if (mensajeError) {
+        alert(mensajeError); 
+    } else {
+        // oculta el modal y confirma la compra
+        modal.hide();
+        alert("¡Compra finalizada con éxito!");
+    }
+}
+
+document.getElementById("btnFinalizarCompra").addEventListener("click", finalizarCompra);
+
+
+function eliminarProducto(index) {
+    // aqui se elimina el producto del array 'carts'
+    carts.splice(index, 1);
+
+    // Actualizamos el localStorage
+    localStorage.setItem('cart', JSON.stringify(carts));
+
+    // Recalculamos el subtotal
+    const subtotal = calcularSubtotal();
+    localStorage.setItem('subtotalCheck', subtotal);
+
+    // Actualizamos la vista del carrito
+    carritoVacio(); 
+    updateCartCount(); // Actualizamos el badge con la cantidad total
+}
+
+
+function updateCartCount() {
+    let totalItems = 0;
+
+    // aqui se suma la cantidad de todos los productos en el carrito
+    carts.forEach(item => {
+        totalItems += item.quantity;
+    });
+
+    // Actualizamos el contador en el ícono del carrito
+    const cartCountElement = document.getElementById('cart-count');
+    if (cartCountElement) {
+        cartCountElement.textContent = totalItems;
+    }
+}
