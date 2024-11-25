@@ -306,3 +306,34 @@ function finalizarCompra() {
 document.getElementById("btnFinalizarCompra").addEventListener("click", finalizarCompra);
 
 
+function eliminarProducto(index) {
+    // aqui se elimina el producto del array 'carts'
+    carts.splice(index, 1);
+
+    // Actualizamos el localStorage
+    localStorage.setItem('cart', JSON.stringify(carts));
+
+    // Recalculamos el subtotal
+    const subtotal = calcularSubtotal();
+    localStorage.setItem('subtotalCheck', subtotal);
+
+    // Actualizamos la vista del carrito
+    carritoVacio(); 
+    updateCartCount(); // Actualizamos el badge con la cantidad total
+}
+
+
+function updateCartCount() {
+    let totalItems = 0;
+
+    // aqui se suma la cantidad de todos los productos en el carrito
+    carts.forEach(item => {
+        totalItems += item.quantity;
+    });
+
+    // Actualizamos el contador en el ícono del carrito
+    const cartCountElement = document.getElementById('cart-count');
+    if (cartCountElement) {
+        cartCountElement.textContent = totalItems;
+    }
+}
