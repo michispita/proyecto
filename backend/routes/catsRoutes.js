@@ -1,3 +1,4 @@
+// Carpeta donde colocaremos todas las rutas (o endpoints) los cuales el servidor espera respuesta.
 const express = require("express");
 const catsRouter = express.Router();
 
