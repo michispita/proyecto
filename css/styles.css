@@ -1163,7 +1163,7 @@ body[data-bs-theme="dark"] {
   margin: 0.5 auto 0.5 auto;
 }
 
-.checkoutOpc {
+.checkoutOpc, #total {
   font-weight: bold;
 }
 
@@ -1184,4 +1184,28 @@ body[data-bs-theme="dark"] {
 
 .costosTotal {
   margin-top: 2rem;
+}
+
+#costos {
+  max-width: 20%;
+}
+
+#total {
+  text-align: center;
+}
+
+#btnFinalizarCompra {
+  text-align: center;
+  margin: auto;
+}
+
+/*css del boton borrar y la cantidad*/
+
+.prodCarritoQuantity {
+  justify-content: center;
+  gap: 5px;
+}
+
+.btn-trash {
+  margin-left: 100px; 
 }
