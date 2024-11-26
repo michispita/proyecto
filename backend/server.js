@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 });
 
 // Usar las rutas de la API
-app.use("/api", apiRoutes);
+app.use("/cats", catsRoutes);
 
 // Iniciar el servidor
 app.listen(PORT, () => {
