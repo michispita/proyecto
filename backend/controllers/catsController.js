@@ -1,3 +1,4 @@
+// Carpeta donde se colocan los archivos encargados de manejar la lógica detrás del manejo de las peticiones.
 // Importamos los models necesarios
 const catsModel = require("../models/catsModel");
 
