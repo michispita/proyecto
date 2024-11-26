@@ -1,3 +1,11 @@
+/*Modificar las rutas del archivo init.js para que apunten al servidor local.
+será que se refiere a algo de esto?
+los modulos desde node.js se importan asi ej: const express = require("express");
+                                              const peopleRouter = express.Router();
+                                              despues se importan los controllers necesrios
+los modulos js propios del proyecto con ruta relativa ej: const peopleController = require("../controllers/peopleController");
+y despues cada ruta asociada a su metodo. ej : peopleRouter.get("/", peopleController.getUsers);
+*/
 const CATEGORIES_URL = "https://japceibal.github.io/emercado-api/cats/cat.json";
 const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json";
 const PRODUCTS_URL = "https://japceibal.github.io/emercado-api/cats_products/";
