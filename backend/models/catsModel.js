@@ -32,16 +32,16 @@ const getCats = async () => {
     return false;
   };
   
-  const createUser = async (user) => {
+  const createCat = async (cat) => {
     let conn;
     try {
       conn = await pool.getConnection();
       const response = await conn.query(
-        `INSERT INTO people(name, lastname, email) VALUE(?, ?, ?)`,
-        [user.name, user.lastname, user.email]
+        `INSERT INTO cats(id, name, description, productCount, imgSrc) VALUE(?, ?, ?, ?, ?)`,
+        [cat.id, cat.name, cat.description, cat.productCount, cat.imgSrc]
       );
   
-      return { id: parseInt(response.insertId), ...user };
+      return { id: parseInt(response.insertId), ...cat };
     } catch (error) {
       console.log(error);
     } finally {
@@ -50,16 +50,16 @@ const getCats = async () => {
     return false;
   };
   
-  const updateUser = async (id, user) => {
+  const updateCat = async (id, cat) => {
     let conn;
     try {
       conn = await pool.getConnection();
       await conn.query(
-        `UPDATE people SET name=?, lastname=?, email=? WHERE id=?`,
-        [user.name, user.lastname, user.email, id]
+        `UPDATE cat SET name=?, description=?, productCount=?, imgSrc=? WHERE id=?`,
+        [cat.name, cat.description, cat.productCount, cat.imgSrc, id]
       );
   
-      return { id, ...user };
+      return { id, ...cat };
     } catch (error) {
       console.log(error);
     } finally {
@@ -68,11 +68,11 @@ const getCats = async () => {
     return false;
   };
   
-  const deleteUser = async (id) => {
+  const deleteCat = async (id) => {
     let conn;
     try {
       conn = await pool.getConnection();
-      await conn.query("DELETE FROM people WHERE id=?", [id]);
+      await conn.query("DELETE FROM cats WHERE id=?", [id]);
   
       return true;
     } catch (error) {
@@ -84,9 +84,9 @@ const getCats = async () => {
   };
   
   module.exports = {
-    getUsers,
-    getUserById,
-    createUser,
-    updateUser,
-    deleteUser,
+    getCats,
+    getCatById,
+    createCat,
+    updateCat,
+    deleteCat,
   };
