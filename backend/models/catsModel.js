@@ -1,3 +1,4 @@
+// Carpeta en la cual colocaremos todos los archivos que interectúan con la base de datos.
 const getCats = async () => {
     let conn;
     try {
