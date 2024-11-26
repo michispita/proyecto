@@ -1,5 +1,5 @@
 const express = require("express");
-const apiRoutes = require("./routes/apiRoutes"); // Importamos las rutas
+const apiRoutes = require("./routes/apiRoutes"); // Importamos las rutas Duda: antes de routes no falta la carpeta o solo con el punto basta?
 const app = express();
 const PORT = 3000;
 
