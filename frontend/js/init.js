@@ -6,14 +6,15 @@ los modulos desde node.js se importan asi ej: const express = require("express")
 los modulos js propios del proyecto con ruta relativa ej: const peopleController = require("../controllers/peopleController");
 y despues cada ruta asociada a su metodo. ej : peopleRouter.get("/", peopleController.getUsers);
 */
-const CATEGORIES_URL = "https://japceibal.github.io/emercado-api/cats/cat.json";
-const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json";
-const PRODUCTS_URL = "https://japceibal.github.io/emercado-api/cats_products/";
-const PRODUCT_INFO_URL = "https://japceibal.github.io/emercado-api/products/";
-const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/products_comments/";
-const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
-const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
-const EXT_TYPE = ".json";
+//O.O los exporta en models/apiModels.js y también en controllers/apiControllers.js ? NO deberia exportarlos en uno y despues importarlo en otro?
+const CATEGORIES_URL = require( " ../backend/data/cats") ; //"https://japceibal.github.io/emercado-api/cats/cat.json"-las categorias
+const PUBLISH_PRODUCT_URL = require( " ../backend/data/sell ");//"https://japceibal.github.io/emercado-api/sell/publish.json"- mensaje de publicacion exitosa
+const PRODUCTS_URL = require( " ../backend/data/cats_products") ;//"https://japceibal.github.io/emercado-api/cats_products/"-los productos de cada categoria
+const PRODUCT_INFO_URL =  require("../backend/data/products"); //"https://japceibal.github.io/emercado-api/products/"-info de cada producto
+const PRODUCT_INFO_COMMENTS_URL =  require("../backend/data/products_comments");//"https://japceibal.github.io/emercado-api/products_comments/"-los comentarios
+const CART_INFO_URL =  require( " ../backend/data/user_cart") ;//"https://japceibal.github.io/emercado-api/user_cart/"-la info del carrito
+const CART_BUY_URL =  require( " ../backend/data/cart") ;//"https://japceibal.github.io/emercado-api/cart/buy.json";-mensaje de compra exitosa
+const EXT_TYPE = ".json"; // ???
 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
