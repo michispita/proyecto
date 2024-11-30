@@ -228,9 +228,6 @@ opcionesPago.forEach(opcion => {
 
         // Actualiza el texto del botón 
         btnOpcionesPago.textContent = this.textContent;
-
-        // Actualiza el texto del botón 
-        btnOpcionesPago.textContent = this.textContent;
         // Guarda
         metodoPagoSeleccionado = this.textContent;
     });
@@ -292,18 +289,3 @@ function eliminarProducto(index) {
     updateCartCount(); // Actualizamos el badge con la cantidad total
 }
 
-
-function updateCartCount() {
-    let totalItems = 0;
-
-    // aqui se suma la cantidad de todos los productos en el carrito
-    carts.forEach(item => {
-        totalItems += item.quantity;
-    });
-
-    // Actualizamos el contador en el ícono del carrito
-    const cartCountElement = document.getElementById('cart-count');
-    if (cartCountElement) {
-        cartCountElement.textContent = totalItems;
-    }
-}
