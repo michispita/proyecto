@@ -91,7 +91,7 @@ const getUserCart = async (req, res) => {
 };
 
 
-module.exports = {
+module.exports = { 
     getCats,
     getCatById,
     getCatProds,
