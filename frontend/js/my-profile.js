@@ -1,14 +1,12 @@
-
-
 //Para ver el nombre de usuario
 document.addEventListener('DOMContentLoaded', function () {
-  // Obtener el nombre de usuario almacenado
+// Obtener el nombre de usuario almacenado
   const storedUsername = localStorage.getItem('username');
-  // Sino hay un nombre de usuario lo manda al login
+// Sino hay un nombre de usuario lo manda al login
   if (!storedUsername) {
       window.location.href = 'login.html';
   } else {
-          // Si hay un nombre de usuario almacenado, actualizar el menú
+// Si hay un nombre de usuario almacenado, actualizar el menú
       const usernameMenuItem = document.getElementById('username-menu-item');
       if (usernameMenuItem) {
           usernameMenuItem.innerHTML = `<a class="nav-link" href="my-profile.html">${storedUsername}</a>`;
@@ -19,9 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Script de validación de Bootstrap
 (() => {
   'use strict'
-
   const forms = document.querySelectorAll('.needs-validation')
-
   // Recorremos todos los formularios que tienen la clase needs-validation
   Array.from(forms).forEach(form => {
     form.addEventListener('submit', event => {
@@ -40,10 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
 })();
 
 
-
 // para poder guardar datos en el localStorage
 function guardarDatos() {
-
   //recuperamos el mail que ingreso el usuario al principio del login
   const storedUsername = localStorage.getItem("username");
   if (!storedUsername) {
@@ -56,11 +50,8 @@ function guardarDatos() {
   const segNombre = document.getElementById("segNombre").value;
   const apellido = document.getElementById("apellido").value;
   const segApellido = document.getElementById("segApellido").value;
-        //const email = document.getElementById("email").value;
-  //sustituimos en el email ese ingreso
   const email = storedUsername;
   const contacto = document.getElementById("contacto").value;
-
 
   // creamos un objeto con los datos del formulario
   const datosUsuario = {
@@ -74,16 +65,9 @@ function guardarDatos() {
 
   // se gudarda el obj en el localStorage como un string usando el stringify
   localStorage.setItem("datosUsuario", JSON.stringify(datosUsuario));
-
   console.log(localStorage.getItem("datosUsuario"));
-
   actualizarNombreApellido();
-
 };
-
-
-
-
 
   // actualizar el nombre y apellido en el div .userName
   function actualizarNombreApellido() {
@@ -95,7 +79,6 @@ function guardarDatos() {
     userNameDiv.textContent = nombre + " " + apellido;
   };
 
-
   // función para cargar los datos guardados en localStorage cuando se carga la página
   function cargarDatos() {
     const storedUsername = localStorage.getItem("username");
@@ -106,9 +89,8 @@ function guardarDatos() {
     document.getElementById("email").value = '';
   } 
 
-    const datosGuardados = localStorage.getItem("datosUsuario");
-  
-    if (datosGuardados) {
+  const datosGuardados = localStorage.getItem("datosUsuario");
+  if (datosGuardados) {
       // convertimos el string de vuelta a un objeto
       const datosUsuario = JSON.parse(datosGuardados);
   
@@ -117,7 +99,6 @@ function guardarDatos() {
       document.getElementById("segNombre").value = datosUsuario.segNombre || '';
       document.getElementById("apellido").value = datosUsuario.apellido || '';
       document.getElementById("segApellido").value = datosUsuario.segApellido || '';
-      //document.getElementById("email").value = datosUsuario.email;
       document.getElementById("contacto").value = datosUsuario.contacto || '';
   
       // actualizamos el div .userName con el nombre y apellido
@@ -126,13 +107,10 @@ function guardarDatos() {
     };
   };
 
-  
   // llamamos a cargarDatos() cuando la página se carga
   window.onload = cargarDatos;
 
-
 // Cambio de Imagen de perfil
-
 const inputFotoPerfil = document.getElementById("inputFotoPerfil");
 const fotoPerfil = document.getElementById("fotoPerfil");
 const btnGuardar = document.getElementsByClassName("userbtn")[0];
@@ -144,7 +122,6 @@ fotoPerfil.addEventListener("click", function () {
 
 inputFotoPerfil.addEventListener("change", function () {
   const file = inputFotoPerfil.files[0];
-  
   if (file) {
     const reader = new FileReader();
     reader.onload = function (e) {
@@ -156,7 +133,7 @@ inputFotoPerfil.addEventListener("change", function () {
   }
 });
 
-// Cargala imagen de perfil guardada en localStorage 
+// Carga la imagen de perfil guardada en localStorage 
 window.addEventListener("DOMContentLoaded", function () {
   const imagenGuardada = localStorage.getItem("fotoPerfil");
   if (imagenGuardada) {
@@ -164,15 +141,15 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-
 // Guardar cambios del usuario
 btnGuardar.addEventListener("click", function () {
-  alert("¡Cambios guardados!"); //Le puse un alert porque no sabia si guardaba 
+  alert("¡Cambios guardados!"); 
 });
 
-// Probando el modo oscuro y claro Meli
+
   // Funcionalidad de cambio de modo oscuro y claro
   const globalToggle = document.getElementById("globalThemeToggle");
+
   // Cargar el tema actual desde localStorage
   document.addEventListener("DOMContentLoaded", () => {
     const savedTheme = localStorage.getItem("theme") || "light";
@@ -185,6 +162,7 @@ btnGuardar.addEventListener("click", function () {
     alert(`Has cambiado el tema global a ${theme}. Este cambio afectará otras páginas, pero no el perfil.`);
   });
 
+  
 document.getElementById("logout-btn").addEventListener("click", function() {
     //eliminar informacion de usuario al cerrar sesion
     localStorage.removeItem("usuario");
