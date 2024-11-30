@@ -12,12 +12,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
 //recuperar el prod agregado al carrito 
 const productosSeleccionados = carts = JSON.parse(localStorage.getItem('cart'));
 console.log(productosSeleccionados[0])
 console.log(productosSeleccionados)
-
 
 //espacio en el html
 const carritoEspacio = document.getElementById("carritoEspacio");
@@ -100,7 +98,7 @@ function updateQuantity(index, change) {
     const cart = carts[index];
     cart.quantity += change;
 
-    // Asegúrate de que la cantidad no sea menor a 1
+    // si la cantidad no es menor a 1
     if (cart.quantity < 1) cart.quantity = 1;
 
     // Actualiza el HTML de la cantidad
@@ -130,7 +128,6 @@ function updateQuantity(index, change) {
 
 // Desafiate carrito
 function updateCartCount() {
-    
     let totalItems = 0;
 
     // Sumar la cantidad de todos los productos en el carrito
@@ -180,37 +177,16 @@ btnCheckout.addEventListener('click', () => {
     modal.show(); // Muestra el modal
 });
 
-
 // abrir el modal
 document.getElementById('modal').addEventListener('shown.bs.modal', () => {
-
 })
 
 
-// Usar la función existente calcularSubtotal
-function calcularCostoEnvio(subtotal, porcentajeEnvio) {
-    return subtotal * porcentajeEnvio;
-}
-
-function actualizarModalCostos() {
-    const subtotal = calcularSubtotal(); // Usar función existente
-    const porcentajeEnvio = parseFloat(metodoEnvioSelect.value || 0); // Valor del método de envío seleccionado
-    const costoEnvio = calcularCostoEnvio(subtotal, porcentajeEnvio); // Costo del envío
-    const total = subtotal + costoEnvio; // Total calculado
-
-    // Actualizar los valores en el modal
-    document.getElementById('subtotal').textContent = `Subtotal: $${subtotal.toFixed(2)} UYU`;
-    document.getElementById('costEnvio').textContent = `Costo de Envío: $${costoEnvio.toFixed(2)} UYU`;
-    document.getElementById('total').textContent = `Total: $${total.toFixed(2)} UYU`;
-}
-
-// Sección Costos LAU
+// Sección Costos 
 const metodoEnvioSelect = document.getElementById('metodoEnvio');
 const espacioSubtotal = document.getElementById('subtotal');
 const espacioTotal = document.getElementById('total');
-
 const subtotalCheckout = parseFloat(localStorage.getItem('subtotalCheck')) || 0;
-
 //Costo de envío (subtotal * porcentaje del envío seleccionado:Premium (0.15), Express (0.07) y Standard (0.05)
 
 function actualizarTotal() {
@@ -239,25 +215,19 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// opciones de pago MELI
+// opciones de pago
 const btnOpcionesPago = document.getElementById("btnOpcionesPago");
 const opcionesPago = document.querySelectorAll(".formaPago-item");
 
-
 let metodoPagoSeleccionado = "";  
-
 
 // Agrega un evento a cada opción 
 opcionesPago.forEach(opcion => {
     opcion.addEventListener("click", function(event) {
         event.preventDefault(); 
 
-
-
         // Actualiza el texto del botón 
         btnOpcionesPago.textContent = this.textContent;
-
-
 
         // Actualiza el texto del botón 
         btnOpcionesPago.textContent = this.textContent;
