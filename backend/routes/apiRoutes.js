@@ -50,20 +50,47 @@ apiRouter.post('/login', (req, res) => {
     res.status(200).json({ token });
   });
 
+// Middleware de autorización
+const authorize = (req, res, next) => {
+const authHeader = req.headers['authorization']; 
+const token = authHeader && authHeader.split(' ')[1];  
+
+    console.log('Authorization Header:', authHeader); // Verifica si el token está presente
+
+    if (!token) {
+        return res.status(401).json({ message: "Denegado. Token no proporcionado." });
+    }
+
+    // Verifica si el token es válido
+    jwt.verify(token, SECRET_KEY, (err, user) => {
+        if (err) {
+            return res.status(403).json({ message: "Token inválido o expirado." });
+        }
+
+        req.user = user; 
+        console.log('Token verificado:', user); 
+        next();
+    });
+};
+
 // Importamos los controllers necesarios
 const apiController = require("../controllers/apiController");
 
-apiRouter.get("/cats", apiController.getCats); //obitine las categorias
+ // Middleware de autorización aplicado
 
-apiRouter.get("/cats/:id", apiController.getCatById); //obtiene una categoria especifica
+apiRouter.get("/cats", authorize, apiController.getCats); //obitine las categorias 
 
-apiRouter.get("/catProds/:id", apiController.getCatProds); //obtiene todos los prods de una categoria segun su id
+apiRouter.get("/cats/:id", authorize, apiController.getCatById); //obtiene una categoria especifica
 
-apiRouter.get("/prods/:id", apiController.getProds); //obtiene la info de un prod su id
+apiRouter.get("/catProds/:id", authorize, apiController.getCatProds); //obtiene todos los prods de una categoria segun su id
 
-apiRouter.get("/comm/:id", apiController.getComm); //obtiene los comentarios de un prod segun su id
+apiRouter.get("/prods/:id",authorize,apiController.getProds); //obtiene la info de un prod su id
 
-apiRouter.get("/userCart/:id", apiController.getUserCart); //obtiene los productos que esten en el carrito del usuario segun su id
+apiRouter.get("/comm/:id", authorize, apiController.getComm); //obtiene los comentarios de un prod segun su id
+
+apiRouter.get("/userCart/:id",authorize,apiController.getUserCart); //obtiene los productos que esten en el carrito del usuario segun su id
+
+
 
 // Nuevas rutas para el carrito
 apiRouter.post("/cart", apiController.saveUserCart); // Guarda el carrito de un usuario
