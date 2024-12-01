@@ -65,5 +65,13 @@ apiRouter.get("/comm/:id", apiController.getComm); //obtiene los comentarios de 
 
 apiRouter.get("/userCart/:id", apiController.getUserCart); //obtiene los productos que esten en el carrito del usuario segun su id
 
+// Nuevas rutas para el carrito
+apiRouter.post("/cart", apiController.saveUserCart); // Guarda el carrito de un usuario
+apiRouter.get("/cart/:id", apiController.getUserCart); // Obtiene el carrito de un usuario por su ID
+
+// Rutas de inicialización
+apiRouter.post("/init/categories", apiController.initCategories); // Inicializa las categorías desde JSON
+apiRouter.post("/init/products", apiController.initProducts); // Inicializa los productos desde JSON
+
 
 module.exports = apiRouter;
